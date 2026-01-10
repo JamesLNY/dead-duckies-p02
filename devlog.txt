@@ -1,0 +1,3 @@
+jamesL -- 2026-1-10 8:00
+- Set up file structure
+- Implemented basic socket system
