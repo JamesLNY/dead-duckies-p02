@@ -1,0 +1,14 @@
+{
+  "mine": {
+    "production": 1,
+    "resources": {
+      "diamonds": {
+        "production": 1,
+        "gold": 1
+      }
+    }
+  },
+  "farm": {
+    "food": 1
+  }
+}

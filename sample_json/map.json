@@ -1,0 +1,12 @@
+[
+  [
+    {
+      "terrain_type": "plains",
+      "resource": null
+    },
+    {
+      "terrain_type": "mountain",
+      "resource": "diamonds"
+    }
+  ]
+]
