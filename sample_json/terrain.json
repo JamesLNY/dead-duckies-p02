@@ -1,0 +1,9 @@
+{
+  "plains": {
+    "food": 1,
+    "production": 1
+  },
+  "mountains": {
+    "production": 1
+  }
+}
