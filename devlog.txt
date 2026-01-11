@@ -15,5 +15,9 @@ emaanA -- 2026-01-11 15:00
 jamesL -- 2026-01-11 14:30
 - Toying with different map renderings
 
-kiranS 17:15
+kiranS -- 2026-01-11 17:15
 - Wrote tech json file, including science cost, prerequisites, and unlocks
+
+emaanA -- 2026-01-11 17:20
+- python modules in place 
+- styles.css done (for auth mainly)
