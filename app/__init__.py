@@ -5,6 +5,14 @@ app = Flask(__name__)
 app.secret_key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*"
 socketio = SocketIO(app)
 
+#restricting app to logged in users only
+@app.before_request
+def check_authentification():
+    allowedEndpoints = ['static', 'auth.login_get', 'auth.login_post', 'auth.signup_get', 'auth.signup_post']
+    if 'username' not in session and request.endpoint not in allowedEndpoints:
+        flash("Please log in to view our website", 'info')
+        return redirect(url_for('auth.login_get'))
+
 @app.get('/game')
 def game_get():
   session["username"] = "user1" # TESTING
