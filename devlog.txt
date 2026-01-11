@@ -4,3 +4,7 @@ jamesL -- 2026-01-10 08:00
 
 jamesL -- 2026-01-11 09:30
 - Added description, install guide, and launch codes to README.md
+
+kiranS -- 2026-01-11 11:15
+- Wrote DB initialization file with all tables and columns
+- Added DB methods file with select_query, insert_query, and general_query
