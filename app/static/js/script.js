@@ -1,5 +1,3 @@
-document.body.style.zoom = "50%";
-
 const map = document.getElementById("map")
 
 function clickTile(event) {

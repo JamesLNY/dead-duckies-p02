@@ -1,13 +1,146 @@
-body, html {
-  height: 100%;
-  margin: 0;
+/*
+    dead-duckies
+    SoftDev 2026
+    P02
+*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.5;
+    align-items: center;
 }
 
-#game {
-  padding: 10px;
+header {
+    background-color: #03591c;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 10px 10px;
+    z-index: 100;
 }
-#map {
-  max-width: 100%;
-  max-height: 100%;
-  overflow: scroll;
+
+header a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    margin-right: 15px;
+    padding:  10px 10px;
+}
+
+header a:last-child {
+    margin-right: 0 ;
+}
+
+header a:hover {
+    background-color: #0e5f08;
+    border-radius: 3px;
+}
+
+header div {
+    display: inline-block;
+}
+
+nav div:last-child {
+    float: right;
+}
+
+h1 {
+    color: #0e5f08;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #0e5f08;
+    margin: 15px 0 10px 0;
+}
+
+h3 {
+    color: #02420f;
+    margin: 10px 0 5px 0;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #0e5f08;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 300px;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+input[type="submit"],
+button {
+    background-color: #0e5f08;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #0e5f08;
+}
+
+.content, .flashes {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.content *:first-child {
+    margin-top: 0;
+}
+
+.entry-scroll {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.flashes {
+    padding: 10px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    margin: 8px;
+}
+
+.error {
+    background-color: #FF474C;
+}
+
+.info {
+    background-color: #90D5FF;
+}
+
+.success {
+    background-color: #88E788;
+}
+
+.flashes *:last-child {
+    margin: 0;
 }

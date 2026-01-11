@@ -1,6 +1,6 @@
 <!--
     dead-duckies
-    SoftDev 2025
+    SoftDev 2026
     P02
   -->
 <!DOCTYPE html>
@@ -12,21 +12,22 @@
     <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
   </head>
   <body>
-    <header>
-      <nav>
+<header>
+    <nav>
         <div>
-          <a href="{{ url_for('game_get') }}"></a>
+            {% if 'username' in session.keys() %}
+            <a href="{{ url_for('game_get') }}">Game</a>
+          </div>
+          <div>
+            <a href="{{ url_for('auth.logout_get') }}">Log Out</a>
+            {% else %}
+            <a href="{{ url_for('auth.login_get') }}">Log In</a>
+            <a href="{{ url_for('auth.signup_get') }}">Sign Up</a>
+            {% endif %}
         </div>
-        <div>
-          {% if 'username' in session.keys() %}
-          <a href="{{ url_for('auth.logout_get') }}">Log Out</a>
-          {% else %}
-          <a href="{{ url_for('auth.login_get') }}">Log In</a>
-          <a href="{{ url_for('auth.signup_get') }}">Sign Up</a>
-          {% endif %}
-        </div>
-      </nav>
-    </header>
+    </nav>
+</header>
+
     
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
