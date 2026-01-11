@@ -35,7 +35,6 @@ def login_post():
     rows = select_query("SELECT * FROM profiles WHERE username=?", [username])
     if len(rows) != 0 and check_password_hash(rows[0]['password'], password):
         session['username'] = username
-        flash(f'Welcome back, {username}!', 'success')
         return redirect(url_for('game_get'))
     else:
         flash('Invalid username or password.', 'error')
