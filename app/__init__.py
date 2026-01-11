@@ -1,9 +1,16 @@
-from flask import Flask, render_template, request, session, redirect
+#  dead-duckies
+# Roster: James Lei, Kiran Soemardjo, Sarah Zou, Emaan Asif
+# SoftDev 
+
+from flask import Flask, render_template, request, session, redirect, flash, url_for
 from flask_socketio import SocketIO, join_room, emit
 
 app = Flask(__name__)
 app.secret_key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*"
 socketio = SocketIO(app)
+
+import auth
+app.register_blueprint(auth.bp) 
 
 #restricting app to logged in users only
 @app.before_request
