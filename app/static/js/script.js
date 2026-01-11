@@ -15,13 +15,26 @@ function init() {
       img.setAttribute("y", y);
 
       img.style.position = "absolute"
-      img.style.left = `${x * 201 + (y % 2 * 100.5)}px`;
-      img.style.top = `${y * 174}px`;
+      img.style.left = `${x * 112 + y % 2 * 56}px`;
+      img.style.top = `${20 +   y * 95}px`;
 
-      img.src = "https://static.wikia.nocookie.net/civilization/images/a/a5/Grassland_%28Civ6%29.png";
-      
+      img.src = "/static/images/Grassland.png"
+      img.style.width = "128px"
+      img.style.height = "112px"
+      img.style.transform = 'rotate(90deg)';
+
+      const overlay = img.cloneNode()
+      overlay.src = "/static/images/Grassland Hill.png"
+      overlay.style.transform = '';
+
       img.onclick = clickTile;
+      overlay.onclick = clickTile;
+
+      // img.src = "https://static.wikia.nocookie.net/civilization/images/a/a5/Grassland_%28Civ6%29.png";
+      
+      
       map.append(img);
+      map.append(overlay);
     }
   }
 }
