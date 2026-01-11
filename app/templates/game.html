@@ -1,14 +1,24 @@
 <!--
-    dead-duckies
-    SoftDev 2025
-    P02
+ dead-duckies
+ Roster: James Lei, Kiran Soemardjo, Sarah Zou, Emaan Asif
+ SoftDev pd4
+ 2026-01-16f
   -->
 
 {% extends "base.html" %}
 {% block title %}Game{% endblock %}
 
 {% block content %}
-<div id="map"></div>
-<script src="/static/js/script.js"></script>
-<script src="/static/js/socket.js"></script>
+
+<div id="resource-bar">
+  <div id="resources">
+    <div class="resource"><img src="https://static.wikia.nocookie.net/civ6_gamepedia_en/images/d/d8/Icon_Campus.png/revision/latest?cb=20161022062307"><span>0</span></span></div>
+    </div>
+  </div>
+</div>
+  <div id="map">
+  <script src="/static/js/script.js"></script>
+  <script src="/static/js/socket.js"></script>
+  </div>
+</div>
 {% endblock %}
