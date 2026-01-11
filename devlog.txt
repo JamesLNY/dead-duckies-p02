@@ -1,3 +1,6 @@
-jamesL -- 2026-1-10 8:00
+jamesL -- 2026-01-10 08:00
 - Set up file structure
 - Implemented basic socket system
+
+jamesL -- 2026-01-11 09:30
+- Added description, install guide, and launch codes to README.md
