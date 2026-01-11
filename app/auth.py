@@ -1,4 +1,4 @@
-# Team Name: dead-duckies
+# dead-duckies
 # Roster: James Lei, Kiran Soemardjo, Sarah Zou, Emaan Asif
 # SoftDev
 
@@ -36,7 +36,7 @@ def login_post():
     if len(rows) != 0 and check_password_hash(rows[0]['password'], password):
         session['username'] = username
         flash(f'Welcome back, {username}!', 'success')
-        return redirect(url_for('home_get'))
+        return redirect(url_for('game_get'))
     else:
         flash('Invalid username or password.', 'error')
         return redirect(url_for('auth.login_get'))
