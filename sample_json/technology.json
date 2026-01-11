@@ -1,0 +1,206 @@
+{
+    "pottery": {
+        "cost": 25,
+        "prerequisites": null,
+        "tech_unlocks": ["writing", "irrigation"],
+        "unlocks": ["granary"]
+    },
+    "husbandry": {
+        "cost": 25,
+        "prerequisites": null,
+        "tech_unlocks": ["archery"],
+        "unlocks": ["horses", "pasture", "camp"]
+    },
+    "mining": {
+        "cost": 25,
+        "prerequisites": null,
+        "tech_unlocks": ["construction", "bronze working", "wheel"],
+        "unlocks": ["mine", "quarry"] 
+    },
+    "sailing": {
+        "cost": 50,
+        "prerequisites": null,
+        "tech_unlocks": null,
+        "unlocks": ["fishing boat"]
+    },
+    "irrigation": {
+        "cost": 50,
+        "prerequisites": ["pottery"],
+        "tech_unlocks": null,
+        "unlocks": ["farm"]
+    },
+    "writing": {
+        "cost": 50,
+        "prerequisites": ["pottery"],
+        "tech_unlocks": ["currency"],
+        "unlocks": ["campus", "library"]
+    },
+    "archery": {
+        "cost": 50,
+        "prerequisites": ["husbandry"],
+        "tech_unlocks": ["horseback riding"],
+        "unlocks": ["archer"]
+    },
+    "bronze working": {
+        "cost": 80,
+        "prerequisites": ["mining"],
+        "tech_unlocks": ["iron working"],
+        "unlocks": ["encampment", "barracks"]
+    },
+    "wheel": {
+        "cost": 80,
+        "prerequisites": ["mining"],
+        "tech_unlocks": ["engineering"],
+        "unlocks": ["water mill"]
+    },
+    "currency": {
+        "cost": 120,
+        "prerequisites": ["writing"],
+        "tech_unlocks": ["mathematics", "apprenticeship"],
+        "unlocks": ["commercial hub", "market"]
+    },
+    "horseback riding": {
+        "cost": 120,
+        "prerequisites": ["archery"],
+        "tech_unlocks": ["construction", "apprenticeship", "stirrups"],
+        "unlocks": ["stable", "horseman"]
+    },
+    "iron working": {
+        "cost": 120,
+        "prerequisites": ["bronze working"],
+        "tech_unlocks": ["machinery"],
+        "unlocks": ["iron", "swordsman"]
+    },
+    "mathematics": {
+        "cost": 200,
+        "prerequisites": ["currency"],
+        "tech_unlocks": ["education", "buttress"],
+        "unlocks": ["+1 campus science"]
+    },
+    "construction": {
+        "cost": 200,
+        "prerequisites": ["horseback riding", "mining"],
+        "tech_unlocks": ["castles", "military engineering", "buttress"],
+        "unlocks": ["lumber mill"]
+    },
+    "engineering": {
+        "cost": 200,
+        "prerequisites": ["wheel"],
+        "tech_unlocks": ["machinery"],
+        "unlocks": ["aqueduct"]
+    },
+    "buttress": {
+        "cost": 300,
+        "prerequisites": ["mathematics", "construction"],
+        "tech_unlocks": ["cartography"],
+        "unlocks": ["dam"]
+    },
+    "apprenticeship": {
+        "cost": 300,
+        "prerequisites": ["horseback riding", "currency"],
+        "tech_unlocks": ["education", "gunpowder", "stirrups"],
+        "unlocks": ["industrial zone", "workshop", "man-at-arms", "+1 mine production"]
+    },
+    "machinery": {
+        "cost": 300,
+        "prerequisites": ["iron working", "engineering"],
+        "tech_unlocks": ["printing"],
+        "unlocks": ["crossbowman"]
+    },
+    "stirrups": {
+        "cost": 390,
+        "prerequisites": ["horseback riding"],
+        "tech_unlocks": ["banking", "gunpowder"],
+        "unlocks": ["knight", "+1 pasture food production"]
+    },
+    "education": {
+        "cost": 390,
+        "prerequisites": ["mathematics", "apprenticeship"],
+        "tech_unlocks": ["industrialization", "banking", "printing"],
+        "unlocks": ["university"]
+    },
+    "military engineering": {
+        "cost": 390,
+        "prerequisites": ["construction"],
+        "tech_unlocks": ["gunpowder"],
+        "unlocks": ["niter", "armory"]
+    },
+    "castles": {
+        "cost": 390,
+        "prerequisites": ["construction"],
+        "tech_unlocks": ["military science"],
+        "unlocks": ["+ 100% maximum city health"]
+    },
+    "cartography": {
+        "cost": 600,
+        "prerequisites": ["buttress"],
+        "tech_unlocks": null,
+        "unlocks": ["+2 fishing boat gold production"]
+    },
+    "banking": {
+        "cost": 600,
+        "prerequisites": ["education", "stirrups"],
+        "tech_unlocks": ["scientific theory"],
+        "unlocks": ["+2 quarry gold production", "bank"]
+    },
+    "gunpowder": {
+        "cost": 600,
+        "prerequisites": ["military engineering", "stirrups", "apprenticeship"],
+        "tech_unlocks": ["metal casting"],
+        "unlocks": ["musketman", "+1 quarry production"]
+    },
+    "printing": {
+        "cost": 600,
+        "prerequisites": ["machinery", "education"],
+        "tech_unlocks": ["military science"],
+        "unlocks": ["+2 university science production"]
+    },
+    "metal casting": {
+        "cost": 730,
+        "prerequisites": ["gunpowder"],
+        "tech_unlocks": ["economics", "ballistics", "industrialization"],
+        "unlocks": ["+2 mine iron production"]
+    },
+    "industrialization": {
+        "cost": 930,
+        "prerequisites": ["education"],
+        "tech_unlocks": ["steam power"],
+        "unlocks": ["factory", "coal power plant", "coal", "neighborhood", "+1 mine production"]
+    },
+    "scientific theory": {
+        "cost": 930,
+        "prerequisites": ["banking"],
+        "tech_unlocks": ["economics", "sanitation"],
+        "unlocks": ["+1 farm food production", "+2 campus science production"]
+    },
+    "ballistics": {
+        "cost": 930,
+        "prerequisites": ["metal casting"],
+        "tech_unlocks": null,
+        "unlocks": ["field cannon", "cuirassier"]
+    },
+    "military science": {
+        "cost": 930,
+        "prerequisites": ["castles", "printing"],
+        "tech_unlocks": null,
+        "unlocks": ["military academy", "line infantry"]
+    },
+    "steam power": {
+        "cost": 1070,
+        "prerequisites": ["industrialization"],
+        "tech_unlocks": null,
+        "unlocks": ["+2 unit movement"]
+    },
+    "sanitation": {
+        "cost": 1070,
+        "prerequisites": ["scientific theory"],
+        "tech_unlocks": null,
+        "unlocks": ["sewer"]
+    },
+    "economics": {
+        "cost": 1070,
+        "prerequisites": ["scientific theory", "metal casting"],
+        "tech_unlocks": null,
+        "unlocks": ["stock exchange", "food market"]
+    }
+}
