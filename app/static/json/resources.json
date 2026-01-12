@@ -1,0 +1,166 @@
+{
+  "bananas": {
+    "yields": {
+      "food": 1
+    },
+    "improvement": "plantation"
+  },
+  "cattle": {
+    "yields": {
+      "food": 1
+    },
+    "improvement": "pasture"
+  },
+  "copper": {
+    "yields": {
+      "gold": 2
+    },
+    "improvement": "mine"
+  },
+  "crabs": {
+    "yields": {
+      "gold": 2
+    },
+    "improvement": "fishing boats"
+  },
+  "deer": {
+    "yields": {
+      "production": 1
+    },
+    "improvement": "camp"
+  },
+  "fish": {
+    "yields": {
+      "food": 1
+    },
+    "improvement": "fishing boats"
+  },
+  "maize": {
+    "yields": {
+      "gold": 2
+    },
+    "improvement": "farm"
+  },
+  "rice": {
+    "yields": {
+      "food": 1
+    },
+    "improvement": "farm"
+  },
+  "sheep": {
+    "yields": {
+      "food": 1
+    },
+    "improvement": "pasture"
+  },
+  "stone": {
+    "yields": {
+      "production": 1
+    },
+    "improvement": "quarry"
+  },
+  "wheat": {
+    "yields": {
+      "food": 1
+    },
+    "improvement": "farm"
+  },
+  "ivory": {
+    "yields": {
+      "production": 1,
+      "gold": 1
+    },
+    "improvement": "camp"
+  },
+  "tobacco": {
+    "yields": {
+      "food": 1,
+      "production": 1
+    },
+    "improvement": "plantation"
+  },
+  "dyes": {
+    "yields": {
+      "gold": 3
+    },
+    "improvement": "plantation"
+  },
+  "furs": {
+    "yields": {
+      "food": 1,
+      "gold": 1
+    },
+    "improvement": "camp"
+  },
+  "wine": {
+    "yields": {
+      "food": 1,
+      "gold": 1
+    },
+    "improvement": "plantation"
+  },
+  "silk": {
+    "yields": {
+      "science": 1,
+      "gold": 1
+    },
+    "improvement": "plantation"
+  },
+  "jade": {
+    "yields": {
+      "science": 1
+    },
+    "improvement": "mine"
+  },
+  "gypsum": {
+    "yields": {
+      "production": 1,
+      "gold": 1
+    },
+    "improvement": "quarry"
+  },
+  "mercury": {
+    "yields": {
+      "science": 1
+    },
+    "improvement": "mine"
+  },
+  "incense": {
+    "yields": {
+      "gold": 3
+    },
+    "improvement": "plantation"
+  },
+  "truffles": {
+    "yields": {
+      "gold": 3
+    },
+    "improvement": "camp"
+  },
+  "horses": {
+    "yields": {
+      "production": 1,
+      "food": 1
+    },
+    "improvement": "pasture"
+  },
+  "iron": {
+    "yields": {
+      "science": 1
+    },
+    "improvement": "mine"
+  },
+  "niter": {
+    "yields": {
+      "food": 1,
+      "production": 1
+    },
+    "improvement": "mine"
+  },
+  "coal": {
+    "yields": {
+      "production": 2
+    },
+    "improvement": "mine"
+  }
+}
