@@ -30,9 +30,16 @@ jamesL -- 2026-01-11 20:20
 - Added design doc
 
 sarahZ -- 2026-01-11 22:50
-- finished basic ui html and css for game
-- finished adding map data in map.json
-- finished terrain.json data
+- Finished basic ui html and css for game
+- Finished adding map data in map.json
+- Finished terrain.json data
 
 sarahZ -- 2026-01-12 11:00
-- working on sidebar ui and js
+- Working on sidebar ui and js
+
+jamesL -- 2026-01-12 11:10
+INITIAL DD REVIEW
+- Feedback appreciated the detail component map
+- Moved around the component map to imrpove readability
+- Changed site map to connect home to lobby & explained pages
+- Added where we're sourcing our graphics from
