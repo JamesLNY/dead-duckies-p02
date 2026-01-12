@@ -43,3 +43,6 @@ INITIAL DD REVIEW
 - Moved around the component map to imrpove readability
 - Changed site map to connect home to lobby & explained pages
 - Added where we're sourcing our graphics from
+
+sarahZ -- 2026-01-12 17:45
+- Finished collapsible sidebars for tech and info
