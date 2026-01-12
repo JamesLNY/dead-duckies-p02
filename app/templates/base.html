@@ -13,19 +13,20 @@
   </head>
   <body>
     <header>
-      <nav>
-        <div>
-          <a href="{{ url_for('game_get') }}">CivEmulator by DeadDuckies</a>
-        </div>
-        <div>
-          {% if 'username' in session.keys() %}
-          <a href="{{ url_for('auth.logout_get') }}">Log Out</a>
-          {% else %}
-          <a href="{{ url_for('auth.login_get') }}">Log In</a>
-          <a href="{{ url_for('auth.signup_get') }}">Sign Up</a>
-          {% endif %}
-        </div>
-      </nav>
+      <div>
+        <a href="{{ url_for('home_get')}}">Home</a>
+        {% if 'username' in session.keys() %}
+        <a href="{{ url_for('game_get') }}">Game</a>
+        {% endif %}
+      </div>
+      <div>
+        {% if 'username' in session.keys() %}
+        <a href="{{ url_for('auth.logout_get') }}">Log Out</a>
+        {% else %}
+        <a href="{{ url_for('auth.login_get') }}">Log In</a>
+        <a href="{{ url_for('auth.signup_get') }}">Sign Up</a>
+        {% endif %}
+      </div>
     </header>
     
     {% with messages = get_flashed_messages(with_categories=true) %}
