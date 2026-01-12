@@ -22,7 +22,7 @@ kiranS -- 2026-01-11 17:15
 - Wrote tech json file, including science cost, prerequisites, and unlocks
 
 emaanA -- 2026-01-11 17:20
-- Python modules in place 
+- Python modules in place
 - styles.css done (for auth mainly)
 
 jamesL -- 2026-01-11 20:20
@@ -31,5 +31,8 @@ jamesL -- 2026-01-11 20:20
 
 sarahZ -- 2026-01-11 22:50
 - finished basic ui html and css for game
-- finished adding map data in map.json 
+- finished adding map data in map.json
 - finished terrain.json data
+
+sarahZ -- 2026-01-12 11:00
+- working on sidebar ui and js
