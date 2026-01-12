@@ -30,6 +30,8 @@
 
 #side-container {
   display: flex;
+  flex-direction: column;
+
 }
 .sidebar {
   width: 300px;
@@ -62,6 +64,8 @@
 #game-buttons {
   display: flex;
   justify-content: center;
+  height: 50px;
+  width: 100px;
   margin-top: 10px;
   gap: 5px;
 }
