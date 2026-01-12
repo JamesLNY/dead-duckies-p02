@@ -1,6 +1,7 @@
-# dead-duckies
+# DeadDuckies
 # Roster: James Lei, Kiran Soemardjo, Sarah Zou, Emaan Asif
-# SoftDev
+# SoftDev pd4
+# 2026-01-16f
 
 from flask import Blueprint, render_template, request, redirect, url_for, session, flash
 from db import select_query, insert_query, general_query
