@@ -1,5 +1,64 @@
+#game-container {
+  display: flex;
+  height: 100vh;
+}
+
+#resource-bar {
+  display: flex;
+  height: 15px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+
+#resources {
+  display: flex;
+  gap: 20px;
+}
+
+.resource {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.resource img {
+ width: 20px;
+ height: 20px; 
+}
+
+#sidebar {
+  width: 300px;
+  background-color: #378b31;
+  padding: 5px;
+  overflow-y: scroll;
+}
+
+#sidebar-title {
+  color: #0e5f08;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  padding: 2px;
+}
+
+#sidebar-info {
+  color: #f0f0f0;
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 #map {
   overflow: scroll;
-  height: 80vh;
+  flex: 1;
   position: relative;
+}
+
+#game-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 5px;
 }

@@ -10,18 +10,46 @@
 
 {% block content %}
 <link rel="stylesheet" href="/static/css/game.css">
+
 <div id="resource-bar">
   <div id="resources">
     <!--#s shld be changed later-->
-    <div class="resource"><img src="https://static.wikia.nocookie.net/civ6_gamepedia_en/images/d/d8/Icon_Campus.png/revision/latest?cb=20161022062307"><span>0</span></span></div>
-    <div class="resource"><img src="https://static.wikia.nocookie.net/civ6_gamepedia_en/images/7/76/Icon_main_gold.png/revision/latest/scale-to-width-down/20?cb=20161027160750"><span>0</span></div>
-    <div class="resource"><img src="https://static.wikia.nocookie.net/civilization/images/6/65/Civ6Food.png/revision/latest/scale-to-width-down/18?cb=20200501084516"><span>0</span></div>
-    <div class="resource"><img src="https://static.wikia.nocookie.net/civilization/images/7/74/Civ6Production.png/revision/latest/scale-to-width-down/18?cb=20200501084523"<span>0</span></div>
-    <div class="resource"><img sr</div>
-    </div>
+    <div class="resource"><img src="/static/images/science.png" alt="Science:"><span>0</span></div>
+    <div class="resource"><img src="/static/images/gold.png" alt="Gold:"><span>0</span></div>
+    <div class="resource"><img src="/static/images/food.png" alt="Food:"><span>0</span></div>
+    <div class="resource"><img src="/static/images/production.png" alt="Production:"><span>0</span></div>
+    <div class="resource"><img src="/static/images/citizen.png" alt="Population:"><span>0</span></div>
+    <div class="resource"><img src="/static/images/iron.png" alt="Iron:"><span>0</span></div>
+    <div class="resource"><img src="/static/images/horses.png" alt="Horses:"><span>0</span></div>
+    <div class="resource"><img src="/static/images/niter.png" alt="Niter:"><span>0</span></div>
+    <div class="resource"><img src="/static/images/coal.png" alt="Coal:"><span>0</span></div>
+  </div>
+  <div id="turn">
+    <!--#s shld be changed later-->
+    <span><strong>Turn:</strong> 1 - <strong>Player</strong> 1 </span>
   </div>
 </div>
-<div id="map">
+
+<div id="game-container">
+  <!--need to implement-->
+  <div id="sidebar">
+    <div id="sidebar-title">
+      This is the sidebar.
+    </div>
+    <div id="sidebar-info">
+      This is the sidebar info. Implement onclick to display info. here. <br>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis tincidunt nisl, ut iaculis eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce in mattis urna, id porta sem. Nulla id urna et diam suscipit mattis. Ut vel velit et ex tristique suscipit quis quis diam. Morbi viverra in velit vitae semper. Nullam convallis tellus in porttitor elementum. Duis maximus arcu eget est commodo aliquam. Praesent vel tincidunt leo. Etiam dictum rutrum massa ac tincidunt. Nullam ut malesuada urna. 
+    </div>
+    <div id="game-buttons">
+      <!--need to implement these buttons and dialogs-->
+      <button>End Turn</button>
+      <button>Open Tree</button>
+      <!--this needs dialog-->
+    </div>
+  </div>
+  <div id="map">
+  </div>
+
   <script src="/static/js/script.js"></script>
   <script src="/static/js/socket.js"></script>
 </div>
