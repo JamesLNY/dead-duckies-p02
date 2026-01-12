@@ -1,4 +1,4 @@
-# dead-duckies
+# DeadDuckies
 # Roster: James Lei, Kiran Soemardjo, Sarah Zou, Emaan Asif
 # SoftDev pd4
 # 2026-01-16f
@@ -16,24 +16,24 @@ app.register_blueprint(auth.bp)
 #restricting app to logged in users only
 @app.before_request
 def check_authentification():
-    allowedEndpoints = ['static', 'auth.login_get', 'auth.login_post', 'auth.signup_get', 'auth.signup_post']
-    if 'username' not in session and request.endpoint not in allowedEndpoints:
-        flash("Please log in to view our website", 'info')
-        return redirect(url_for('auth.login_get'))
+  allowedEndpoints = ['static', 'auth.login_get', 'auth.login_post', 'auth.signup_get', 'auth.signup_post']
+  if 'username' not in session and request.endpoint not in allowedEndpoints:
+    flash("Please log in to view our website", 'info')
+    return redirect(url_for('auth.login_get'))
 
 @app.get('/')
 def home_get():
   return "temp"
 
-@app.get('/game')
-def game_get():
-  session["username"] = "user1" # TESTING
-  return render_template("game.html")
-
 @app.post('/lobby')
 def lobby_post():
   session["room"] = request.args["room"]
   return redirect("/game")
+
+@app.get('/game')
+def game_get():
+  session["username"] = "user1" # TESTING
+  return render_template("game.html")
 
 @socketio.on('join')
 def handle_join(data):

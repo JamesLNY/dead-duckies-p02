@@ -1,6 +1,7 @@
-# dead-duckies
+# DeadDuckies
 # Roster: James Lei, Kiran Soemardjo, Sarah Zou, Emaan Asif
-# SoftDev
+# SoftDev pd4
+# 2026-01-16f
 
 import sqlite3
 
