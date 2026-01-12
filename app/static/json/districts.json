@@ -21,5 +21,62 @@
         "yield": 4
       }
     }
+  },
+  "commercial hub": {
+    "technology": "currency",
+    "production": 54,
+    "maintenance": 0,
+    "yield": "gold",
+    "adjacency": {
+      "harbor": 1
+    },
+    "buildings": {
+      "market": {
+        "technology": "currency",
+        "production": 120,
+        "maintenance": 0,
+        "yield": 3
+      },
+      "bank": {
+        "technology": "banking",
+        "production": 290,
+        "maintenance": 0,
+        "yield": 5
+      }
+    },
+    "encampment": {
+      "technology": "bronze working",
+      "production": 54,
+      "maintenance": 1,
+      "yield": "production",
+      "adjacency": {},
+      "buildings": {
+        "barracks": {
+          "technology": "bronze working",
+          "production": 90,
+          "maintenance": 1,
+          "yield": 1
+        },
+        "armory": {
+          "technology": "military engineering",
+          "production": 195,
+          "maintenance": 2,
+          "yield": 2
+        },
+        "military academy": {
+          "technology": "military science",
+          "production": 390,
+          "maintenance": 2,
+          "yield": 3
+        }
+      }
+    },
+    "harbor": {
+      "technology": "celestial navigation",
+      "production": 54,
+      "maintenance": 0,
+      "yield": "food",
+      ""
+    }
   }
 }
