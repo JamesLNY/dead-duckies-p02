@@ -24,3 +24,7 @@ kiranS -- 2026-01-11 17:15
 emaanA -- 2026-01-11 17:20
 - Python modules in place 
 - styles.css done (for auth mainly)
+
+jamesL -- 2026-01-11 20:20
+- Created general function for overlaying image on tile
+- Added design doc
