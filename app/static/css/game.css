@@ -1,5 +1,6 @@
 #game-container {
   display: flex;
+  gap: 10px;
   height: 100vh;
 }
 
@@ -31,13 +32,18 @@
 #side-container {
   display: flex;
   flex-direction: column;
-
+  height: 100vh;
+  gap: 10px;
 }
 .sidebar {
   width: 300px;
-  background-color: #378b31;
+  min-height: 50px;
+  background-color: #4a9b44;
   padding: 5px;
-  overflow-y: scroll;
+  overflow-y: hidden;
+  transition: flex 0.5s;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-title {
@@ -52,7 +58,20 @@
   color: #f0f0f0;
   font-size: 15px;
   text-align: center;
-  margin-bottom: 10px;
+  padding: 2px;
+  overflow-y: scroll;
+}
+
+.sidebar.opened {
+  flex: 1;
+}
+
+.sidebar.closed {
+  flex: 0;
+}
+
+.sidebar.closed .sidebar-info {
+  display: none;
 }
 
 #map {

@@ -128,7 +128,7 @@ button:hover {
 }
 
 .error {
-    background-color: #FF474C;
+    background-color: #ce1b1b;
 }
 
 .info {
@@ -136,7 +136,7 @@ button:hover {
 }
 
 .success {
-    background-color: #88E788;
+    background-color: #6dc477;
 }
 
 .flashes *:last-child {
