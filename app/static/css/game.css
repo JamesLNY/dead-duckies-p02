@@ -25,17 +25,22 @@
 
 .resource img {
  width: 20px;
- height: 20px; 
+ height: 20px;
 }
 
-#sidebar {
+#side-container {
+  display: flex;
+  flex-direction: column;
+
+}
+.sidebar {
   width: 300px;
   background-color: #378b31;
   padding: 5px;
   overflow-y: scroll;
 }
 
-#sidebar-title {
+.sidebar-title {
   color: #0e5f08;
   font-size: 25px;
   font-weight: bold;
@@ -43,7 +48,7 @@
   padding: 2px;
 }
 
-#sidebar-info {
+.sidebar-info {
   color: #f0f0f0;
   font-size: 15px;
   text-align: center;
@@ -59,6 +64,8 @@
 #game-buttons {
   display: flex;
   justify-content: center;
+  height: 50px;
+  width: 100px;
   margin-top: 10px;
   gap: 5px;
 }
