@@ -24,3 +24,7 @@ kiranS -- 2026-01-11 17:15
 emaanA -- 2026-01-11 17:20
 - Python modules in place 
 - styles.css done (for auth mainly)
+
+sarahZ -- 2026-01-11 22:50
+- finished basic ui for game
+- finished adding map data in map.json

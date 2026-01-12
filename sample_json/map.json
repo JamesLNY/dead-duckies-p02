@@ -92,7 +92,7 @@
     },
     {
       "terrain_type": "plains",
-      "resource": "nitre"
+      "resource": "niter"
     },
     {
       "terrain_type": "lake",
@@ -122,7 +122,7 @@
     },
     {
       "terrain_type": "plains",
-      "resource": "hores"
+      "resource": "horses"
     },
     {
       "terrain_type": "plains",
@@ -192,6 +192,52 @@
     },
     {
       "terrain_type": "plains rainforest",
+      "resource": null
+    },
+    {
+      "terrain_type": "plains mountains",
+      "resource": null
+    }
+  ],
+  [
+    {
+      "terrain_type": "coast",
+      "resource": null
+    },
+    {
+      "terrain_type": "tundra mountains",
+      "resource": null
+    },
+    {
+      "terrain_type": "tundra woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "plains rainforest",
+      "resource": null
+    },    {
+      "terrain_type": "plains rainforest",
+      "resource": null
+    },
+    {
+      "terrain_type": "plains",
+      "resource": "wheat"
+    },    {
+      "terrain_type": "plains rainforest",
+      "resource": null
+    },
+    {
+      "terrain_type": "plains hills",
+      "resource": "sheep"
+    },    {
+      "terrain_type": "plains rainforest",
+      "resource": "bananas"
+    },
+    {
+      "terrain_type": "plains rainforest",
+      "resource": null
+    },    {
+      "terrain_type": "plains",
       "resource": null
     },
     {
@@ -296,6 +342,307 @@
     },
     {
       "terrain_type": "grassland mountains",
+      "resource": null
+    }
+  ],
+  [
+    {
+      "terrain_type": "tundra mountains",
+      "resource": null
+    },
+    {
+      "terrain_type": "tundra woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "tundra hills",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland hills",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland hills",
+      "resource": "iron"
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": "horses"
+    },
+    {
+      "terrain_type": "grassland mountains",
+      "resource": null
+    }
+  ],
+  [
+    {
+      "terrain_type": "coast",
+      "resource": null
+    },
+    {
+      "terrain_type": "tundra mountains",
+      "resource": null
+    },
+    {
+      "terrain_type": "tundra hills woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": "niter"
+    },
+    {
+      "terrain_type": "grassland marsh",
+      "resource": "rice"
+    },
+    {
+      "terrain_type": "grassland marsh",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland woods",
+      "resource": "deer"
+    },
+    {
+      "terrain_type": "grasslands",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland hills woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": "jade"
+    },
+    {
+      "terrain_type": "grassland mountains",
+      "resource": null
+    }
+  ],
+  [
+    {
+      "terrain_type": "ocean",
+      "resource": null
+    },
+    {
+      "terrain_type": "coast",
+      "resource": null
+    },
+    {
+      "terrain_type": "tundra woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "lake",
+      "resource": null
+    },
+    {
+      "terrain_type": "lake",
+      "resource": "fish"
+    },
+    {
+      "terrain_type": "grassland hills woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": "iron"
+    },
+    {
+      "terrain_type": "grassland woods",
+      "resource": "wine"
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": "stone"
+    },
+    {
+      "terrain_type": "desert floodplain",
+      "resource": null
+    },
+    {
+      "terrain_type": "desert floodplain",
+      "resource": null
+    }
+  ],
+  [
+    {
+      "terrain_type": "coast",
+      "resource": null
+    },
+    {
+      "terrain_type": "tundra mountains",
+      "resource": null
+    },
+    {
+      "terrain_type": "tundra hills",
+      "resource": null
+    },
+    {
+      "terrain_type": "lake",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland woods",
+      "resource": "furs"
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland hills",
+      "resource": null
+    },
+    {
+      "terrain_type": "desert floodplain",
+      "resource": null
+    },
+    {
+      "terrain_type": "desert hills",
+      "resource": null
+    }
+  ],
+  [
+    {
+      "terrain_type": "ocean",
+      "resource": null
+    },
+    {
+      "terrain_type": "coast",
+      "resource": "crab"
+    },
+    {
+      "terrain_type": "tundra woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "lake",
+      "resource": "fish"
+    },
+    {
+      "terrain_type": "lake",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland marsh",
+      "resource": "rice"
+    },
+    {
+      "terrain_type": "grassland woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland hills",
+      "resource": null
+    },
+    {
+      "terrain_type": "desert floodplain",
+      "resource": null
+    },
+    {
+      "terrain_type": "desert",
+      "resource": null
+    },
+    {
+      "terrain_type": "desert hills",
+      "resource": null
+    }
+  ],
+  [
+    {
+      "terrain_type": "tundra hills woods",
+      "resource": null
+    },
+    {
+      "terrain_type": "tundra hills woods",
+      "resource": "deer"
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland hills",
+      "resource": "sheep"
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland hills",
+      "resource": "copper"
+    },
+    {
+      "terrain_type": "grassland hills",
+      "resource": null
+    },
+    {
+      "terrain_type": "grassland",
+      "resource": "cattle"
+    },
+    {
+      "terrain_type": "desert hills",
+      "resource": "sheep"
+    },
+    {
+      "terrain_type": "desert",
+      "resource": null
+    }
+    ,
+    {"terrain_type":"desert hills",
+      "resource": null
+    }
+    ,
+    {
+      "terrain_type": "desert hills",
       "resource": null
     }
   ]
