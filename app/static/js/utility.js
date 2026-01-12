@@ -1,0 +1,25 @@
+import { clickTile } from "./script.js";
+
+async function getJson(file_name) {
+  let raw = await fetch(`/static/json/${file_name}`)
+  let parsed = await raw.json()
+  return parsed;
+}
+
+function overlay(x, y, link, rotation=0) {
+  const img = document.createElement('img');
+  img.style.position = "absolute";
+  img.style.left = 0;
+  img.style.top = 0;
+  img.src = `/static/images/${link}`;
+  img.style.width = "128px"
+  img.style.height = "112px"
+  if (rotation != 0) {
+    img.style.transform = `rotate(${rotation}deg)`;
+  }
+  img.onclick = clickTile
+  const div = document.querySelector(`div[x="${x}"][y="${y}"]`)
+  div.append(img)
+}
+
+export { getJson, overlay };

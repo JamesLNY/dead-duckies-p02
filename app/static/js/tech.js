@@ -1,9 +1,24 @@
-async function getJson(file_name) {
-  let raw = await fetch(`/static/json/${file_name}`)
-  let parsed = await raw.json()
-  return parsed;
+import { getJson } from "./utility.js";
+
+const TECHNOLOGIES = await getJson("technology.json")
+
+var techSidebar = document.getElementById("tech-sidebar");
+var infoSidebar = document.getElementById("info-sidebar");
+techSidebar.classList.add("closed");
+infoSidebar.classList.add("opened");
+
+techSidebar.onclick = () => {
+  techSidebar.classList.add("opened");
+  techSidebar.classList.remove("closed");
+  infoSidebar.classList.add("closed");
+  infoSidebar.classList.remove("opened");
 }
 
-const technologies = await getJson("technology.json")
+infoSidebar.onclick = () => {
+  infoSidebar.classList.add("opened");
+  infoSidebar.classList.remove("closed");
+  techSidebar.classList.add("closed");
+  techSidebar.classList.remove("opened");
+}
 
-console.log(technologies)
+console.log(TECHNOLOGIES)
