@@ -1,4 +1,6 @@
-const map = document.getElementById("map")
+var districts
+
+
 
 function clickTile(event) {
   let x = event.target.parentNode.getAttribute("x")
@@ -21,7 +23,8 @@ function overlay(x, y, link, rotation=0) {
   div.append(img)
 }
 
-function init() {
+function renderMap() {
+  const map = document.getElementById("map")
   for (let y = 0; y < 50; y++) {
     for (let x = 0; x < 50 - (y % 2); x++) {
       const div = document.createElement('div');
@@ -39,4 +42,4 @@ function init() {
   }
 }
 
-init()
+renderMap()
