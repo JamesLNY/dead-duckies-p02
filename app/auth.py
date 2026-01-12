@@ -8,6 +8,7 @@ from db import select_query, insert_query, general_query
 from werkzeug.security import generate_password_hash, check_password_hash
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
+lobbies = {}
 
 @bp.get('/signup')
 def signup_get():
@@ -41,11 +42,17 @@ def login_post():
         flash('Invalid username or password.', 'error')
         return redirect(url_for('auth.login_get'))
 
-@bp.get('/logout')
+@bp.get("/logout")
 def logout_get():
-    session.pop('username', None)
-    flash('You have been logged out.', 'info')
-    return redirect(url_for('auth.login_get'))
+    old_username = session.get("username")
+    old_lobby = session.get("room")
+    if old_lobby and old_username:
+        if old_lobby in lobbies and old_username in lobbies[old_lobby]:
+            lobbies[old_lobby].remove(old_username)
+            socketio.emit("lobby_update", lobbies[old_lobby], room=old_lobby)
+    session.clear()
+    return redirect(url_for("auth.login_get"))
+
 
 #update username
 @bp.post('/update/username')
