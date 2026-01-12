@@ -1,4 +1,5 @@
 import { clickTile } from "./script.js";
+import { storedResources } from "./init.js";
 
 async function getJson(file_name) {
   let raw = await fetch(`/static/json/${file_name}`)
@@ -22,4 +23,13 @@ function overlay(x, y, link, rotation=0) {
   div.append(img)
 }
 
-export { getJson, overlay };
+// returns false if not enough of that resource
+function consumeResource(name, amount) {
+  if (storedResources["name"] < amount) {
+    return false;
+  }
+  storedResources["name"] -= amount;
+  return true;
+}
+
+export { getJson, overlay, consumeResource };
