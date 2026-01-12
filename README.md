@@ -18,7 +18,7 @@ Click the green button on the repo, and choose the SSH clone option. Copy the li
 ```
 $ git clone git@github.com:JamesLNY/dead-duckies-p02.git
 $ cd dead-duckies-p02
-$ python -m venv ~venv
+$ python -m venv venv
 ```
 For Linux and Mac users
 
