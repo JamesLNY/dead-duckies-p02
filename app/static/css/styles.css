@@ -37,7 +37,7 @@ header div {
     display: inline-block;
 }
 
-nav div:last-child {
+header div:last-child {
     float: right;
 }
 
