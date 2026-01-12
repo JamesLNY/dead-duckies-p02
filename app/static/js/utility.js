@@ -25,10 +25,10 @@ function overlay(x, y, link, rotation=0) {
 
 // returns false if not enough of that resource
 function consumeResource(name, amount) {
-  if (storedResources["name"] < amount) {
+  if (storedResources[name] < amount) {
     return false;
   }
-  storedResources["name"] -= amount;
+  storedResources[name] -= amount;
   return true;
 }
 
