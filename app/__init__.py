@@ -21,6 +21,10 @@ def check_authentification():
         flash("Please log in to view our website", 'info')
         return redirect(url_for('auth.login_get'))
 
+@app.get('/')
+def home_get():
+  return "temp"
+
 @app.get('/game')
 def game_get():
   session["username"] = "user1" # TESTING
