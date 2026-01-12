@@ -1,33 +1,32 @@
 <!--
     dead-duckies
-    SoftDev 2026
+    SoftDev 2025
     P02
   -->
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %} -</title>
     <link rel="stylesheet" href="/static/css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
   </head>
   <body>
-<header>
-    <nav>
+    <header>
+      <nav>
         <div>
-            {% if 'username' in session.keys() %}
-            <a href="{{ url_for('game_get') }}">Game</a>
-          </div>
-          <div>
-            <a href="{{ url_for('auth.logout_get') }}">Log Out</a>
-            {% else %}
-            <a href="{{ url_for('auth.login_get') }}">Log In</a>
-            <a href="{{ url_for('auth.signup_get') }}">Sign Up</a>
-            {% endif %}
+          <a href="{{ url_for('game_get') }}"></a>
         </div>
-    </nav>
-</header>
-
+        <div>
+          {% if 'username' in session.keys() %}
+          <a href="{{ url_for('auth.logout_get') }}">Log Out</a>
+          {% else %}
+          <a href="{{ url_for('auth.login_get') }}">Log In</a>
+          <a href="{{ url_for('auth.signup_get') }}">Sign Up</a>
+          {% endif %}
+        </div>
+      </nav>
+    </header>
     
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
