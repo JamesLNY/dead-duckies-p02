@@ -30,5 +30,6 @@ jamesL -- 2026-01-11 20:20
 - Added design doc
 
 sarahZ -- 2026-01-11 22:50
-- finished basic ui for game
+- finished basic ui html and css for game
 - finished adding map data in map.json 
+- finished terrain.json data
