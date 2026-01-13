@@ -93,3 +93,6 @@ kiranS -- 2026-01-12 18:45
 - Added HTML and CSS formatting for each technology item
 - Changed onclick property to event listener to allow clicking nested child divs
 - Fixes to tech json file
+
+jamesL -- 2026-01-12 11:00
+- Added function to get adjacent tiles
