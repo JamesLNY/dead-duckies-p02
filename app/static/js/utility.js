@@ -10,11 +10,12 @@ async function getJson(file_name) {
 function overlay(x, y, link, rotation=0) {
   const img = document.createElement('img');
   img.style.position = "absolute";
-  img.style.left = 0;
-  img.style.top = 0;
-  img.src = `/static/images/${link}`;
+
   img.style.width = "128px"
   img.style.height = "112px"
+
+  img.src = `/static/images/${link}`;
+
   if (rotation != 0) {
     img.style.transform = `rotate(${rotation}deg)`;
   }

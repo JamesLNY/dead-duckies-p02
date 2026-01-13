@@ -96,6 +96,7 @@ function renderMap() {
 
       overlay(x, y, "Grassland.png", 90)
       overlay(x, y, "grassland_hills.png", 0)
+      overlay(x, y, "units/archer.png", 0)
     }
   }
 }
