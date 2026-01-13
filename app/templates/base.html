@@ -12,19 +12,23 @@
     <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
   </head>
   <body>
-    <header>
-      <div>
-        <a href="{{ url_for('home_get') }}">CivEmulator by DeadDuckies</a>
-      </div>
-      <div class="header-right">
-        {% if 'username' in session %}
-        <a href="{{ url_for('auth.logout_get') }}" style="margin-left:10px;">Log Out</a>
-        {% else %}
-        <a href="{{ url_for('auth.login_get') }}">Log In</a>
-        <a href="{{ url_for('auth.signup_get') }}">Sign Up</a>
-        {% endif %}
-      </div>
-    </header>
+<body>
+  {% block header %}
+  <header>
+    <div>
+      <a href="{{ url_for('home_get') }}">CivEmulator by DeadDuckies</a>
+    </div>
+    <div class="header-right">
+      {% if 'username' in session %}
+      <a href="{{ url_for('auth.logout_get') }}" style="margin-left:10px;">Log Out</a>
+      {% else %}
+      <a href="{{ url_for('auth.login_get') }}">Log In</a>
+      <a href="{{ url_for('auth.signup_get') }}">Sign Up</a>
+      {% endif %}
+    </div>
+  </header>
+  {% endblock %}
+
     
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}

@@ -4,15 +4,34 @@
  SoftDev pd4
  2026-01-16f
   -->
-
 {% extends "base.html" %}
 {% block title %}Lobby{% endblock %}
 
 {% block content %}
-<div>
-  <h1>Create or Join a Lobby</h1>
+<div class="lobby-container">
+  <h1>Create a L</h1>
+  <div class="create-lobby">
+    <a href="/create_lobby">
+      <button>Create Lobby</button>
+    </a>
+  </div>
+  <hr>
 
-  <a href="/create_lobby">Create Lobby</button>
+  <h2>Available Lobbies</h2>
+
+  {% if games|length == 0 %}
+    <p style="color: #03591c;">No open lobbies right now.</p>
+  {% else %}
+    <ul>
+      {% for game in games %}
+        <li>
+          <p style="color: #03591c;">Lobby {{ game.id }}</p>
+          <a href="/join_lobby?game={{ game.id }}">
+            <button>Join</button>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 </div>
-
 {% endblock %}
