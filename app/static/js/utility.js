@@ -7,15 +7,28 @@ async function getJson(file_name) {
   return parsed;
 }
 
-function overlay(x, y, link, rotation=0) {
+function overlay(x, y, link, rotation=0, img_type="terrain") {
   const img = document.createElement('img');
-  img.style.position = "absolute";
+  const img_offsets = {
+    terrain: [0,0],
+    resource: [4, 4],
+    improvement: [92, 4],
+    unit: [48, 76]
+  };
 
-  img.style.width = "128px"
-  img.style.height = "112px"
+  if (img_type == "terrain") {
+    img.style.width = "128px";
+    img.style.height = "112px";
+  }
+  else {
+    img.style.width = "32px";
+    img.style.height = "32px";
+  }
 
   img.src = `/static/images/${link}`;
-
+  img.style.position = "absolute";
+  img.style.left = img_offsets[img_type][0] + "px";
+  img.style.top = img_offsets[img_type][1] + "px";
   if (rotation != 0) {
     img.style.transform = `rotate(${rotation}deg)`;
   }

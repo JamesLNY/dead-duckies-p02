@@ -32,7 +32,7 @@ let map = []
 
 function tileYields(terrain, resource, improvements = []) {
   const tileYield = {food: 0, production: 0, gold: 0, science: 0};
-  
+
   //terrain
   if (TERRAIN_INFO[terrain]) {
     tileYield.food = TERRAIN_INFO.food || 0;
@@ -91,12 +91,12 @@ function renderMap() {
       div.style.top = `${20 +   y * 95}px`;
       div.setAttribute("x", x);
       div.setAttribute("y", y);
-      
+
       map.append(div);
 
       overlay(x, y, "tiles/grassland.png", 90)
       overlay(x, y, "tiles/rainforest.png", 0)
-      // overlay(x, y, "units/archer.png", 0)
+      overlay(x, y, "units/archer.png", 0, "unit")
     }
   }
 }
