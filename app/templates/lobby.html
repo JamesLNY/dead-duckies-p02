@@ -1,0 +1,28 @@
+<!--
+ dead-duckies
+ Roster: James Lei, Kiran Soemardjo, Sarah Zou, Emaan Asif
+ SoftDev pd4
+ 2026-01-16f
+  -->
+
+{% extends "base.html" %}
+{% block title %}Lobby{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/game.css">
+
+<div id="lobby-container">
+  <h1>Create or Join a Lobby</h1>
+
+  <form action="/create" method="post">
+    <button type="submit">Create Lobby</button>
+  </form>
+
+  <hr>
+  <form action="/join" method="post">
+    <input type="text" name="room" placeholder="Enter Lobby Code" required>
+    <button type="submit">Join Lobby</button>
+  </form>
+</div>
+
+{% endblock %}
