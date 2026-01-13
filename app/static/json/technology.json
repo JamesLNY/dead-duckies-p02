@@ -1,32 +1,32 @@
 {
     "pottery": {
         "cost": 25,
-        "prerequisites": null,
+        "prerequisites": [],
         "tech_unlocks": ["writing", "irrigation"],
         "unlocks": ["granary"]
     },
     "husbandry": {
         "cost": 25,
-        "prerequisites": null,
+        "prerequisites": [],
         "tech_unlocks": ["archery"],
         "unlocks": ["horses", "pasture", "camp"]
     },
     "mining": {
         "cost": 25,
-        "prerequisites": null,
+        "prerequisites": [],
         "tech_unlocks": ["construction", "bronze working", "wheel"],
         "unlocks": ["mine", "quarry"] 
     },
     "sailing": {
         "cost": 50,
-        "prerequisites": null,
-        "tech_unlocks": null,
+        "prerequisites": [],
+        "tech_unlocks": [],
         "unlocks": ["fishing boat"]
     },
     "irrigation": {
         "cost": 50,
         "prerequisites": ["pottery"],
-        "tech_unlocks": null,
+        "tech_unlocks": [],
         "unlocks": ["farm"]
     },
     "writing": {
@@ -134,7 +134,7 @@
     "cartography": {
         "cost": 600,
         "prerequisites": ["buttress"],
-        "tech_unlocks": null,
+        "tech_unlocks": [],
         "unlocks": ["+2 fishing boat gold production"]
     },
     "banking": {
@@ -176,31 +176,31 @@
     "ballistics": {
         "cost": 930,
         "prerequisites": ["metal casting"],
-        "tech_unlocks": null,
+        "tech_unlocks": [],
         "unlocks": ["field cannon", "cuirassier"]
     },
     "military science": {
         "cost": 930,
         "prerequisites": ["castles", "printing"],
-        "tech_unlocks": null,
+        "tech_unlocks": [],
         "unlocks": ["military academy", "line infantry"]
     },
     "steam power": {
         "cost": 1070,
         "prerequisites": ["industrialization"],
-        "tech_unlocks": null,
+        "tech_unlocks": [],
         "unlocks": ["+2 unit movement"]
     },
     "sanitation": {
         "cost": 1070,
         "prerequisites": ["scientific theory"],
-        "tech_unlocks": null,
+        "tech_unlocks": [],
         "unlocks": ["sewer"]
     },
     "economics": {
         "cost": 1070,
         "prerequisites": ["scientific theory", "metal casting"],
-        "tech_unlocks": null,
+        "tech_unlocks": [],
         "unlocks": ["stock exchange", "food market"]
     }
 }
