@@ -1,6 +1,25 @@
+<!--
+ dead-duckies
+ Roster: James Lei, Kiran Soemardjo, Sarah Zou, Emaan Asif
+ SoftDev pd4
+ 2026-01-16f
+  -->
+
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 
-{% block content %}
+{% block header %}
+<header>
+  <div>
+    <a href="{{ url_for('lobby_get') }}">Lobby</a>
+  </div>
+  <div class="header-right">
+    {% if 'username' in session %}
+      <a href="{{ url_for('auth.logout_get') }}">Log Out</a>
+    {% endif %}
+  </div>
+</header>
+{% endblock %}
 
+{% block content %}
 {% endblock %}

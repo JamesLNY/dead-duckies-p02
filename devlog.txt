@@ -68,3 +68,8 @@ jamesL -- 2026-01-12 21:00
 - Initialized game in flask / database
 - Set up socket connection for updating tile
 - Finished districts.json
+
+emaanA --2026-01-12 23:20 
+- fixed lobby.html 
+- fixed units.json (added costs)
+- added nav bar with link to lobby in home.html instead of link to home

@@ -5,6 +5,13 @@
         "combat": 20,
         "movement": 2
       },
+      "cost": {
+        "production": 40,
+        "gold": 160
+      },
+      "maintenance": {
+        "gold": 1
+      },
       "upgradesTo": "swordsman"
     },
 
@@ -12,6 +19,13 @@
       "base": {
         "combat": 35,
         "movement": 2
+      },
+      "cost": {
+        "production": 90,
+        "gold": 360
+      },
+      "maintenance": {
+        "gold": 2
       },
       "upgradesTo": "man_at_arms"
     },
@@ -21,6 +35,13 @@
         "combat": 45,
         "movement": 2
       },
+      "cost": {
+        "production": 120,
+        "gold": 480
+      },
+      "maintenance": {
+        "gold": 3
+      },
       "upgradesTo": "musketman"
     },
 
@@ -29,6 +50,13 @@
         "combat": 55,
         "movement": 2
       },
+      "cost": {
+        "production": 240,
+        "gold": 960
+      },
+      "maintenance": {
+        "gold": 4
+      },
       "upgradesTo": "line_infantry"
     },
 
@@ -36,6 +64,13 @@
       "base": {
         "combat": 65,
         "movement": 2
+      },
+      "cost": {
+        "production": 360,
+        "gold": 1440
+      },
+      "maintenance": {
+        "gold": 6
       },
       "upgradesTo": null
     }
@@ -49,6 +84,13 @@
         "range": 1,
         "movement": 2
       },
+      "cost": {
+        "production": 35,
+        "gold": 140
+      },
+      "maintenance": {
+        "gold": 1
+      },
       "upgradesTo": "archer"
     },
 
@@ -58,6 +100,13 @@
         "rangedCombat": 25,
         "range": 2,
         "movement": 2
+      },
+      "cost": {
+        "production": 60,
+        "gold": 240
+      },
+      "maintenance": {
+        "gold": 2
       },
       "upgradesTo": "crossbowman"
     },
@@ -69,6 +118,13 @@
         "range": 2,
         "movement": 2
       },
+      "cost": {
+        "production": 180,
+        "gold": 720
+      },
+      "maintenance": {
+        "gold": 3
+      },
       "upgradesTo": "field_cannon"
     },
 
@@ -78,6 +134,13 @@
         "rangedCombat": 60,
         "range": 2,
         "movement": 2
+      },
+      "cost": {
+        "production": 300,
+        "gold": 1200
+      },
+      "maintenance": {
+        "gold": 5
       },
       "upgradesTo": null
     }
@@ -89,6 +152,13 @@
         "combat": 36,
         "movement": 4
       },
+      "cost": {
+        "production": 80,
+        "gold": 320
+      },
+      "maintenance": {
+        "gold": 2
+      },
       "upgradesTo": "knight"
     },
 
@@ -97,6 +167,13 @@
         "combat": 48,
         "movement": 4
       },
+      "cost": {
+        "production": 180,
+        "gold": 720
+      },
+      "maintenance": {
+        "gold": 4
+      },
       "upgradesTo": "cuirassier"
     },
 
@@ -104,6 +181,13 @@
       "base": {
         "combat": 62,
         "movement": 4
+      },
+      "cost": {
+        "production": 330,
+        "gold": 1320
+      },
+      "maintenance": {
+        "gold": 6
       },
       "upgradesTo": null
     }
