@@ -96,7 +96,7 @@ function renderMap() {
 
       overlay(x, y, "tiles/grassland.png", 90)
       overlay(x, y, "tiles/rainforest.png", 0)
-      // overlay(x, y, "units/archer.png", 0)
+      overlay(x, y, "units/archer.png", 0, "unit")
     }
   }
 }
