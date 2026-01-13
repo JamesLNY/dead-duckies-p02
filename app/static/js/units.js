@@ -1,4 +1,4 @@
-import { getJson, overlay } from "./utility.js";
+import { getJson, overlay, getTileDiv } from "./utility.js";
 
 const UNIT_DEFS = await getJson("units.json");
 
@@ -25,11 +25,10 @@ function drawUnit(unit) {
   requestAnimationFrame(() => {
     overlay(unit.x, unit.y, `units/${unit.name}.png`, 0, "unit");
 
-    const div = document.querySelector(`div[x="${unit.x}"][y="${unit.y}"]`);
-    if (!div) return;
-
+    const div = getTileDiv(unit.x, unit.y);
     const imgs = div.querySelectorAll("img");
     const img = imgs[imgs.length - 1];
+    
     if (!img) return;
 
     img.addEventListener("click", (event) => {
@@ -70,12 +69,14 @@ function clearSidebar() {
 }
 
 function redrawUnits() {
-  units.forEach(drawUnit);
+  units.forEach(drawUnit)
 }
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+createUnit("ranged", "archer", 1, 1, "hello")
 
 export { units, createUnit, drawUnit, redrawUnits, clearSidebar };
 

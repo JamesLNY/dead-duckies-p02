@@ -1,4 +1,4 @@
-import { getJson, overlay, getAdjacentTiles } from "./utility.js";
+import { getJson, overlay, getTileDiv } from "./utility.js";
 
 const STARTING_MAP = await getJson("map.json")
 const TERRAIN_INFO = await getJson("terrain.json")
@@ -96,13 +96,12 @@ function renderMap() {
 
       overlay(x, y, "tiles/grassland.png", 90)
       overlay(x, y, "tiles/rainforest.png", 0)
-      overlay(x, y, "units/archer.png", 0, "unit")
     }
   }
 }
 
 initMap()
 renderMap()
-console.log(getAdjacentTiles(1, 1))
+console.log(getTileDiv(1, 1))
 
 export { map, storedResources, resourcesPerTurn }
