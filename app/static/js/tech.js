@@ -9,6 +9,7 @@ var techSidebar = document.getElementById("tech-sidebar");
 var infoSidebar = document.getElementById("info-sidebar");
 techSidebar.classList.add("closed");
 infoSidebar.classList.add("opened");
+var techList = document.getElementById("tech-list");
 
 techSidebar.onclick = () => {
   if (techSidebar.classList.contains("opened")) {
@@ -23,6 +24,15 @@ techSidebar.onclick = () => {
     infoSidebar.classList.add("closed");
     infoSidebar.classList.remove("opened");
   }
+  while (techList.hasChildNodes()) {
+    techList.removeChild(techList.firstElementChild)
+  }
+  for (tech in available) {
+    var listItem = document.createElement("li")
+    listItem.innerHTML = tech
+    techList.appendChild(listItem)
+  }
+
 }
 
 infoSidebar.onclick = () => {
