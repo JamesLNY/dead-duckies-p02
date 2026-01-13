@@ -46,7 +46,6 @@ function consumeResource(name, amount) {
   return true;
 }
 
-<<<<<<< HEAD
 function addTile(arr, x, y) {
   if (x < 0 || y < 0 || y >= map.length || x >= map[0].length) return;
   arr.push(map[y][x])
@@ -69,6 +68,3 @@ function getAdjacentTiles(x, y) {
 }
 
 export { getJson, overlay, consumeResource, getAdjacentTiles };
-=======
-export { getJson, overlay, consumeResource };
->>>>>>> 65b789426f3e378db8c327ea4a26c7db20335abd
