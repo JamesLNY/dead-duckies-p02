@@ -74,6 +74,20 @@
   display: none;
 }
 
+.technology {
+  background-color: cornflowerblue;
+  border-radius: 10px;
+  height: 150px;
+  width: 275px;
+  text-align:left
+}
+
+.tech-button-content {
+  margin: 10px;
+  padding-top: 10px;
+  display: flex; 
+  justify-content: space-between;
+}
 #map {
   overflow: scroll;
   flex: 1;
