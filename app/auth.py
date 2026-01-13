@@ -49,7 +49,6 @@ def logout_get():
     if old_lobby and old_username:
         if old_lobby in lobbies and old_username in lobbies[old_lobby]:
             lobbies[old_lobby].remove(old_username)
-            socketio.emit("lobby_update", lobbies[old_lobby], room=old_lobby)
     session.clear()
     return redirect(url_for("auth.login_get"))
 
