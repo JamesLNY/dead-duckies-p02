@@ -5,13 +5,11 @@
 
 from flask import Flask, render_template, request, session, redirect, flash, url_for
 from flask_socketio import SocketIO, join_room, emit
-import uuid
+from db import general_query, select_query, insert_query
 
 app = Flask(__name__)
 app.secret_key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*"
 socketio = SocketIO(app)
-
-lobbies = {}
 
 import auth
 app.register_blueprint(auth.bp) 
@@ -28,37 +26,39 @@ def check_authentification():
 def home_get():
   return redirect("/game")
 
-@app.get("/game")
-def game_get():
-    if "username" not in session:
-        flash("Please log in", "error")
-        return redirect(url_for("auth.login_get"))
-    if "room" not in session:
-        return redirect("/lobby")
-    return render_template("game.html", lobby_id=session["room"], username=session["username"])
 
-
-@app.post("/create")
-def create_lobby():
-    lobby_id = str(uuid.uuid4()).replace("-", "")[:6].upper()  
-    session["room"] = lobby_id
-    if lobby_id not in lobbies:
-        lobbies[lobby_id] = []
-    return redirect("/game")
-
-@app.post("/join")
-def join_lobby():
-    lobby_id = request.form["room"].upper()
-    if lobby_id not in lobbies:
-        flash("Lobby does not exist", "error")
-        return redirect("/lobby")
-    session["room"] = lobby_id
-    return redirect("/game")
+# LOBBY STUFF
 
 @app.get("/lobby")
 def lobby_get():
-    return render_template("lobby.html")
+    games = select_query("SELECT * FROM games WHERE player2 IS NULL")
+    return render_template("lobby.html", games=games)
 
+@app.get("/create_lobby")
+def create_lobby_get():
+    game = insert_query("games", {"player1": session["username"]})
+    session["game"] = game["id"]
+    return redirect("/game")
+
+@app.get("/join_lobby")
+def join_lobby_get():
+    game = request.args["game"]
+    session["game"] = game
+    return redirect("/game")
+
+# GAME STUFF
+
+@app.get("/game")
+def game_get():
+    game = select_query("SELECT * FROM games WHERE id=?", [session["game"]])
+
+    # if game["player2"] is None: 
+    #     # Initialize Game
+    #     continue
+
+    return render_template("game.html", lobby_id=session["game"], username=session["username"])
+
+@socketio.on("join")
 def handle_join(data):
     global lobbies
     lobby_id = data.get("lobby_id")

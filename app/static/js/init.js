@@ -66,7 +66,8 @@ function tileYields(terrain, resource, improvements = []) {
 function initMap() {
   for (let y = 0; y < STARTING_MAP.length; y++) {
     map[y] = [];
-    for (let x = 0; x < STARTING_MAP.length; x++) {
+    for (let x = 0; x < STARTING_MAP[y].length; x++) {
+      console.log(STARTING_MAP[y][x])
       map[y][x] = {
         //improvements and units aren't in map.json
         //but it's here js in case we may add it later
@@ -94,7 +95,7 @@ function renderMap() {
       map.append(div);
 
       overlay(x, y, "Grassland.png", 90)
-      overlay(x, y, "Grassland Hill.png", 0)
+      overlay(x, y, "grassland_hills.png", 0)
     }
   }
 }
