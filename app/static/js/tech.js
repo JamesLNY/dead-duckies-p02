@@ -11,17 +11,33 @@ techSidebar.classList.add("closed");
 infoSidebar.classList.add("opened");
 
 techSidebar.onclick = () => {
-  techSidebar.classList.add("opened");
-  techSidebar.classList.remove("closed");
-  infoSidebar.classList.add("closed");
-  infoSidebar.classList.remove("opened");
+  if (techSidebar.classList.contains("opened")) {
+    infoSidebar.classList.add("opened");
+    infoSidebar.classList.remove("closed");
+    techSidebar.classList.add("closed");
+    techSidebar.classList.remove("opened");
+  }
+  else {
+    techSidebar.classList.add("opened");
+    techSidebar.classList.remove("closed");
+    infoSidebar.classList.add("closed");
+    infoSidebar.classList.remove("opened");
+  }
 }
 
 infoSidebar.onclick = () => {
-  infoSidebar.classList.add("opened");
-  infoSidebar.classList.remove("closed");
-  techSidebar.classList.add("closed");
-  techSidebar.classList.remove("opened");
+  if (infoSidebar.classList.contains("opened")) {
+    techSidebar.classList.add("opened");
+    techSidebar.classList.remove("closed");
+    infoSidebar.classList.add("closed");
+    infoSidebar.classList.remove("opened");
+  }
+  else {
+    infoSidebar.classList.add("opened");
+    infoSidebar.classList.remove("closed");
+    techSidebar.classList.add("closed");
+    techSidebar.classList.remove("opened");
+  }
 }
 
 function completeTech(tech) {
