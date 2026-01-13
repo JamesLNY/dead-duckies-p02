@@ -48,6 +48,7 @@ sarahZ -- 2026-01-12 17:45
 - Finished collapsible sidebars for tech and info
 - Finished initialization of map
 - Added function to calculate initial tile yield
+- Uploaded graphics for terrain
 
 emaanA --2026-01-12 18:50 
 - added units.json 
