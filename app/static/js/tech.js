@@ -54,11 +54,11 @@ infoSidebar.onclick = () => {
 function completeTech(tech) {
     available.splice(available.indexOf(tech), 1)
     researched.push(tech)
-    for (dependant in TECHNOLOGIES[tech]["tech_unlocks"]) {
+    TECHNOLOGIES[tech]["tech_unlocks"].forEach((dependant) => {
         if (TECHNOLOGIES[dependant]["tech_unlocks"].every(prereq => researched.includes(prereq))) { // adds each tech unlock only if each has had all prereqs researched
             available.push(dependant)
         }
-    }
+    })
     socket.emit("tech_finished", {"technology_name": tech})
 }
 
