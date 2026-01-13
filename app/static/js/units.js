@@ -1,8 +1,9 @@
-import { getJson, overlay, getTileDiv } from "./utility.js";
+import { getJson, overlay } from "./utility.js";
 
 const UNIT_DEFS = await getJson("units.json");
 
-let units = [];
+let myUnits = [];
+let enemyUnits = [];
 
 function createUnit(type, name, x, y, owner) {
   const base = UNIT_DEFS[type][name].base;
@@ -16,7 +17,13 @@ function createUnit(type, name, x, y, owner) {
     movement: base.movement,
     combat: base.combat
   };
-  units.push(unit);
+
+  if (owner === "player") {
+    myUnits.push(unit);
+  } else {
+    enemyUnits.push(unit);
+  }
+
   drawUnit(unit);
   return unit;
 }
@@ -25,14 +32,14 @@ function drawUnit(unit) {
   requestAnimationFrame(() => {
     overlay(unit.x, unit.y, `units/${unit.name}.png`, 0, "unit");
 
-    const div = getTileDiv(unit.x, unit.y);
+    const div = document.querySelector(`div[x="${unit.x}"][y="${unit.y}"]`);
+    if (!div) return;
+
     const imgs = div.querySelectorAll("img");
     const img = imgs[imgs.length - 1];
-    
     if (!img) return;
 
-    img.addEventListener("click", (event) => {
-      //event.stopPropagation(); 
+    img.addEventListener("click", () => {
       showUnitSidebar(unit);
     });
 
@@ -69,7 +76,8 @@ function clearSidebar() {
 }
 
 function redrawUnits() {
-  units.forEach(drawUnit)
+  myUnits.forEach(drawUnit);
+  enemyUnits.forEach(drawUnit);
 }
 
 function capitalize(str) {
@@ -77,8 +85,8 @@ function capitalize(str) {
 }
 
 createUnit("ranged", "archer", 1, 1, "hello")
+export { myUnits, enemyUnits, createUnit, drawUnit, redrawUnits, clearSidebar };
 
-export { units, createUnit, drawUnit, redrawUnits, clearSidebar };
 
 /* comment for reference
 //units table
