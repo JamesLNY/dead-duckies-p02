@@ -50,15 +50,21 @@ sarahZ -- 2026-01-12 17:45
 - Added function to calculate initial tile yield
 - Uploaded graphics for terrain
 
-emaanA --2026-01-12 18:50 
-- added units.json 
-- added lobby.html + made changes to game.html/base.html to have join lobby buttons + game gets played in lobby
-- added flask routing for joining a lobby / creating a lobby
-- once logged out, you leave the lobby but the lobby does not get deleted
+emaanA -- 2026-01-12 18:50 
+- Added units.json 
+- Added lobby.html + made changes to game.html/base.html to have join lobby buttons + game gets played in lobby
+- Added flask routing for joining a lobby / creating a lobby
+- Once logged out, you leave the lobby but the lobby does not get deleted
 
 kiranS -- 2026-01-12 20:30
 - Wrote completeTech and isResearched methods 
 - Started on displaying available tech on html page using JS -- ran into issues getting it to display
 
 kiranS -- 2026-01-12 20:40
-- Fix to for loop in completeTech method
+- Fixed to for loop in completeTech method
+
+jamesL -- 2026-01-12 21:00
+- Reflected map.json
+- Initialized game in flask / database
+- Set up socket connection for updating tile
+- Finished districts.json
