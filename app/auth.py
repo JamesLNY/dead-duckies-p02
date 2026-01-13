@@ -37,7 +37,7 @@ def login_post():
     rows = select_query("SELECT * FROM profiles WHERE username=?", [username])
     if len(rows) != 0 and check_password_hash(rows[0]['password'], password):
         session['username'] = username
-        return redirect(url_for('game_get'))
+        return redirect(url_for('lobby_get'))
     else:
         flash('Invalid username or password.', 'error')
         return redirect(url_for('auth.login_get'))
@@ -49,7 +49,7 @@ def logout_get():
     if old_lobby and old_username:
         if old_lobby in lobbies and old_username in lobbies[old_lobby]:
             lobbies[old_lobby].remove(old_username)
-    session.clear()
+    session.clear() 
     return redirect(url_for("auth.login_get"))
 
 

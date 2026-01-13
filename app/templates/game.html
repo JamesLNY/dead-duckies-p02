@@ -57,34 +57,7 @@
   </div>
   <div id="map">
   </div>
-    <div id="player-list-container">
-      <h3>Players in Lobby</h3>
-      <ul id="player-list"></ul>
-    </div>
-  </div>
-  <div id="map">
-  </div>
   <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
-  <script>
-    const socket = io();
-    const lobbyId = "{{ lobby_id }}";
-    const username = "{{ username }}";
-
-    socket.emit("join_lobby", {
-      lobby_id: lobbyId,
-      username: username
-    });
-
-    socket.on("lobby_update", players => {
-      const ul = document.getElementById("player-list");
-      ul.innerHTML = "";
-      players.forEach(p => {
-        const li = document.createElement("li");
-        li.textContent = p;
-        ul.appendChild(li);
-      });
-    });
-  </script>
   <script type="module" src="/static/js/utility.js"></script>
   <script type="module" src="/static/js/init.js"></script>
   <script type="module" src="/static/js/script.js"></script>
