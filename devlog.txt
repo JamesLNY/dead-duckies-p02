@@ -79,6 +79,9 @@ kiranS -- 2026-01-12 10:50
 - Added updateTech function to update tech list on click
 - Replaced null values with empty arrays in tech json files
 
+jamesL -- 2026-01-12 11:00
+- Added function to get adjacent tiles
+
 sarahZ -- 2026-01-12 11:00
 - finished overlay function
 
@@ -93,6 +96,3 @@ kiranS -- 2026-01-12 18:45
 - Added HTML and CSS formatting for each technology item
 - Changed onclick property to event listener to allow clicking nested child divs
 - Fixes to tech json file
-
-jamesL -- 2026-01-12 11:00
-- Added function to get adjacent tiles
