@@ -6,6 +6,7 @@
 from flask import Flask, render_template, request, session, redirect, flash, url_for
 from flask_socketio import SocketIO, join_room, emit
 from db import general_query, select_query, insert_query
+import json
 
 app = Flask(__name__)
 app.secret_key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*"
@@ -53,13 +54,29 @@ def join_lobby_get():
 
 @app.get("/game")
 def game_get():
-    game = select_query("SELECT * FROM games WHERE id=?", [session["game"]])
+    game = select_query("SELECT * FROM games WHERE id=?", [session["game"]])[0]
 
-    # if game["player2"] is None: 
-    #     # Initialize Game
-    #     continue
+    if game["player2"] is None: 
+        map = json.load(open("./static/json/map.json"))
+        for y in range(len(map)):
+            for x in range(len(map[y])):
+                insert_query("tiles", {
+                    "game": session["game"],
+                    "x_pos": x,
+                    "y_pos": y,
+                    "terrain_type": map[y][x]["terrain_type"],
+                    "resource": map[y][x]["resource"]
+                })
 
-    return render_template("game.html", lobby_id=session["game"], username=session["username"])
+    resources = ["science", "gold", "food", "production", "population", "iron", "horses", "niter", "coal"]
+    for resource in resources:
+        insert_query("resources", {
+            "game": session["game"],
+            "player": session["username"],
+            "name": resource,
+        })
+
+    return render_template("game.html")
 
 @socketio.on("join")
 def handle_join(data):
