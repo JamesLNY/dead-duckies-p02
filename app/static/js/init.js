@@ -68,11 +68,14 @@ function initMap() {
     map[y] = [];
     for (let x = 0; x < STARTING_MAP.length; x++) {
       map[y][x] = {
+        //improvements and units aren't in map.json
+        //but it's here js in case we may add it later
         terrain: STARTING_MAP[y][x].terrain_type,
         resource: STARTING_MAP[y][x].resource,
-        improvements: [],
-        unit: null
-      }
+        improvements: STARTING_MAP[y][x].improvements || [],
+        unit: STARTING_MAP[y][x].unit || null,
+        yield: tileYields(STARTING_MAP[y][x].terrain_type, STARTING_MAP[y][x].resource, STARTING_MAP[y][x].improvements)
+      };
     }
   }
 }

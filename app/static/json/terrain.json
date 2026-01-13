@@ -9,12 +9,12 @@
     "food": 1
   },
   "tundra woods": {
-    "terrain": ["tundra", "woods"],
+    "terrain": ["tundra", "tundra_woods"],
     "food": 1,
     "production": 1
   },
   "plains hills": {
-    "terrain": ["plains", "hills"],
+    "terrain": ["plains", "plains_hills"],
     "food": 2,
     "production": 1
   },
@@ -38,7 +38,7 @@
     "gold": 1
   },
   "tundra hills": {
-    "terrain": ["tundra", "hills"],
+    "terrain": ["tundra", "tundra_hills"],
     "food": 1, 
     "production": 1
   },
@@ -61,7 +61,7 @@
     "food": 2
   },
   "grassland hills woods": {
-    "terrain": ["grassland", "hills", "woods"],
+    "terrain": ["grassland", "grassland_hills", "woods"],
     "food": 3,
     "production": 1
   },
@@ -70,11 +70,11 @@
     "food": 3
   },
   "grassland hills": {
-    "terrain": ["grassland", "hills"],
+    "terrain": ["grassland", "grassland_hills"],
     "food": 3
   },
   "desert hills": {
-    "terrain": ["desert", "hills"],
+    "terrain": ["desert", "desert_hills"],
     "food": 1
   },
   "grassland mountains": {
@@ -95,7 +95,7 @@
     "terrain": ["desert"]
   },
   "tundra hills woods": {
-    "terrain": ["tundra", "hills", "woods"],
+    "terrain": ["tundra", "tundra_hills", "tundra_woods"],
     "food": 1,
     "production": 2
   }
