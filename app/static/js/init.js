@@ -67,7 +67,7 @@ function initMap() {
   for (let y = 0; y < STARTING_MAP.length; y++) {
     map[y] = [];
     for (let x = 0; x < STARTING_MAP[y].length; x++) {
-      console.log(STARTING_MAP[y][x])
+      // console.log(STARTING_MAP[y][x])
       map[y][x] = {
         //improvements and units aren't in map.json
         //but it's here js in case we may add it later
