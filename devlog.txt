@@ -56,3 +56,6 @@ emaanA --2026-01-12 18:50
 - added flask routing for joining a lobby / creating a lobby
 - once logged out, you leave the lobby but the lobby does not get deleted
 
+kiranS -- 2026-1-12 20:30
+- Wrote completeTech and isResearched methods 
+- Started on displaying available tech on html page using JS -- ran into issues getting it to display
