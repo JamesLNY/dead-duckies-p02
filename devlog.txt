@@ -76,3 +76,8 @@ emaanA --2026-01-12 23:20
 
 sarahZ -- 2026-01-12 11:00
 - finished overlay function
+
+kiranS -- 2026-01-12 10:50
+- Added onclick event for each list item
+- Added updateTech function to update tech list on click
+- Replaced null values with empty arrays in tech json files
