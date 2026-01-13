@@ -17,15 +17,18 @@ app.register_blueprint(auth.bp)
 #restricting app to logged in users only
 @app.before_request
 def check_authentification():
-  allowedEndpoints = ['static', 'auth.login_get', 'auth.login_post', 'auth.signup_get', 'auth.signup_post']
-  if 'username' not in session and request.endpoint not in allowedEndpoints:
-    flash("Please log in to view our website", 'info')
-    return redirect(url_for('auth.login_get'))
+    allowedEndpoints = ['static', 'home_get', 'auth.logout_get', 'game_get']
+    if 'game' in session and request.endpoint not in allowedEndpoints:
+        flash("You're already in a game; Please do not visit any other pages", 'error')
+        return redirect(url_for('home_get'))
+    allowedEndpoints = ['static', 'auth.login_get', 'auth.login_post', 'auth.signup_get', 'auth.signup_post']
+    if 'username' not in session and request.endpoint not in allowedEndpoints:
+        flash("Please log in to view our website", 'info')
+        return redirect(url_for('auth.login_get'))
 
 @app.get('/')
 def home_get():
-  return redirect("/game")
-
+  return render_template("home.html")
 
 # LOBBY STUFF
 
@@ -60,18 +63,9 @@ def game_get():
 
 @socketio.on("join")
 def handle_join(data):
-    global lobbies
-    lobby_id = data.get("lobby_id")
-    username = data.get("username")
-    if not lobby_id or not username:
-        return
-    if lobby_id not in lobbies:
-        lobbies[lobby_id] = []
-    if username not in lobbies[lobby_id]:
-        lobbies[lobby_id].append(username)
-    join_room(lobby_id)
-    emit("lobby_update", lobbies[lobby_id], room=lobby_id)
-
+    join_room(session["game"])
+    emit("message", "hello", room=session["game"])
+ 
 if __name__ == '__main__':
     app.debug = True
     socketio.run(app)

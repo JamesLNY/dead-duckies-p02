@@ -9,18 +9,10 @@
 {% block title %}Lobby{% endblock %}
 
 {% block content %}
-<div id="lobby-container">
+<div>
   <h1>Create or Join a Lobby</h1>
 
-  <form action="/create" method="post">
-    <button type="submit">Create Lobby</button>
-  </form>
-
-  <hr>
-  <form action="/join" method="post">
-    <input type="text" name="room" placeholder="Enter Lobby Code" required>
-    <button type="submit">Join Lobby</button>
-  </form>
+  <a href="/create_lobby">Create Lobby</button>
 </div>
 
 {% endblock %}
