@@ -31,7 +31,7 @@ c.executescript("""
         game INTEGER,
         player TEXT,
         name TEXT,
-        amount_stored INTEGER,
+        amount_stored INTEGER DEFAULT 0,
         FOREIGN KEY (game) REFERENCES games(id),
         FOREIGN KEY (player) REFERENCES profiles(username)
     );                                      
@@ -40,9 +40,10 @@ c.executescript("""
     CREATE TABLE tiles (
         game INTEGER,
         owner TEXT,
+        terrain_type TEXT,
         x_pos INTEGER,
         y_pos INTEGER,
-        resources TEXT,
+        resource TEXT,
         improvement TEXT,
         FOREIGN KEY (game) REFERENCES games(id),
         FOREIGN KEY (owner) REFERENCES profiles(username)
