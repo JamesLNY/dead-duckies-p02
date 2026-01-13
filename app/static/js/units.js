@@ -1,38 +1,85 @@
 import { getJson, overlay } from "./utility.js";
-import { clickTile } from "./script.js";
 
-const UNITS = await getJson("units.json")
+const UNIT_DEFS = await getJson("units.json");
 
-let u = {
-  "x-coordinate": 0,
-  "y-coordinate": 0,
-  "name":
-  "health": 0,
-  "movement": 0
+let units = [];
+
+function createUnit(type, name, x, y, owner) {
+  const base = UNIT_DEFS[type][name].base;
+  const unit = {
+    type,
+    name,
+    owner,
+    x,
+    y,
+    health: 100,
+    movement: base.movement,
+    combat: base.combat
+  };
+  units.push(unit);
+  drawUnit(unit);
+  return unit;
 }
 
-function move(x, y, movement){
-  clickTile
+function drawUnit(unit) {
+  requestAnimationFrame(() => {
+    overlay(unit.x, unit.y, `units/${unit.name}.png`, 0, "unit");
+
+    const div = document.querySelector(`div[x="${unit.x}"][y="${unit.y}"]`);
+    if (!div) return;
+
+    const imgs = div.querySelectorAll("img");
+    const img = imgs[imgs.length - 1];
+    if (!img) return;
+
+    img.addEventListener("click", (event) => {
+      //event.stopPropagation(); 
+      showUnitSidebar(unit);
+    });
+
+    img.style.zIndex = 5;
+  });
 }
 
-export{move}
-//units.json {
-   //  "melee": {
-    //  "warrior": {
-    //    "base": {
-    //      "combat": 20,
-    //      "movement": 2
-     //      },
-    //    "cost": {
-    //      "production": 40,
-    //      "gold": 160
-    //    },
-    //    "maintenance": {
-      //    "gold": 1
-    //    },
-    //    "upgradesTo": "swordsman"
-    //  },
+function showUnitSidebar(unit) {
+  const infoDiv = document.querySelector("#info-sidebar .sidebar-info");
+  if (!infoDiv) return;
 
+  infoDiv.innerHTML = "";
+
+  const title = document.createElement("h2");
+  title.textContent = unit.name;
+  infoDiv.appendChild(title);
+
+  for (const key in unit) {
+    if (["name", "x", "y", "type"].includes(key)) continue;
+
+    const p = document.createElement("p");
+    p.innerHTML = `<strong>${capitalize(key)}:</strong> ${unit[key]}`;
+    infoDiv.appendChild(p);
+  }
+}
+
+function clearSidebar() {
+  const infoDiv = document.querySelector("#info-sidebar .sidebar-info");
+  if (!infoDiv) return;
+
+  while (infoDiv.firstChild) {
+    infoDiv.removeChild(infoDiv.firstChild);
+  }
+}
+
+function redrawUnits() {
+  units.forEach(drawUnit);
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export { units, createUnit, drawUnit, redrawUnits, clearSidebar };
+
+/* comment for reference
 //units table
     //DROP TABLE IF EXISTS units;
     //CREATE TABLE units (
@@ -45,3 +92,4 @@ export{move}
     //    FOREIGN KEY (game) REFERENCES games(id),
     //    FOREIGN KEY (owner) REFERENCES profiles(username)
     //);
+*/
