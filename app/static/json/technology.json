@@ -103,7 +103,7 @@
     },
     "stirrups": {
         "cost": 390,
-        "prerequisites": ["horseback riding"],
+        "prerequisites": ["horseback riding", "apprenticeship"],
         "tech_unlocks": ["banking", "gunpowder"],
         "unlocks": ["knight", "+1 pasture food production"]
     },
