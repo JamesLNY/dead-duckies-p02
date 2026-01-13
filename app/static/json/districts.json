@@ -1,25 +1,234 @@
 {
   "campus": {
     "technology": "writing",
-    "production": 54,
+    "production cost": 54,
     "maintenance": 1,
-    "yield": "science",
+    "plunder": "science",
     "adjacency": {
-      "mountain": 1
+      "mountain": {
+        "science": 1
+      },
+      "district": {
+        "science": 1
+      }
     },
     "buildings": {
       "library": {
         "technology": "writing",
-        "production": 90,
+        "production cost": 90,
         "maintenance": 1,
-        "yield": 2
+        "yield": {
+          "science": 2
+        }
       },
       "university": {
         "technology": "education",
-        "production": 250,
+        "production cost": 250,
         "maintenance": 2,
-        "yield": 4
+        "yield": {
+          "science": 4
+        }
       }
     }
+  },
+  "commercial hub": {
+    "technology": "currency",
+    "production cost": 54,
+    "maintenance": 0,
+    "plunder": "gold",
+    "adjacency": {
+      "harbor": {
+        "gold": 1
+      },
+      "district": {
+        "gold": 1
+      }
+    },
+    "buildings": {
+      "market": {
+        "technology": "currency",
+        "production cost": 120,
+        "maintenance": 0,
+        "yield": {
+          "gold": 3
+        }
+      },
+      "bank": {
+        "technology": "banking",
+        "production cost": 290,
+        "maintenance": 0,
+        "yield": {
+          "gold": 5
+        }
+      }
+    }
+  },
+  "encampment": {
+    "technology": "bronze working",
+    "production cost": 54,
+    "maintenance": 1,
+    "plunder": null,
+    "adjacency": {},
+    "buildings": {
+      "barracks": {
+        "technology": "bronze working",
+        "production cost": 90,
+        "maintenance": 1,
+        "yield": {
+          "production": 1
+        }
+      },
+      "armory": {
+        "technology": "military engineering",
+        "production cost": 195,
+        "maintenance": 2,
+        "yield": {
+          "production": 2
+        }
+      },
+      "military academy": {
+        "technology": "military science",
+        "production cost": 390,
+        "maintenance": 2,
+        "yield": {
+          "production": 3
+        }
+      }
+    }
+  },
+  "harbor": {
+    "technology": "celestial navigation",
+    "production cost": 54,
+    "maintenance": 0,
+    "plunder": "gold",
+    "adjacency": {
+      "city center": {
+        "gold": 2
+      },
+      "crabs": {
+        "gold": 1
+      },
+      "fish": {
+        "gold": 1
+      },
+      "district": {
+        "gold": 1
+      }
+    },
+    "buildings": {
+      "lighthouse": {
+        "technology": "celestial navigation",
+        "production cost": 120,
+        "maintenance": 0,
+        "yield": {
+          "food": 1,
+          "gold": 1
+        }
+      },
+      "shipyard": {
+        "technology": "mass production cost",
+        "production cost": 290,
+        "maintenance": 2,
+        "yield": {
+          "production": 3
+        }
+      }
+    }
+  },
+  "industrial zone": {
+    "technology": "apprenticeship",
+    "production cost": 54,
+    "maintenance": 1,
+    "plunder": "science",
+    "adjacency": {
+      "mine": {
+        "production": 1
+      },
+      "quarry": {
+        "production": 1
+      },
+      "district": {
+        "production": 1
+      }
+    },
+    "buildings": {
+      "workshop": {
+        "technology": "apprenticeship",
+        "production cost": 195,
+        "maintenance": 1,
+        "yield": {
+          "production": 2
+        }
+      },
+      "factory": {
+        "technology": "industrialization",
+        "production cost": 390,
+        "maintenance": 2,
+        "yield": {
+          "production": 6
+        }
+      }
+    }
+  },
+  "city center": {
+    "technology": null,
+    "production cost": 80,
+    "maintenance": 0,
+    "plunder": null,
+    "adjacency": {},
+    "buildings": {
+      "monument": {
+        "technology": null,
+        "production cost": 60,
+        "maintenance": 0,
+        "yield": {
+          "science": 2
+        }
+      },
+      "granary": {
+        "technology": "pottery",
+        "production cost": 65,
+        "maintenance": 0,
+        "yield": {
+          "food": 1
+        }
+      },
+      "water mill": {
+        "technology": "wheel",
+        "production cost": 80,
+        "maintenance": 0,
+        "yield": {
+          "food": 1,
+          "production": 1
+        }
+      }
+    }
+  },
+  "aqueduct": {
+    "technology": "engineering",
+    "production cost": 36,
+    "maintenance": 0,
+    "plunder": "gold",
+    "adjacency": {
+      "farm": {
+        "food": 1
+      }
+    },
+    "buildings": {}
+  },
+  "neighborhood": {
+    "technology": "urbanization",
+    "production cost": 54,
+    "maintenance": 0,
+    "plunder": "gold",
+    "adjacency": {
+      "city center": {
+        "food": 3
+      },
+      "district": {
+        "food": 1
+      }
+    },
+    "buildings": {}
   }
 }

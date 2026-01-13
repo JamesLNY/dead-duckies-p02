@@ -1,0 +1,111 @@
+{
+  "melee": {
+    "warrior": {
+      "base": {
+        "combat": 20,
+        "movement": 2
+      },
+      "upgradesTo": "swordsman"
+    },
+
+    "swordsman": {
+      "base": {
+        "combat": 35,
+        "movement": 2
+      },
+      "upgradesTo": "man_at_arms"
+    },
+
+    "man_at_arms": {
+      "base": {
+        "combat": 45,
+        "movement": 2
+      },
+      "upgradesTo": "musketman"
+    },
+
+    "musketman": {
+      "base": {
+        "combat": 55,
+        "movement": 2
+      },
+      "upgradesTo": "line_infantry"
+    },
+
+    "line_infantry": {
+      "base": {
+        "combat": 65,
+        "movement": 2
+      },
+      "upgradesTo": null
+    }
+  },
+
+  "ranged": {
+    "slinger": {
+      "base": {
+        "combat": 10,
+        "rangedCombat": 15,
+        "range": 1,
+        "movement": 2
+      },
+      "upgradesTo": "archer"
+    },
+
+    "archer": {
+      "base": {
+        "combat": 15,
+        "rangedCombat": 25,
+        "range": 2,
+        "movement": 2
+      },
+      "upgradesTo": "crossbowman"
+    },
+
+    "crossbowman": {
+      "base": {
+        "combat": 30,
+        "rangedCombat": 40,
+        "range": 2,
+        "movement": 2
+      },
+      "upgradesTo": "field_cannon"
+    },
+
+    "field_cannon": {
+      "base": {
+        "combat": 40,
+        "rangedCombat": 60,
+        "range": 2,
+        "movement": 2
+      },
+      "upgradesTo": null
+    }
+  },
+
+  "cavalry": {
+    "horseman": {
+      "base": {
+        "combat": 36,
+        "movement": 4
+      },
+      "upgradesTo": "knight"
+    },
+
+    "knight": {
+      "base": {
+        "combat": 48,
+        "movement": 4
+      },
+      "upgradesTo": "cuirassier"
+    },
+
+    "cuirassier": {
+      "base": {
+        "combat": 62,
+        "movement": 4
+      },
+      "upgradesTo": null
+    }
+  }
+}
