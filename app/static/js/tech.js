@@ -24,15 +24,16 @@ techSidebar.onclick = () => {
     infoSidebar.classList.add("closed");
     infoSidebar.classList.remove("opened");
   }
+
   while (techList.hasChildNodes()) {
-    techList.removeChild(techList.firstElementChild)
-  }
-  for (tech in available) {
-    var listItem = document.createElement("li")
-    listItem.innerHTML = tech
-    techList.appendChild(listItem)
+    techList.removeChild(techList.firstChild)
   }
 
+  available.forEach((tech) => {
+    let listItem = document.createElement("li")
+    listItem.innerHTML = tech
+    techList.appendChild(listItem)
+  })
 }
 
 infoSidebar.onclick = () => {

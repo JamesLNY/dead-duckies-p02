@@ -82,6 +82,15 @@ def game_get():
 def handle_join(data):
     join_room(session["game"])
     emit("message", "hello", room=session["game"])
+
+# @socketio.on("conquer tile")
+# def conquer_tile(data):
+#     general_query("UPDATE tiles SET owner=? WHERE game=? AND x_pos=? AND y_pos=?", (session["username"], data["x"], data["y"]))
+#     emit("conquer tile", data, )
+
+@socketio.on("build improvement")
+def update_tile(data):
+    general_query("UPDATE tiles SET improvement=? WHERE ")
  
 if __name__ == '__main__':
     app.debug = True
