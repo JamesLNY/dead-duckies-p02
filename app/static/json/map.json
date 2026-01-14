@@ -120,7 +120,7 @@
     },
     {
       "terrain_type": "plains woods",
-      "resource": "elephants"
+      "resource": "ivory"
     },
     {
       "terrain_type": "plains hills",
@@ -164,7 +164,7 @@
     },
     {
       "terrain_type": "plains woods",
-      "resource": "elephants"
+      "resource": "ivory"
     },
     {
       "terrain_type": "plains",
@@ -1060,7 +1060,7 @@
     },
     {
       "terrain_type": "coast",
-      "resource": "crab"
+      "resource": "crabs"
     },
     {
       "terrain_type": "tundra woods",
@@ -1144,7 +1144,7 @@
     },
     {
       "terrain_type": "coast",
-      "resource": "crab"
+      "resource": "crabs"
     },
     {
       "terrain_type": "ocean",
@@ -1252,7 +1252,7 @@
     },
     {
       "terrain_type": "coast",
-      "resource": "crab"
+      "resource": "crabs"
     },
     {
       "terrain_type": "tundra woods",
@@ -1336,7 +1336,7 @@
     },
     {
       "terrain_type": "coast",
-      "resource": "crab"
+      "resource": "crabs"
     },
     {
       "terrain_type": "ocean",
@@ -2232,7 +2232,7 @@
     },
     {
       "terrain_type": "plains woods",
-      "resource": "elephants"
+      "resource": "ivory"
     },
     {
       "terrain_type": "plains hills",
@@ -2276,7 +2276,7 @@
     },
     {
       "terrain_type": "plains woods",
-      "resource": "elephants"
+      "resource": "ivory"
     },
     {
       "terrain_type": "plains",
