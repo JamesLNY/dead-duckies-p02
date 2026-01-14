@@ -1,71 +1,83 @@
 {
   "bananas": {
+    "technology": null,
     "yields": {
       "food": 1
     },
     "improvement": "plantation"
   },
   "cattle": {
+    "technology": null,
     "yields": {
       "food": 1
     },
     "improvement": "pasture"
   },
   "copper": {
+    "technology": null,
     "yields": {
       "gold": 2
     },
     "improvement": "mine"
   },
   "crabs": {
+    "technology": null,
     "yields": {
       "gold": 2
     },
     "improvement": "fishing boats"
   },
   "deer": {
+    "technology": null,
     "yields": {
       "production": 1
     },
     "improvement": "camp"
   },
   "fish": {
+    "technology": null,
     "yields": {
       "food": 1
     },
     "improvement": "fishing boats"
   },
   "maize": {
+    "technology": null,
     "yields": {
       "gold": 2
     },
     "improvement": "farm"
   },
   "rice": {
+    "technology": null,
     "yields": {
       "food": 1
     },
     "improvement": "farm"
   },
   "sheep": {
+    "technology": null,
     "yields": {
       "food": 1
     },
     "improvement": "pasture"
   },
   "stone": {
+    "technology": null,
     "yields": {
       "production": 1
     },
     "improvement": "quarry"
   },
   "wheat": {
+    "technology": null,
     "yields": {
       "food": 1
     },
     "improvement": "farm"
   },
   "ivory": {
+    "technology": null,
     "yields": {
       "production": 1,
       "gold": 1
@@ -73,6 +85,7 @@
     "improvement": "camp"
   },
   "tobacco": {
+    "technology": null,
     "yields": {
       "food": 1,
       "production": 1
@@ -80,12 +93,14 @@
     "improvement": "plantation"
   },
   "dyes": {
+    "technology": null,
     "yields": {
       "gold": 3
     },
     "improvement": "plantation"
   },
   "furs": {
+    "technology": null,
     "yields": {
       "food": 1,
       "gold": 1
@@ -93,6 +108,7 @@
     "improvement": "camp"
   },
   "wine": {
+    "technology": null,
     "yields": {
       "food": 1,
       "gold": 1
@@ -100,6 +116,7 @@
     "improvement": "plantation"
   },
   "silk": {
+    "technology": null,
     "yields": {
       "science": 1,
       "gold": 1
@@ -107,12 +124,14 @@
     "improvement": "plantation"
   },
   "jade": {
+    "technology": null,
     "yields": {
       "science": 1
     },
     "improvement": "mine"
   },
   "gypsum": {
+    "technology": null,
     "yields": {
       "production": 1,
       "gold": 1
@@ -120,24 +139,28 @@
     "improvement": "quarry"
   },
   "mercury": {
+    "technology": null,
     "yields": {
       "science": 1
     },
     "improvement": "mine"
   },
   "incense": {
+    "technology": null,
     "yields": {
       "gold": 3
     },
     "improvement": "plantation"
   },
   "truffles": {
+    "technology": null,
     "yields": {
       "gold": 3
     },
     "improvement": "camp"
   },
   "horses": {
+    "technology": "husbandry",
     "yields": {
       "production": 1,
       "food": 1
@@ -145,12 +168,14 @@
     "improvement": "pasture"
   },
   "iron": {
+    "technology": "iron working",
     "yields": {
       "science": 1
     },
     "improvement": "mine"
   },
   "niter": {
+    "technology": "military engineering",
     "yields": {
       "food": 1,
       "production": 1
@@ -158,6 +183,7 @@
     "improvement": "mine"
   },
   "coal": {
+    "technology": "industrialization",
     "yields": {
       "production": 2
     },

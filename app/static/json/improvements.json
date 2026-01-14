@@ -1,14 +1,50 @@
 {
-  "mine": {
-    "production": 1,
-    "resources": {
-      "diamonds": {
-        "production": 1,
-        "gold": 1
-      }
+  "farm": {
+    "technology": "irrigation",
+    "production cost": 12,
+    "plunder": "food",
+    "bonuses": {
+      "food": 1
     }
   },
-  "farm": {
-    "food": 1
+  "pasture": {
+    "technology": "husbandry",
+    "production cost": 12,
+    "plunder": "gold",
+    "bonuses": {
+      "production": 1
+    }
+  },
+  "camp": {
+    "technology": "husbandry",
+    "production cost": 12,
+    "plunder": "gold",
+    "bonuses": {
+      "gold": 1
+    }
+  },
+  "quarry": {
+    "technology": "mining",
+    "production cost": 12,
+    "plunder": "production",
+    "bonuses": {
+      "production": 1
+    }
+  },
+  "mine": {
+    "technology": "mining",
+    "production cost": 12,
+    "plunder": "gold",
+    "bonuses": {
+      "production": 1
+    }
+  },
+  "fishing boat": {
+    "technology": "sailing",
+    "production cost": 12,
+    "plunder": "food",
+    "bonuses": {
+      "food": 1
+    }
   }
 }
