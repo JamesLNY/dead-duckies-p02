@@ -1,4 +1,3 @@
-import { build } from "./construction.js"
 import { storedResources, map } from "./init.js"
 
 function clickTile(event) {
@@ -47,5 +46,8 @@ function openInfoSidebar() {
   }
 }
 
+function endTurn() {
 
-export { clickTile }
+}
+
+export { clickTile, endTurn }
