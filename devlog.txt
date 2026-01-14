@@ -112,3 +112,10 @@ kiranS -- 2026-01-13 20:10
 - Made tech consume science
 - Added flask socket trigger to update database when tech finishes
 - Added improvement bonus entry to all tech entries in tech.json
+
+jamesL -- 2026-01-13 21:10
+- Added tint function
+- Established first turn through sockets
+- Updated resources.json, terrain.json and improvements.json
+- Display start-of-game resources
+- Added function to build district

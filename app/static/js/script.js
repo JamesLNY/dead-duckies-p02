@@ -1,4 +1,7 @@
-import { storedResources, map } from "./init.js"
+import { map } from "./init.js"
+import { buildDistrict, gainedTile } from "./construction.js";
+import { CONST_OBJ } from "./socket.js"
+import { getAdjacentTiles } from "./utility.js";
 
 function clickTile(event) {
   let x = event.currentTarget.getAttribute("x")
@@ -46,8 +49,30 @@ function openInfoSidebar() {
   }
 }
 
-function endTurn() {
-
+function startGame() {
+  let adjacent
+  if (CONST_OBJ["IS_TURN"]) {
+    buildDistrict("city center", 2, 1)
+    gainedTile(2, 1)
+    adjacent = getAdjacentTiles(2, 1)
+  } else {
+    buildDistrict("city center", 21, 1)
+    gainedTile(21, 1)
+    adjacent = getAdjacentTiles(21, 1)
+  }
+  adjacent.forEach((tile) => {
+    console.log(tile)
+    gainedTile(tile["x"], tile["y"])
+  })
 }
 
-export { clickTile, endTurn }
+function endTurn() {
+  if (!CONST_OBJ["IS_TURN"]) return;
+  map.forEach((row) => {
+    row.forEach((tile) => {
+
+    })
+  })
+}
+
+export { clickTile, endTurn, startGame }

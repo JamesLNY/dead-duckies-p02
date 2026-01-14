@@ -1,9 +1,13 @@
-import { getJson, getAdjacentTiles, consumeResource, overlay } from "./utility.js"
-import { map, TERRAIN_INFO, RESOURCE_YIELDS } from "./init.js"
+import { getAdjacentTiles, consumeResource, getTileDiv } from "./utility.js"
+import { IMPROVEMENTS, DISTRICTS, map, TERRAIN_INFO, RESOURCE_YIELDS, overlay } from "./init.js"
 import { isResearched } from "./tech.js"
 
-const IMPROVEMENTS = await getJson("improvements.json")
-const DISTRICTS = await getJson("districts.json")
+function gainedTile(x, y) {
+  const tileDiv = getTileDiv(x, y)
+  map[y][x].owned = true;
+  tileDiv.firstElementChild.classList.add("tint-blue")
+  console.log(tileDiv.firstElementChild)
+}
 
 function getPossibleImprovements(tile) {
   let output = []
@@ -54,4 +58,4 @@ function buildDistrict(name, x, y) {
   } 
 }
 
-export { buildDistrict }
+export { buildDistrict, gainedTile }

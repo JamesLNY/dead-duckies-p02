@@ -1,6 +1,5 @@
-import { getJson, overlay } from "./utility.js";
-
-const UNIT_DEFS = await getJson("units.json");
+import { overlay } from "./init.js";
+import { UNIT_DEFS } from "./init.js";
 
 let myUnits = [];
 let enemyUnits = [];
