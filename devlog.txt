@@ -105,6 +105,7 @@ sarahZ -- 2026-01-13 19:50
 - Finished rendermap function
 - Finished clickTile function that displays tile information on sidebar
 - Added helper functions for clickTile to build html and sidebar opening/closing
+- Added images for resources and improvements 
 
 kiranS -- 2026-01-13 20:10
 - Changed tech buttons to button tag and made them disable without sufficient science
