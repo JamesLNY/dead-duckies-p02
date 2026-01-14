@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import { getJson, overlay, getAdjacentTiles } from "./utility.js";
 import { clickTile } from "./script.js";
-=======
-import { getJson, overlay } from "./utility.js";
-import { endTurn } from "./script.js"
->>>>>>> 231bb1eec43ea712bb9021f85e0bb6a7dfc66434
 
 const STARTING_MAP = await getJson("map.json")
 const TERRAIN_INFO = await getJson("terrain.json")
@@ -114,8 +109,8 @@ function renderMap() {
   }
 }
 
-const endTurnButton = document.getElementById("end-turn-button")
-endTurnButton.onclick = endTurn
+// const endTurnButton = document.getElementById("end-turn-button")
+// endTurnButton.onclick = endTurn
 
 initMap()
 renderMap()

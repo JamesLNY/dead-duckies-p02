@@ -1,5 +1,4 @@
 import { build } from "./construction.js"
-import { map } from "./init.js";
 import { storedResources, map } from "./init.js"
 
 function clickTile(event) {
@@ -28,7 +27,7 @@ function updateInfoSidebar(tile) {
   if (tile.improvements.length > 0) {
     if (tile.improvements[0] == null) {html+= `<strong>Improvements: </strong>None`;}
     else{html += `<strong>Improvements: </strong><ul>`;}
-    for (var i = 0; i < tile.improvements.length; i++) {
+    for (var i = 1; i < tile.improvements.length; i++) {
       html += `<li>${tile.improvements[i]}</li>`;
     }
     html += `</ul>`;
