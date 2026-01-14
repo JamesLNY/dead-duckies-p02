@@ -1,20 +1,21 @@
-import { getJson, overlay, getAdjacentTiles } from "./utility.js";
-import { clickTile } from "./script.js";
+import { getJson, overlay } from "./utility.js";
+import { endTurn, clickTile } from "./script.js"
+import { buildDistrict } from "./construction.js"
 
 const STARTING_MAP = await getJson("map.json")
 const TERRAIN_INFO = await getJson("terrain.json")
 const RESOURCE_YIELDS = await getJson("resources.json")
 
 let storedResources = {
-  "science": 100,
-  "gold": 0,
-  "food": 0,
-  "production": 4,
-  "population": 0,
-  "iron": 0,
-  "horses": 0,
-  "niter": 0,
-  "coal": 0
+  "science": 100000,
+  "gold": 100000,
+  "food": 100000,
+  "production": 100000,
+  "population": 100000,
+  "iron": 100000,
+  "horses": 100000,
+  "niter": 100000,
+  "coal": 100000
 }
 
 // INITIALIZING RESOURCE UI
@@ -85,7 +86,7 @@ function renderMap() {
     for (let x = 0; x < map[y].length; x++) {
       const div = document.createElement('div');
       div.style.position = "absolute"
-      div.style.left = `${x * 112 + y % 2 * 56}px`;
+      div.style.left = `${x * 112 + (y + 1) % 2 * 56}px`;
       div.style.top = `${20 +   y * 95}px`;
       div.setAttribute("x", x);
       div.setAttribute("y", y);
@@ -97,7 +98,7 @@ function renderMap() {
 
         overlay(x, y, `tiles/${TERRAIN_INFO[map[y][x].terrain].terrain[i]}.png`, rotation);
       }
-      if (map[y][x].resource) {overlay(x, y, `resources/${map[y][x].resource}.png`, 0, "resource");}
+      // if (map[y][x].resource) {overlay(x, y, `resources/${map[y][x].resource}.png`, 0, "resource");}
       if (map[y][x].improvements[0])
       {
 
@@ -114,5 +115,6 @@ function renderMap() {
 
 initMap()
 renderMap()
+buildDistrict("campus", 1, 1)
 
 export { map, storedResources }
