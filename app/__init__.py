@@ -84,8 +84,8 @@ def handle_join(data):
     data["sender"] = session["username"]
     emit("message", data, room=session["game"], include_self=False)
 
-@socketio.on("conquer tile")
-def conquer_tile(data):
+@socketio.on("buy tile")
+def buy_tile(data):
     general_query("UPDATE tiles SET owner=? WHERE game=? AND x_pos=? AND y_pos=?", (session["username"], data["x"], data["y"]))
     emit("conquer tile", data, room=session["game"], include_self=False)
 
@@ -93,7 +93,43 @@ def conquer_tile(data):
 def update_tile(data):
     general_query("UPDATE tiles SET improvement=? WHERE game=? AND x_pos=? AND y_pos=?", (session["username"], data["x"], data["y"]))
     emit("build improvement", data, room=session["game"], include_self=False)
- 
+
+@socketio.on("build district")
+def build_district(data):
+    insert_query("districts", {
+        "game": session["game"],
+        "name": data["name"],
+        "x_pos": data["x"],
+        "y_pos": data["y"]
+    })
+    emit("build district", data, room=session["game"], include_self=False)
+
+@socketio.on("build building")
+def build_building(data):
+    district = select_query("SELECT * FROM districts WHERE game=? AND name=? AND x_pos=? AND y_pos=?", (
+        session["game"], data["district"], data["x_pos"], data["y_pos"]
+    ))[0]
+    insert_query("districts", {
+        district["id"],
+        data["name"]
+    })
+    emit("build district", data, room=session["game"], include_self=False)
+
+@socketio.on("end turn")
+def end_turn(data):
+    for key, value in data.items():
+        general_query("UPDATE resources SET amount_stored=? WHERE game=? AND player=? AND name=?", (
+            value,
+            session["game"],
+            session["username"],
+            key
+        ))
+    game = select_query("SELECT * FROM games WHERE id=?", (session["game"]))
+    if not game["player1Turn"]:
+        general_query("UPDATE games SET turn=turn+1 WHERE id=?", (session["game"]))
+    general_query("UPDATE games SET player1Turn=? WHERE id=?", (not game["player1Turn"]))
+    emit("end turn", data, room=session["game"], include_self=False)
+
 if __name__ == '__main__':
     app.debug = True
     socketio.run(app)
