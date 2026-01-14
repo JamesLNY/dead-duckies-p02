@@ -1,8 +1,28 @@
 import { getJson, getAdjacentTiles, consumeResource, overlay } from "./utility.js"
-import { map } from "./init.js"
+import { map, TERRAIN_INFO, RESOURCE_YIELDS } from "./init.js"
+import { isResearched } from "./tech.js"
 
 const IMPROVEMENTS = await getJson("improvements.json")
 const DISTRICTS = await getJson("districts.json")
+
+function getPossibleImprovements(tile) {
+  let output = []
+  if (tile["improvement"].length != 0) return output;
+  if (tile["resource"]) {
+    if (RESOURCE_YIELDS[tile["resource"]]["technology"]) {
+      if (!isResearched(RESOURCE_YIELDS[tile["resource"]]["technology"])) return output;
+      output.push(RESOURCE_YIELDS[tile["resource"]]["improvement"])
+    }
+  }
+  TERRAIN_INFO[tile["terrain"]]["possible_improvements"].forEach((improvement) => {
+    if (isResearched(IMPROVEMENTS[improvement]["technology"])) {
+      if (!(improvement in output)) {
+        output.push(improvement);
+      }
+    }
+  })
+  return output;
+}
 
 function buildImprovement() {
 

@@ -52,7 +52,7 @@ function tileYields(terrain, resource, improvements = []) {
 
 //what frontend looks like for reference
 // {
-//   "terrain_type": "plains",
+//   "terrain": "plains",
 //   "resource": null,
 //   "improvements": [],
 //   "unit": null,
@@ -117,4 +117,4 @@ initMap()
 renderMap()
 buildDistrict("campus", 1, 1)
 
-export { map, storedResources }
+export { map, storedResources, TERRAIN_INFO,RESOURCE_YIELDS }
