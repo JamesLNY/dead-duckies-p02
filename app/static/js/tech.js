@@ -73,18 +73,14 @@ function updateTech() {
 }
 
 function completeTech(tech) {
-    console.log(tech)
     available.splice(available.indexOf(tech), 1)
     researched.push(tech)
-    console.log(researched)
     consumeResource("science", TECHNOLOGIES[tech]["cost"])
     TECHNOLOGIES[tech]["tech_unlocks"].forEach((dependant) => {
         if (TECHNOLOGIES[dependant]["prerequisites"].every(prereq => researched.includes(prereq))) { // adds each tech unlock only if each has had all prereqs researched
             available.push(dependant)
         }
-        console.log(dependant)
     })
-    console.log(available)
     socket.emit("finish tech", {"technology_name": tech})
 }
 
@@ -99,8 +95,5 @@ function capitalize(string) {
     })
     return wordArray.join(" ")
 }
-
-// console.log(capitalize("technology name here"))
-// console.log(TECHNOLOGIES)
 
 export { isResearched }
