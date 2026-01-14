@@ -10,7 +10,7 @@ function overlay(x, y, link, rotation=0, img_type="terrain") {
   const img = document.createElement('img');
   const img_offsets = {
     terrain: [0,0],
-    resource: [4, 4], 
+    resource: [4, 4],
     improvement: [84, 4], //calculated x using tile width - icon size - 4
     unit: [44, 68] //calculated x using (tile width - icon)/2
   };
@@ -31,7 +31,7 @@ function overlay(x, y, link, rotation=0, img_type="terrain") {
   if (rotation != 0) {
     img.style.transform = `rotate(${rotation}deg)`;
   }
-  
+
   const div = document.querySelector(`div[x="${x}"][y="${y}"]`)
   div.append(img)
 }
@@ -43,6 +43,8 @@ const IMPROVEMENTS = await getJson("improvements.json")
 const DISTRICTS = await getJson("districts.json")
 const TECHNOLOGIES = await getJson("technology.json")
 const UNIT_DEFS = await getJson("units.json");
+
+const DISTRICT_NAMES = ["campus", "commercial hub", "industrial zone", "aqueduct", ""]
 
 let storedResources = {
   "science": 100000,
