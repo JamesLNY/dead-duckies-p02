@@ -26,6 +26,8 @@ function updateInfoSidebar(tile) {
     <li><strong>Gold: </strong>${tile.yield.gold}</li>
     <li><strong>Science: </strong>${tile.yield.science}</li>
   </ul>`;
+  //remember to change this, districts no longer improvements 
+  //also have to change in init
   if (tile.improvements.length > 0) {
     if (tile.improvements[0] == null) {html+= `<strong>Improvements: </strong>None`;}
     else{html += `<strong>Improvements: </strong><ul>`;}
