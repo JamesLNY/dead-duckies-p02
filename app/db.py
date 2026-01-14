@@ -27,7 +27,6 @@ def select_query(query_string, parameters=()):
 def insert_query(table, data):
     c = db.cursor()
     placeholder = ["?"] * len(data)
-    print(f"INSERT INTO {table} ({', '.join(tuple(data.keys()))}) VALUES ({', '.join(placeholder)}) RETURNING *;")
     c.execute(f"INSERT INTO {table} ({', '.join(tuple(data.keys()))}) VALUES ({', '.join(placeholder)}) RETURNING *;", tuple(data.values()))
     row = c.fetchall()
     output = dict()
