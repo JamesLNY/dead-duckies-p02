@@ -37,12 +37,20 @@ function overlay(x, y, link, rotation=0, img_type="terrain") {
   div.append(img)
 }
 
+function gainResource(name, amount) {
+  storedResources[name] += amount;
+  let resource = document.getElementById(name)
+  resource.innerHTML = storedResources[name]
+}
+
 // returns false if not enough of that resource
 function consumeResource(name, amount) {
   if (storedResources[name] < amount) {
     return false;
   }
   storedResources[name] -= amount;
+  let resource = document.getElementById(name)
+  resource.innerHTML = storedResources[name]
   return true;
 }
 
@@ -67,4 +75,9 @@ function getAdjacentTiles(x, y) {
   return tiles
 }
 
-export { getJson, overlay, consumeResource, getAdjacentTiles };
+function getTileDiv(x, y) {
+  const div = document.querySelector(`div[x="${x}"][y="${y}"]`);
+  return div
+}
+
+export { getJson, overlay, consumeResource, getAdjacentTiles, getTileDiv };

@@ -74,13 +74,13 @@
     "mathematics": {
         "cost": 200,
         "prerequisites": ["currency"],
-        "tech_unlocks": ["education", "buttress"],
+        "tech_unlocks": ["education"],
         "unlocks": ["+1 campus science"]
     },
     "construction": {
         "cost": 200,
         "prerequisites": ["horseback riding", "mining"],
-        "tech_unlocks": ["castles", "military engineering", "buttress"],
+        "tech_unlocks": ["castles", "military engineering"],
         "unlocks": ["lumber mill"]
     },
     "engineering": {
@@ -88,12 +88,6 @@
         "prerequisites": ["wheel"],
         "tech_unlocks": ["machinery"],
         "unlocks": ["aqueduct"]
-    },
-    "buttress": {
-        "cost": 300,
-        "prerequisites": ["mathematics", "construction"],
-        "tech_unlocks": ["cartography"],
-        "unlocks": ["dam"]
     },
     "apprenticeship": {
         "cost": 300,
@@ -109,14 +103,14 @@
     },
     "stirrups": {
         "cost": 390,
-        "prerequisites": ["horseback riding"],
+        "prerequisites": ["horseback riding", "apprenticeship"],
         "tech_unlocks": ["banking", "gunpowder"],
         "unlocks": ["knight", "+1 pasture food production"]
     },
     "education": {
         "cost": 390,
         "prerequisites": ["mathematics", "apprenticeship"],
-        "tech_unlocks": ["industrialization", "banking", "printing"],
+        "tech_unlocks": ["industrialization", "banking", "printing", "cartography"],
         "unlocks": ["university"]
     },
     "military engineering": {
@@ -133,7 +127,7 @@
     },
     "cartography": {
         "cost": 600,
-        "prerequisites": ["buttress"],
+        "prerequisites": ["education"],
         "tech_unlocks": [],
         "unlocks": ["+2 fishing boat gold production"]
     },

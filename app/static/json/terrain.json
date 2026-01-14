@@ -2,101 +2,166 @@
   "coast": {
     "terrain": ["coast"],
     "food": 1,
-    "gold": 1
+    "gold": 1,
+    "movement": null,
+    "possible_districts": ["harbor"],
+    "possible_improvements": ["fishing boat"]
   },
   "tundra mountains": {
     "terrain": ["tundra", "mountains"],
-    "food": 1
+    "food": 1,
+    "movement": null,
+    "possible_districts": ["aqueduct"],
+    "possible_improvements": []
   },
   "tundra woods": {
     "terrain": ["tundra", "tundra_woods"],
     "food": 1,
-    "production": 1
+    "production": 1,
+    "movement": 2,
+    "possible_districts": ["campus", "commercial hub", "industrial zone"],
+    "possible_improvements": ["lumberyard"]
   },
   "plains hills": {
     "terrain": ["plains", "plains_hills"],
     "food": 2,
-    "production": 1
+    "production": 1,
+    "movement": 2,
+    "possible_districts": ["campus", "commercial hub", "encampment", "industrial zone"],
+    "possible_improvements": []
   },
   "plains mountains": {
     "terrain": ["plains", "mountains"],
     "food": 1,
-    "production": 1
+    "production": 1,
+    "movement": null,
+    "possible_districts": ["aqueduct"],
+    "possible_improvements": []
   },
   "plains woods": {
     "terrain": ["plains", "woods"],
     "food": 1,
-    "production": 2
+    "production": 2,
+    "movement": 2,
+    "possible_districts": ["campus", "commercial hub", "industrial zone"],
+    "possible_improvements": ["farm", "lumberyard"]
   },
   "tundra": {
     "terrain": ["tundra"],
-    "food": 1
+    "food": 1,
+    "movement": 1,
+    "possible_districts": ["campus", "commercial hub", "industrial zone"],
+    "possible_improvements": []
   },
   "lake": {
     "terrain": ["lake"],
     "food": 1,
-    "gold": 1
+    "gold": 1,
+    "movement": null,
+    "possible_districts": ["harbor"],
+    "possible_improvements": ["fishing boat"]
   },
   "tundra hills": {
     "terrain": ["tundra", "tundra_hills"],
     "food": 1, 
-    "production": 1
+    "production": 1,
+    "movement": 2,
+    "possible_districts": ["campus", "commercial hub", "industrial zone", "encampment"],
+    "possible_improvements": ["mine"]
   },
   "plains rainforest": {
     "terrain": ["plains", "rainforest"],
     "food": 2,
-    "production": 1
+    "production": 1,
+    "movement": 2,
+    "possible_districts": ["campus", "commercial hub", "industrial zone"],
+    "possible_improvements": ["lumberyard"]
   },
   "ocean": {
     "terrain": ["ocean"],
-    "food": 1
+    "food": 1,
+    "movement": null,
+    "possible_districts": [],
+    "possible_improvements": []
   },
   "grassland woods": {
     "terrain": ["grassland", "woods"],
     "food": 2,
-    "production": 1
+    "production": 1,
+    "movement": 2,
+    "possible_districts": ["campus", "commercial hub", "industrial zone"],
+    "possible_improvements": ["lumberyard", "farm"]
   },
   "grassland": {
     "terrain": ["grassland"],
-    "food": 2
+    "food": 2,
+    "movement": 1,
+    "possible_districts": ["campus", "commercial hub", "industrial zone"],
+    "possible_improvements": ["farm"]
   },
   "grassland hills woods": {
     "terrain": ["grassland", "grassland_hills", "woods"],
     "food": 3,
-    "production": 1
+    "production": 1,
+    "movement": 3,
+    "possible_districts": ["encampment", "commercial hub", "industrial zone", "campus"],
+    "possible_improvements": ["farm", "mine", "lumberyard"]
   },
   "grassland marsh": {
     "terrain": ["grassland", "marsh"],
-    "food": 3
+    "food": 3,
+    "movement": 2,
+    "possible_districts": ["campus", "commercial hub", "industrial zone"],
+    "possible_improvements": []
   },
   "grassland hills": {
     "terrain": ["grassland", "grassland_hills"],
-    "food": 3
+    "food": 3,
+    "movement": 2,
+    "possible_districts": ["encampment", "campus", "commercial hub", "industrial zone"],
+    "possible_improvements": []
   },
   "desert hills": {
     "terrain": ["desert", "desert_hills"],
-    "food": 1
+    "food": 1,
+    "movement": 2,
+    "possible_districts": ["encampment", "campus", "commercial hub", "industrial zone"],
+    "possible_improvements": ["mine"]
   },
   "grassland mountains": {
     "terrain": ["grassland", "mountains"],
-    "food": 2
+    "food": 2,
+    "movement": null,
+    "possible_districts": ["aqueduct"],
+    "possible_improvements": []
   },
   "plains": {
     "terrain": ["plains"],
     "food": 1,
-    "production": 1
+    "production": 1,
+    "movement": 1,
+    "possible_districts": ["campus", "commercial hub", "industrial zone"],
+    "possible_improvements": ["farm"]
   },
   "desert floodplain": {
     "terrain": ["desert", "floodplain"],
-    "food": 3
+    "food": 3,
+    "movement": 1,
+    "possible_districts": [],
+    "possible_improvements": ["farm"]
   },
-  "desert":
-  {
-    "terrain": ["desert"]
+  "desert": {
+    "terrain": ["desert"],
+    "movement": 1,
+    "possible_districts": ["campus", "commercial hub", "industrial zone"],
+    "possible_improvements": []
   },
   "tundra hills woods": {
     "terrain": ["tundra", "tundra_hills", "tundra_woods"],
     "food": 1,
-    "production": 2
+    "production": 2,
+    "movement": 3,
+    "possible_districts": ["encampment", "campus", "commercial hub", "industrial zone"],
+    "possible_improvements": ["mine", "lumberyard"]
   }
 }

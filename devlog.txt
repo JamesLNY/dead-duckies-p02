@@ -82,6 +82,23 @@ kiranS -- 2026-01-13 10:50
 - Added updateTech function to update tech list on click
 - Replaced null values with empty arrays in tech json files
 
+jamesL -- 2026-01-12 11:00
+- Added function to get adjacent tiles
+
+sarahZ -- 2026-01-12 11:00
+- finished overlay function
+
+kiranS -- 2026-01-12 11:00
+- Fixed issue in completeTech function that incorrectly checked for tech prereqs
+
+emaanA --2026-01-13 19:50
+- fixed units.js 
+
+kiranS -- 2026-01-12 18:45
+- Added capitalize function to capitalize strings for frontend tech display
+- Added HTML and CSS formatting for each technology item
+- Changed onclick property to event listener to allow clicking nested child divs
+- Fixes to tech json file
 sarahZ -- 2026-01-13 19:50
 - Adjusted overlay image sizes and offsets
 - Finished rendermap function

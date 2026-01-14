@@ -22,6 +22,8 @@ c.executescript("""
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         player1 TEXT,
         player2 TEXT,
+        turn INTEGER DEFAULT 1,
+        player1Turn BOOLEAN DEFAULT TRUE,
         FOREIGN KEY (player1) REFERENCES profiles(username),
         FOREIGN KEY (player2) REFERENCES profiles(username)
     );
@@ -73,15 +75,6 @@ c.executescript("""
         district INTEGER,
         name TEXT,
         FOREIGN KEY (district) REFERENCES districts(id)
-    );
-
-    DROP TABLE IF EXISTS focuses;
-    CREATE TABLE focuses (
-        game INTEGER,
-        player TEXT,
-        name TEXT,
-        FOREIGN KEY (game) REFERENCES games(id),
-        FOREIGN KEY (player) REFERENCES profiles(username)
     );
 
     DROP TABLE IF EXISTS units;
