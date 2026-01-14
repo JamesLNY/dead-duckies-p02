@@ -34,6 +34,11 @@ function buildImprovement() {
 
 function buildDistrict(name, x, y) {
   const TILE = map[y][x]
+
+  TILE["yield"] = {}
+  TILE["resource"] = name
+  TILE["improvements"] = []
+
   overlay(x, y, `districts/${name}.png`, 0, "improvement")
   const district = DISTRICTS[name]
   consumeResource("production", district["production cost"])
@@ -43,7 +48,7 @@ function buildDistrict(name, x, y) {
     adjacent.forEach((tile) => {
       let count = 0;
       if (tile["terrain"].includes(key)) count++
-      if (key == tile) count++
+      if (tile["resource"] == key) count++
       if (key in tile["improvements"]) count++
       if (count > 0) {
         for (let [resource, amount] of Object.entries(value)) {
@@ -55,7 +60,14 @@ function buildDistrict(name, x, y) {
         }
       }
     })
-  } 
+  }
+}
+
+function buildBuilding(name, x, y) {
+  const TILE = map[x][y]
+  TILE["improvements"].push(name)
+
+
 }
 
 export { buildDistrict, gainedTile }

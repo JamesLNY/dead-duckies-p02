@@ -79,6 +79,21 @@ function clearSidebar() {
   }
 }
 
+function moveUnit(unit, targetX, targetY) {
+  const tile = map[targetX]?.[targetY];
+  if (!tile) return;
+
+  if (Math.abs(unit.x - targetX) + Math.abs(unit.y - targetY) !== 1) return;
+
+  map[unit.x][unit.y].unit = null; 
+  unit.x = targetX;
+  unit.y = targetY;
+  tile.unit = unit;
+  tile.owned = unit.owner;
+
+  redrawUnits(); 
+}
+
 function redrawUnits() {
   myUnits.forEach(drawUnit);
   enemyUnits.forEach(drawUnit);

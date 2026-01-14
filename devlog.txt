@@ -123,3 +123,6 @@ jamesL -- 2026-01-13 21:10
 
 emaanA -- 2026-01-13 21:40
 - fixed unit.js to update map unit in createUnit
+
+emaanA -- 2026-01-13 11:00 
+- finished moveUnit function in units.js 
