@@ -1,14 +1,15 @@
-import { getJson, overlay, getTileDiv } from "./utility.js";
+import { getJson, overlay } from "./utility.js";
+import { endTurn } from "./script.js"
 
 const STARTING_MAP = await getJson("map.json")
 const TERRAIN_INFO = await getJson("terrain.json")
 const RESOURCE_YIELDS = await getJson("resources.json")
 
 let storedResources = {
-  "science": 0,
+  "science": 100,
   "gold": 0,
   "food": 0,
-  "production": 0,
+  "production": 4,
   "population": 0,
   "iron": 0,
   "horses": 0,
@@ -16,17 +17,13 @@ let storedResources = {
   "coal": 0
 }
 
-let resourcesPerTurn = {
-  "science": 0,
-  "gold": 0,
-  "food": 0,
-  "production": 0,
-  "population": 0,
-  "iron": 0,
-  "horses": 0,
-  "niter": 0,
-  "coal": 0
+// INITIALIZING RESOURCE UI
+for (let [key, value] of Object.entries(storedResources)) {
+  let resource = document.getElementById(key)
+  resource.innerHTML = value
 }
+
+// INITIALIZING MAP
 
 let map = []
 
@@ -61,6 +58,7 @@ function tileYields(terrain, resource, improvements = []) {
 //   "yield": {
 //     "food": 1,
 //     "production": 1
+//   }
 // }
 
 function initMap() {
@@ -100,8 +98,10 @@ function renderMap() {
   }
 }
 
+const endTurnButton = document.getElementById("end-turn-button")
+endTurnButton.onclick = endTurn
+
 initMap()
 renderMap()
-console.log(getTileDiv(1, 1))
 
-export { map, storedResources, resourcesPerTurn }
+export { map, storedResources }
