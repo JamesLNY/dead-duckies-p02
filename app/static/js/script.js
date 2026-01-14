@@ -8,7 +8,7 @@ function clickTile(event) {
   updateInfoSidebar(map[y][x]);
   openInfoSidebar();
 }
-
+// ADD UNITS ON INFO SIDEBAR
 function updateInfoSidebar(tile) {
   const content = document.getElementById("info-content");
   content.innerHTML = "";
