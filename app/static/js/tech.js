@@ -1,9 +1,7 @@
-import { getJson, consumeResource } from "./utility.js";
-import { storedResources} from "./init.js";
+import { consumeResource } from "./utility.js";
+import { storedResources, TECHNOLOGIES } from "./init.js";
+import { socket } from "./socket.js"
 
-const socket = io();
-
-const TECHNOLOGIES = await getJson("technology.json")
 const researched = []
 const available = ["pottery", "husbandry", "mining", "sailing"]
 

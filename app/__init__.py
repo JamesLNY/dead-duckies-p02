@@ -47,6 +47,7 @@ def create_lobby_get():
 @app.get("/join_lobby")
 def join_lobby_get():
     game = request.args["game"]
+    general_query("UPDATE games SET player2=? WHERE id=?", (session["username"], game))
     session["game"] = game
     return redirect("/game")
 
@@ -81,8 +82,10 @@ def game_get():
 @socketio.on("join")
 def handle_join(data):
     join_room(session["game"])
-    data["sender"] = session["username"]
-    emit("message", data, room=session["game"], include_self=False)
+    game = select_query("SELECT * FROM games WHERE id=?", (session["game"]))[0]
+    if (game["player2"]):
+        emit("game start", {"turn": game["player1"] == session["username"]})
+        emit("game start", {"turn": game["player2"] == session["username"]}, room=session["game"], include_self=False)
 
 @socketio.on("buy tile")
 def buy_tile(data):

@@ -1,10 +1,48 @@
-import { getJson, overlay } from "./utility.js";
-import { endTurn, clickTile } from "./script.js"
-import { buildDistrict } from "./construction.js"
+import { clickTile } from "./script.js"
+
+async function getJson(file_name) {
+  let raw = await fetch(`/static/json/${file_name}`)
+  let parsed = await raw.json()
+  return parsed;
+}
+
+function overlay(x, y, link, rotation=0, img_type="terrain") {
+  const img = document.createElement('img');
+  const img_offsets = {
+    terrain: [0,0],
+    resource: [4, 4], 
+    improvement: [84, 4], //calculated x using tile width - icon size - 4
+    unit: [44, 68] //calculated x using (tile width - icon)/2
+  };
+
+  if (img_type == "terrain") {
+    img.style.width = "128px";
+    img.style.height = "112px";
+  }
+  else {
+    img.style.width = "40px";
+    img.style.height = "40px";
+  }
+
+  img.src = `/static/images/${link}`;
+  img.style.position = "absolute";
+  img.style.left = img_offsets[img_type][0] + "px";
+  img.style.top = img_offsets[img_type][1] + "px";
+  if (rotation != 0) {
+    img.style.transform = `rotate(${rotation}deg)`;
+  }
+  
+  const div = document.querySelector(`div[x="${x}"][y="${y}"]`)
+  div.append(img)
+}
 
 const STARTING_MAP = await getJson("map.json")
 const TERRAIN_INFO = await getJson("terrain.json")
 const RESOURCE_YIELDS = await getJson("resources.json")
+const IMPROVEMENTS = await getJson("improvements.json")
+const DISTRICTS = await getJson("districts.json")
+const TECHNOLOGIES = await getJson("technology.json")
+const UNIT_DEFS = await getJson("units.json");
 
 let storedResources = {
   "science": 100000,
@@ -56,6 +94,7 @@ function tileYields(terrain, resource, improvements = []) {
 //   "resource": null,
 //   "improvements": [],
 //   "unit": null,
+//   "owned": null,
 //   "yield": {
 //     "food": 1,
 //     "production": 1
@@ -74,6 +113,7 @@ function initMap() {
         resource: STARTING_MAP[y][x].resource,
         improvements: STARTING_MAP[y][x].improvements || [null],
         unit: STARTING_MAP[y][x].unit || null,
+        owned: null,
         yield: tileYields(STARTING_MAP[y][x].terrain_type, STARTING_MAP[y][x].resource, STARTING_MAP[y][x].improvements)
       };
     }
@@ -115,6 +155,7 @@ function renderMap() {
 
 initMap()
 renderMap()
-buildDistrict("campus", 1, 1)
 
-export { map, storedResources, TERRAIN_INFO,RESOURCE_YIELDS }
+console.log(map)
+
+export { map, storedResources, TERRAIN_INFO,RESOURCE_YIELDS, IMPROVEMENTS, DISTRICTS, TECHNOLOGIES, UNIT_DEFS, overlay }
