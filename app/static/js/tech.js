@@ -1,4 +1,6 @@
-import { getJson } from "./utility.js";
+import { getJson, consumeResource } from "./utility.js";
+import { storedResources} from "./init.js";
+
 const socket = io();
 
 const TECHNOLOGIES = await getJson("technology.json")
@@ -49,12 +51,15 @@ function updateTech() {
   }
 
   available.forEach((tech) => {
-    let listItem = document.createElement("p")
+    let listItem = document.createElement("button")
+    if (storedResources["science"] < TECHNOLOGIES[tech]["cost"]) {
+        listItem.disabled = true
+    }
     listItem.classList.add("technology")
     listItem.style.display = "flex"
     listItem.style.flexDirection = "column"
     let HTMLString=`<div class="tech-button-content">${capitalize(tech)} <div style="display: flex; align-items: center; gap: 5px;">${TECHNOLOGIES[tech]["cost"]} <img style="width: 20px; height: 20px;" src="/static/images/icons/science.png" alt="Science"></div></div> <hr style="width: 100%">`
-    TECHNOLOGIES[tech]["unlocks"].forEach(unlock => HTMLString += `<div style="margin-left: 10px">${capitalize(unlock)}</div>`)
+    TECHNOLOGIES[tech]["unlocks"].forEach(unlock => HTMLString += `<div>${capitalize(unlock)}</div>`)
     // console.log(HTMLString)
     listItem.innerHTML = HTMLString
     listItem.setAttribute("name", tech)
@@ -63,6 +68,7 @@ function updateTech() {
         updateTech()
     })
     techList.appendChild(listItem)
+    techList.appendChild(document.createElement("br"))
   })
 }
 
@@ -71,6 +77,7 @@ function completeTech(tech) {
     available.splice(available.indexOf(tech), 1)
     researched.push(tech)
     console.log(researched)
+    consumeResource("science", TECHNOLOGIES[tech]["cost"])
     TECHNOLOGIES[tech]["tech_unlocks"].forEach((dependant) => {
         if (TECHNOLOGIES[dependant]["prerequisites"].every(prereq => researched.includes(prereq))) { // adds each tech unlock only if each has had all prereqs researched
             available.push(dependant)
@@ -78,7 +85,7 @@ function completeTech(tech) {
         console.log(dependant)
     })
     console.log(available)
-    socket.emit("tech_finished", {"technology_name": tech})
+    socket.emit("finish tech", {"technology_name": tech})
 }
 
 function isResearched(tech) {
@@ -95,3 +102,5 @@ function capitalize(string) {
 
 // console.log(capitalize("technology name here"))
 // console.log(TECHNOLOGIES)
+
+export { isResearched }

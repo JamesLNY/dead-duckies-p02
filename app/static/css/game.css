@@ -77,17 +77,22 @@
 .technology {
   background-color: cornflowerblue;
   border-radius: 10px;
-  height: 150px;
+  height: 180px;
   width: 275px;
   text-align:left
 }
 
+.technology:disabled {
+  opacity: .7;
+  pointer-events: none;
+}
 .tech-button-content {
-  margin: 10px;
-  padding-top: 10px;
+  /* margin: 10px;
+  padding-top: 10px; */
   display: flex; 
   justify-content: space-between;
 }
+
 #map {
   overflow: scroll;
   flex: 1;

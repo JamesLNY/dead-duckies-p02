@@ -115,6 +115,10 @@ def build_building(data):
     })
     emit("build district", data, room=session["game"], include_self=False)
 
+@socketio.on("finish tech")
+def finish_tech(data):
+    insert_query("technologies", {"game": session["game"], "player": session["username"], "name": data["technology_name"]})
+
 @socketio.on("end turn")
 def end_turn(data):
     for key, value in data.items():
