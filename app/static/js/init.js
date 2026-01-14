@@ -1,4 +1,5 @@
 import { getJson, overlay, getAdjacentTiles } from "./utility.js";
+import { clickTile } from "./script.js";
 
 const STARTING_MAP = await getJson("map.json")
 const TERRAIN_INFO = await getJson("terrain.json")
@@ -35,10 +36,10 @@ function tileYields(terrain, resource, improvements = []) {
 
   //terrain
   if (TERRAIN_INFO[terrain]) {
-    tileYield.food = TERRAIN_INFO.food || 0;
-    tileYield.production = TERRAIN_INFO.production || 0;
-    tileYield.gold = TERRAIN_INFO.gold || 0;
-    tileYield.science = TERRAIN_INFO.science || 0;
+    tileYield.food = TERRAIN_INFO[terrain].food || 0;
+    tileYield.production = TERRAIN_INFO[terrain].production || 0;
+    tileYield.gold = TERRAIN_INFO[terrain].gold || 0;
+    tileYield.science = TERRAIN_INFO[terrain].science || 0;
   }
   //resourcces
   if (resource && RESOURCE_YIELDS[resource]) {
@@ -52,7 +53,7 @@ function tileYields(terrain, resource, improvements = []) {
   return tileYield;
 }
 
-//frontend for reference
+//what frontend looks like for reference
 // {
 //   "terrain_type": "plains",
 //   "resource": null,
@@ -73,7 +74,7 @@ function initMap() {
         //but it's here js in case we may add it later
         terrain: STARTING_MAP[y][x].terrain_type,
         resource: STARTING_MAP[y][x].resource,
-        improvements: STARTING_MAP[y][x].improvements || [],
+        improvements: STARTING_MAP[y][x].improvements || [null],
         unit: STARTING_MAP[y][x].unit || null,
         yield: tileYields(STARTING_MAP[y][x].terrain_type, STARTING_MAP[y][x].resource, STARTING_MAP[y][x].improvements)
       };
@@ -82,9 +83,9 @@ function initMap() {
 }
 
 function renderMap() {
-  const map = document.getElementById("map")
-  for (let y = 0; y < 50; y++) {
-    for (let x = 0; x < 50 - (y % 2); x++) {
+  const mapDiv = document.getElementById("map")
+  for (let y = 0; y < map.length; y++) {
+    for (let x = 0; x < map[y].length; x++) {
       const div = document.createElement('div');
       div.style.position = "absolute"
       div.style.left = `${x * 112 + y % 2 * 56}px`;
@@ -92,11 +93,21 @@ function renderMap() {
       div.setAttribute("x", x);
       div.setAttribute("y", y);
 
-      map.append(div);
+      mapDiv.append(div);
 
-      overlay(x, y, "tiles/grassland.png", 90)
-      overlay(x, y, "tiles/rainforest.png", 0)
-      overlay(x, y, "units/archer.png", 0, "unit")
+      for (var i = 0; i < TERRAIN_INFO[map[y][x].terrain].terrain.length; i++) {
+        var rotation = (i == 0) ? 90 : 0;
+
+        overlay(x, y, `tiles/${TERRAIN_INFO[map[y][x].terrain].terrain[i]}.png`, rotation);
+      }
+      if (map[y][x].resource) {overlay(x, y, `resources/${map[y][x].resource}.png`, 0, "resource");}
+      if (map[y][x].improvements[0])
+      {
+
+        overlay(x, y, `improvements/${map[y][x].improvements[0]}.png`, 0, "improvement");
+      }
+      if (map[y][x].unit) {overlay(x, y, `units/${map[y][x].unit}.png`, 0, "unit");}
+      div.onclick = clickTile;
     }
   }
 }

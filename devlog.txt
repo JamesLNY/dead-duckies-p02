@@ -74,10 +74,16 @@ emaanA --2026-01-12 23:20
 - fixed units.json (added costs)
 - added nav bar with link to lobby in home.html instead of link to home
 
-sarahZ -- 2026-01-12 11:00
+sarahZ -- 2026-01-13 11:00
 - finished overlay function
 
-kiranS -- 2026-01-12 10:50
+kiranS -- 2026-01-13 10:50
 - Added onclick event for each list item
 - Added updateTech function to update tech list on click
 - Replaced null values with empty arrays in tech json files
+
+sarahZ -- 2026-01-13 19:50
+- Adjusted overlay image sizes and offsets
+- Finished rendermap function
+- Finished clickTile function that displays tile information on sidebar
+- Added helper functions for clickTile to build html and sidebar opening/closing

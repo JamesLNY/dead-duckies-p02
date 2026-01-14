@@ -11,9 +11,9 @@ function overlay(x, y, link, rotation=0, img_type="terrain") {
   const img = document.createElement('img');
   const img_offsets = {
     terrain: [0,0],
-    resource: [4, 4],
-    improvement: [92, 4],
-    unit: [48, 76]
+    resource: [4, 4], 
+    improvement: [84, 4], //calculated x using tile width - icon size - 4
+    unit: [44, 68] //calculated x using (tile width - icon)/2
   };
 
   if (img_type == "terrain") {
@@ -21,8 +21,8 @@ function overlay(x, y, link, rotation=0, img_type="terrain") {
     img.style.height = "112px";
   }
   else {
-    img.style.width = "32px";
-    img.style.height = "32px";
+    img.style.width = "40px";
+    img.style.height = "40px";
   }
 
   img.src = `/static/images/${link}`;
@@ -32,7 +32,7 @@ function overlay(x, y, link, rotation=0, img_type="terrain") {
   if (rotation != 0) {
     img.style.transform = `rotate(${rotation}deg)`;
   }
-  img.onclick = clickTile
+  
   const div = document.querySelector(`div[x="${x}"][y="${y}"]`)
   div.append(img)
 }
