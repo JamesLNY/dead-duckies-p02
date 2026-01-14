@@ -1,12 +1,12 @@
-import { getAdjacentTiles, consumeResource, getTileDiv } from "./utility.js"
-import { IMPROVEMENTS, DISTRICTS, map, TERRAIN_INFO, RESOURCE_YIELDS, overlay } from "./init.js"
+import { getAdjacentTiles, consumeResource } from "./utility.js"
+import { IMPROVEMENTS, DISTRICTS, map, TERRAIN_INFO, RESOURCE_YIELDS } from "./init.js"
+import { overlay, getTileDiv } from "./display.js"
 import { isResearched } from "./tech.js"
 
 function gainedTile(x, y) {
   const tileDiv = getTileDiv(x, y)
   map[y][x].owned = true;
   tileDiv.firstElementChild.classList.add("tint-blue")
-  console.log(tileDiv.firstElementChild)
 }
 
 function getPossibleImprovements(tile) {
@@ -49,6 +49,7 @@ function buildDistrict(name, x, y) {
       let count = 0;
       if (tile["terrain"].includes(key)) count++
       if (tile["resource"] == key) count++
+      if (tile["district"] == key) count++
       if (key in tile["improvements"]) count++
       if (count > 0) {
         for (let [resource, amount] of Object.entries(value)) {
@@ -70,4 +71,4 @@ function buildBuilding(name, x, y) {
 
 }
 
-export { buildDistrict, gainedTile }
+export { buildDistrict, gainedTile, getPossibleImprovements }

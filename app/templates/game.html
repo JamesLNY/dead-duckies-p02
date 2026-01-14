@@ -32,7 +32,7 @@
 <div id="game-container">
   <!--need to implement-->
   <div id="side-container">
-    <div class="sidebar" id="tech-sidebar">
+    <div class="sidebar closed" id="tech-sidebar">
       <div class="sidebar-title">
         Technology
       </div>
@@ -41,19 +41,36 @@
         </div>
       </div>
     </div>
-    <div class="sidebar" id="info-sidebar">
+    <div class="sidebar closed" id="info-sidebar">
       <div class="sidebar-title">
         Tile Information
       </div>
-      <div class="sidebar-info" id="info-content">
-        Click on a tile to see information about it.
-        <div id="possible-improvements">
-            
+      <div class="sidebar-info">
+        <div id="tile-info">
+          <strong>Tile Information</strong><br><br>
+          <strong>Terrain: </strong><p id="tile-terrain"></p><br>
+          <strong>Resource: </strong><p id="tile-resource"></p><br>
+          <strong>District: </strong><p id="tile-district"></p><br>
+          <strong>Yield: </strong>
+          <ul id="tile-yield">
+            <li><strong>Food: </strong></li>
+            <li><strong>Production: </strong></li>
+            <li><strong>Gold: </strong></li>
+            <li><strong>Science: </strong></li>
+          </ul>
         </div>
-        <div id="remove-improvements">
-        </div>
-        <div id="possible-districts">
-        </div>
+        <div id="improvements"></div>
+        <div id="possible-improvements"></div>
+        <div id="possible-districts"></div>
+        <div id="unit-production"></div>
+      </div>
+    </div>
+    <div class="sidebar" id="unit-sidebar">
+      <div class="sidebar-title">
+        Unit Information
+      </div>
+      <div class="sidebar-info">
+
       </div>
     </div>
     <div class="game-buttons">
@@ -65,6 +82,7 @@
   <div id="map">
   </div>
   <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script type="module" src="/static/js/display.js"></script>
   <script type="module" src="/static/js/init.js"></script>
   <script type="module" src="/static/js/socket.js"></script>
   <script type="module" src="/static/js/utility.js"></script>

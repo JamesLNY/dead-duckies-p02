@@ -1,5 +1,5 @@
-import { overlay } from "./init.js";
-import { UNIT_DEFS } from "./init.js";
+import { overlay, UNIT_DEFS } from "./init.js";
+import { openSidebar } from "./display.js";
 
 let myUnits = [];
 let enemyUnits = [];
@@ -33,7 +33,6 @@ function createUnit(type, name, x, y, owner) {
 }
 
 function drawUnit(unit) {
-  requestAnimationFrame(() => {
     overlay(unit.x, unit.y, `units/${unit.name}.png`, 0, "unit");
 
     const div = document.querySelector(`div[x="${unit.x}"][y="${unit.y}"]`);
@@ -43,30 +42,30 @@ function drawUnit(unit) {
     const img = imgs[imgs.length - 1];
     if (!img) return;
 
-    img.addEventListener("click", () => {
+    img.addEventListener("click", (event) => {
+      event.stopPropagation()
       showUnitSidebar(unit);
     });
 
     img.style.zIndex = 5;
-  });
 }
 
 function showUnitSidebar(unit) {
-  const infoDiv = document.querySelector("#info-sidebar .sidebar-info");
-  if (!infoDiv) return;
+  openSidebar("unit")
 
-  infoDiv.innerHTML = "";
+  const unitSidebar = document.querySelector("#unit-sidebar .sidebar-info");
+  unitSidebar.innerHTML = "";
 
   const title = document.createElement("h2");
   title.textContent = unit.name;
-  infoDiv.appendChild(title);
+  unitSidebar.appendChild(title);
 
   for (const key in unit) {
     if (["name", "x", "y", "type"].includes(key)) continue;
 
     const p = document.createElement("p");
     p.innerHTML = `<strong>${capitalize(key)}:</strong> ${unit[key]}`;
-    infoDiv.appendChild(p);
+    unitSidebar.appendChild(p);
   }
 }
 

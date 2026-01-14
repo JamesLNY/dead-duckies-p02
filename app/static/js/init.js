@@ -1,39 +1,11 @@
+import { overlay, displayResource } from "./display.js"
 import { clickTile } from "./script.js"
+import { endTurn } from "./game.js"
 
 async function getJson(file_name) {
   let raw = await fetch(`/static/json/${file_name}`)
   let parsed = await raw.json()
   return parsed;
-}
-
-function overlay(x, y, link, rotation=0, img_type="terrain") {
-  const img = document.createElement('img');
-  const img_offsets = {
-    terrain: [0,0],
-    resource: [4, 4],
-    improvement: [84, 4], //calculated x using tile width - icon size - 4
-    unit: [44, 68] //calculated x using (tile width - icon)/2
-  };
-
-  if (img_type == "terrain") {
-    img.style.width = "128px";
-    img.style.height = "112px";
-  }
-  else {
-    img.style.width = "40px";
-    img.style.height = "40px";
-  }
-
-  img.src = `/static/images/${link}`;
-  img.style.position = "absolute";
-  img.style.left = img_offsets[img_type][0] + "px";
-  img.style.top = img_offsets[img_type][1] + "px";
-  if (rotation != 0) {
-    img.style.transform = `rotate(${rotation}deg)`;
-  }
-
-  const div = document.querySelector(`div[x="${x}"][y="${y}"]`)
-  div.append(img)
 }
 
 const STARTING_MAP = await getJson("map.json")
@@ -43,8 +15,6 @@ const IMPROVEMENTS = await getJson("improvements.json")
 const DISTRICTS = await getJson("districts.json")
 const TECHNOLOGIES = await getJson("technology.json")
 const UNIT_DEFS = await getJson("units.json");
-
-const DISTRICT_NAMES = ["campus", "commercial hub", "industrial zone", "aqueduct", ""]
 
 let storedResources = {
   "science": 100000,
@@ -59,26 +29,35 @@ let storedResources = {
 }
 
 // INITIALIZING RESOURCE UI
+
 for (let [key, value] of Object.entries(storedResources)) {
-  let resource = document.getElementById(key)
-  resource.innerHTML = value
+  displayResource(key, value)
 }
 
 // INITIALIZING MAP
 
 let map = []
 
-function tileYields(terrain, resource, improvements = []) {
-  const tileYield = {food: 0, production: 0, gold: 0, science: 0};
+function tileYields(terrain, resource, improvements=[]) {
+  const tileYield = {
+    food: 0,
+    production: 0,
+    gold: 0,
+    science: 0,
+    iron: 0,
+    horses: 0,
+    niter: 0,
+    coal: 0
+  };
 
-  //terrain
+  // Terrain
   if (TERRAIN_INFO[terrain]) {
     tileYield.food = TERRAIN_INFO[terrain].food || 0;
     tileYield.production = TERRAIN_INFO[terrain].production || 0;
     tileYield.gold = TERRAIN_INFO[terrain].gold || 0;
     tileYield.science = TERRAIN_INFO[terrain].science || 0;
   }
-  //resourcces
+  // Resources
   if (resource && RESOURCE_YIELDS[resource]) {
     if (!RESOURCE_YIELDS[resource] || improvements.indexOf(RESOURCE_YIELDS[resource].improvement) !== -1) {
       tileYield.food += RESOURCE_YIELDS[resource].food || 0;
@@ -94,6 +73,7 @@ function tileYields(terrain, resource, improvements = []) {
 // {
 //   "terrain": "plains",
 //   "resource": null,
+//   "district": null,
 //   "improvements": [],
 //   "unit": null,
 //   "owned": null,
@@ -107,16 +87,14 @@ function initMap() {
   for (let y = 0; y < STARTING_MAP.length; y++) {
     map[y] = [];
     for (let x = 0; x < STARTING_MAP[y].length; x++) {
-      // console.log(STARTING_MAP[y][x])
       map[y][x] = {
-        //improvements and units aren't in map.json
-        //but it's here js in case we may add it later
         terrain: STARTING_MAP[y][x].terrain_type,
         resource: STARTING_MAP[y][x].resource,
-        improvements: STARTING_MAP[y][x].improvements || [null],
-        unit: STARTING_MAP[y][x].unit || null,
+        district: null,
+        improvements: [],
+        unit: null,
         owned: null,
-        yield: tileYields(STARTING_MAP[y][x].terrain_type, STARTING_MAP[y][x].resource, STARTING_MAP[y][x].improvements)
+        yield: tileYields(STARTING_MAP[y][x].terrain_type, STARTING_MAP[y][x].resource)
       };
     }
   }
@@ -137,27 +115,22 @@ function renderMap() {
 
       for (var i = 0; i < TERRAIN_INFO[map[y][x].terrain].terrain.length; i++) {
         var rotation = (i == 0) ? 90 : 0;
-
         overlay(x, y, `tiles/${TERRAIN_INFO[map[y][x].terrain].terrain[i]}.png`, rotation);
       }
-      // if (map[y][x].resource) {overlay(x, y, `resources/${map[y][x].resource}.png`, 0, "resource");}
-      if (map[y][x].improvements[0])
-      {
 
-        overlay(x, y, `improvements/${map[y][x].improvements[0]}.png`, 0, "improvement");
+      if (map[y][x].resource) {
+        overlay(x, y, `resources/${map[y][x].resource}.png`, 0, "resource");
       }
-      if (map[y][x].unit) {overlay(x, y, `units/${map[y][x].unit}.png`, 0, "unit");}
+
       div.onclick = clickTile;
     }
   }
 }
 
-// const endTurnButton = document.getElementById("end-turn-button")
-// endTurnButton.onclick = endTurn
+const endTurnButton = document.getElementById("end-turn-button")
+endTurnButton.onclick = endTurn
 
 initMap()
 renderMap()
-
-console.log(map)
 
 export { map, storedResources, TERRAIN_INFO,RESOURCE_YIELDS, IMPROVEMENTS, DISTRICTS, TECHNOLOGIES, UNIT_DEFS, overlay }
