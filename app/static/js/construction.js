@@ -3,10 +3,13 @@ import { IMPROVEMENTS, DISTRICTS, map, TERRAIN_INFO, RESOURCE_YIELDS } from "./i
 import { overlay, getTileDiv } from "./display.js"
 import { isResearched } from "./tech.js"
 
+const ownedTiles = []
+
 function gainedTile(x, y) {
   const tileDiv = getTileDiv(x, y)
   map[y][x].owned = true;
   tileDiv.firstElementChild.classList.add("tint-blue")
+  ownedTiles.push({"x": x, "y": y})
 }
 
 function getPossibleImprovements(tile) {
@@ -71,4 +74,4 @@ function buildBuilding(name, x, y) {
 
 }
 
-export { buildDistrict, gainedTile, getPossibleImprovements }
+export { buildDistrict, gainedTile, getPossibleImprovements, ownedTiles}

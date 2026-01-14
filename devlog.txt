@@ -126,3 +126,6 @@ emaanA -- 2026-01-13 21:40
 
 emaanA -- 2026-01-13 11:00 
 - finished moveUnit function in units.js 
+
+kiranS -- 2026-01-14 18:45
+- Added owned tiles array in construction.js that the gainedTile method pushes to
