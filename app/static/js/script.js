@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 import { build } from "./construction.js"
 import { map } from "./init.js";
-=======
 import { storedResources, map } from "./init.js"
->>>>>>> 231bb1eec43ea712bb9021f85e0bb6a7dfc66434
 
 function clickTile(event) {
   let x = event.currentTarget.getAttribute("x")
