@@ -23,6 +23,11 @@ function createUnit(type, name, x, y, owner) {
     enemyUnits.push(unit);
   }
 
+  if (map[x] && map[x][y]) {
+    map[x][y].unit = unit;
+    map[x][y].owned = owner;
+  }
+
   drawUnit(unit);
   return unit;
 }

@@ -69,7 +69,7 @@ jamesL -- 2026-01-12 21:00
 - Set up socket connection for updating tile
 - Finished districts.json
 
-emaanA --2026-01-12 23:20
+emaanA -- 2026-01-12 23:20
 - fixed lobby.html
 - fixed units.json (added costs)
 - added nav bar with link to lobby in home.html instead of link to home
@@ -91,8 +91,9 @@ sarahZ -- 2026-01-12 11:00
 kiranS -- 2026-01-12 11:00
 - Fixed issue in completeTech function that incorrectly checked for tech prereqs
 
-emaanA --2026-01-13 19:50
+emaanA -- 2026-01-13 19:50
 - fixed units.js 
+- createUnit, drawUnit, clearing sidebar each time a unit is clicked
 
 kiranS -- 2026-01-12 18:45
 - Added capitalize function to capitalize strings for frontend tech display
@@ -119,3 +120,6 @@ jamesL -- 2026-01-13 21:10
 - Updated resources.json, terrain.json and improvements.json
 - Display start-of-game resources
 - Added function to build district
+
+emaanA -- 2026-01-13 21:40
+- fixed unit.js to update map unit in createUnit
