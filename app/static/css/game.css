@@ -99,7 +99,7 @@
   position: relative;
 }
 
-#game-buttons {
+.game-buttons {
   display: flex;
   justify-content: center;
   height: 50px;
