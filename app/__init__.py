@@ -139,4 +139,5 @@ def end_turn(data):
     emit("end turn", data, room=session["game"], include_self=False)
 
 if __name__ == '__main__':
+    app.debug = True
     socketio.run(app)

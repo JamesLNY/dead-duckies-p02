@@ -1,6 +1,7 @@
 import { openSidebar } from "./display.js"
-import { map, storedResources } from "./init.js"
-import { buildBuilding, getNextBuilding } from "./construction.js"
+import { DISTRICTS, map, storedResources, TERRAIN_INFO } from "./init.js"
+import { buildBuilding, buildDistrict, getNextBuilding } from "./construction.js"
+import { isResearched } from "./tech.js"
 
 // Handles click events
 
@@ -9,6 +10,12 @@ function clickTile(event) {
   let y = event.currentTarget.getAttribute("y")
   updateInfoSidebar(x, y);
   openSidebar("info");
+}
+
+function yieldElement(name) {
+  let img = document.createElement("img")
+  img.src = `/static/images/icons/${name}.png`
+  return img;
 }
 
 function updateInfoSidebar(x, y) {
@@ -26,62 +33,86 @@ function updateInfoSidebar(x, y) {
   tileYield.innerHTML = ""
 
   for (let [key, value] of Object.entries(tile.yield)) {
-    if (value != 0) {
-      tileYield.innerHTML += `<li><strong>${key}: </strong>${value}</li>`
+    for (let i = 0; i < value; i++) {
+      tileYield.appendChild(yieldElement(key))
     }
   }
+  if (!tileYield.hasChildNodes()) tileYield.innerHTML="None"
 
   const improvements = document.getElementById("improvements")
-  improvements.innerHTML = "<strong>Improvements: </strong>"
+  improvements.innerHTML = "<h4>Improvements </h4>"
 
   if (tile["improvements"].length > 0) {
     improvements.style.display = "block"
     tile["improvements"].forEach((improvement) => {
-      // Create little box with information about the improvement
-      improvements.innerHTML += improvement
+      let ele = document.createElement("p")
+      ele.innerHTML = improvement
+      improvements.appendChild(ele);
     })
   } else {
     improvements.style.display = "none"
   }
 
   const possibleImprovements = document.getElementById("possible-improvements")
-  possibleImprovements.innerHTML = ''
-
-  if (tile["district"]) {
-    let next = getNextBuilding(tile);
-    if (next) {
-      let ele = document.createElement("button")
-      ele.innerHTML = next["name"]
-      for (let [key, value] of Object.entries(next["yield"])) {
-        ele.innerHTML += `<br>${key}: ${value}`
-      }
-      ele.classList.add("sidebar-button")
-      if (next["production cost"] <= storedResources["production"]) {
-        ele.addEventListener("click", (event) => {
-          buildBuilding(next["name"], x, y)
-        })
-      } else {
-        ele.disabled = true;
-      }
-      possibleImprovements.appendChild(ele)
-    }
-  } else if (tile.improvements.length == 0) {
-    possibleImprovements.style.display = "block"
-    // Append to possible_improvements innerhtml with button
-  }
-
   const possibleDistricts = document.getElementById("possible-districts")
-  if (tile.district) {
-    possibleDistricts.style.display = "none"
-  } else {
-    // Append to possibleDistricts innerhtml with buttons like for improvements
-
-  }
-
   const unitProduction = document.getElementById("unit-production")
-  if (tile.district == "encampment") {
-    unitProduction.style.display = "block"
+
+  if (tile["owned"]) {
+    possibleImprovements.innerHTML = '<h4>Construct Improvements</h4>'
+
+    if (tile["district"]) {
+      let next = getNextBuilding(tile);
+      if (next) {
+        let ele = document.createElement("button")
+        ele.innerHTML = next["name"]
+        for (let [key, value] of Object.entries(next["yield"])) {
+          ele.innerHTML += `<br>${key}: ${value}`
+        }
+        ele.classList.add("sidebar-button")
+        if (next["production cost"] <= storedResources["production"]) {
+          ele.addEventListener("click", (event) => {
+            buildBuilding(next["name"], x, y)
+          })
+        } else {
+          ele.disabled = true;
+        }
+        possibleImprovements.appendChild(ele)
+      }
+    } else if (tile.improvements.length == 0) {
+      possibleImprovements.style.display = "block"
+      // Append to possible_improvements innerhtml with button
+    }
+
+    possibleDistricts.innerHTML = '<h4>Construct Districts</h4>'
+    if (tile.district) {
+      possibleDistricts.style.display = "none"
+    } else {
+      possibleDistricts.style.display = "block"
+      TERRAIN_INFO[tile["terrain"]].possible_districts.forEach((district) => {
+        const DISTRICT_INFO = DISTRICTS[district]
+        if (!isResearched(DISTRICT_INFO["technology"])) return;
+        let ele = document.createElement("button")
+        ele.innerHTML = district
+        ele.innerHTML += ` (${DISTRICT_INFO["production cost"]} Production)`
+        ele.classList.add("sidebar-button");
+        ele.addEventListener("click", (event) => {
+          buildDistrict(district, x, y)
+        })
+        possibleDistricts.appendChild(ele)
+      })
+
+      // Append to possibleDistricts innerhtml with buttons like for improvements
+
+    }
+
+    if (tile.district == "encampment") {
+      unitProduction.style.display = "block"
+    } else {
+      unitProduction.style.display = "none"
+    }
   } else {
+    possibleImprovements.style.display = "none"
+    possibleDistricts.style.display = "none"
     unitProduction.style.display = "none"
   }
 }
