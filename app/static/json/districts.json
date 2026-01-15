@@ -12,8 +12,9 @@
         "science": 1
       }
     },
-    "buildings": {
-      "library": {
+    "buildings": [
+      {
+        "name": "library",
         "technology": "writing",
         "production cost": 90,
         "maintenance": 1,
@@ -21,7 +22,8 @@
           "science": 2
         }
       },
-      "university": {
+      {
+        "name": "univeristy",
         "technology": "education",
         "production cost": 250,
         "maintenance": 2,
@@ -29,7 +31,7 @@
           "science": 4
         }
       }
-    }
+    ]
   },
   "commercial hub": {
     "technology": "currency",
@@ -44,8 +46,9 @@
         "gold": 1
       }
     },
-    "buildings": {
-      "market": {
+    "buildings": [
+      {
+        "name": "market",
         "technology": "currency",
         "production cost": 120,
         "maintenance": 0,
@@ -53,7 +56,8 @@
           "gold": 3
         }
       },
-      "bank": {
+      {
+        "name": "bank",
         "technology": "banking",
         "production cost": 290,
         "maintenance": 0,
@@ -61,7 +65,7 @@
           "gold": 5
         }
       }
-    }
+    ]
   },
   "encampment": {
     "technology": "bronze working",
@@ -69,8 +73,9 @@
     "maintenance": 1,
     "plunder": null,
     "adjacency": {},
-    "buildings": {
-      "barracks": {
+    "buildings": [
+      {
+        "name": "barracks",
         "technology": "bronze working",
         "production cost": 90,
         "maintenance": 1,
@@ -78,7 +83,8 @@
           "production": 1
         }
       },
-      "armory": {
+      {
+        "name": "armory",
         "technology": "military engineering",
         "production cost": 195,
         "maintenance": 2,
@@ -86,7 +92,8 @@
           "production": 2
         }
       },
-      "military academy": {
+      {
+        "name": "military academy",
         "technology": "military science",
         "production cost": 390,
         "maintenance": 2,
@@ -94,7 +101,7 @@
           "production": 3
         }
       }
-    }
+    ]
   },
   "harbor": {
     "technology": "celestial navigation",
@@ -115,8 +122,9 @@
         "gold": 1
       }
     },
-    "buildings": {
-      "lighthouse": {
+    "buildings": [
+      {
+        "name": "lighthouse",
         "technology": "celestial navigation",
         "production cost": 120,
         "maintenance": 0,
@@ -125,7 +133,8 @@
           "gold": 1
         }
       },
-      "shipyard": {
+      {
+        "name": "shipyard",
         "technology": "mass production cost",
         "production cost": 290,
         "maintenance": 2,
@@ -133,7 +142,7 @@
           "production": 3
         }
       }
-    }
+    ]
   },
   "industrial zone": {
     "technology": "apprenticeship",
@@ -151,8 +160,9 @@
         "production": 1
       }
     },
-    "buildings": {
-      "workshop": {
+    "buildings": [
+      {
+        "name": "workshop",
         "technology": "apprenticeship",
         "production cost": 195,
         "maintenance": 1,
@@ -160,7 +170,8 @@
           "production": 2
         }
       },
-      "factory": {
+      {
+        "name": "factory",
         "technology": "industrialization",
         "production cost": 390,
         "maintenance": 2,
@@ -168,7 +179,7 @@
           "production": 6
         }
       }
-    }
+    ]
   },
   "city center": {
     "technology": null,
@@ -176,8 +187,9 @@
     "maintenance": 0,
     "plunder": null,
     "adjacency": {},
-    "buildings": {
-      "monument": {
+    "buildings": [
+      {
+        "name": "monument",
         "technology": null,
         "production cost": 60,
         "maintenance": 0,
@@ -185,7 +197,8 @@
           "science": 2
         }
       },
-      "granary": {
+      {
+        "name": "granary",
         "technology": "pottery",
         "production cost": 65,
         "maintenance": 0,
@@ -193,7 +206,8 @@
           "food": 1
         }
       },
-      "water mill": {
+      {
+        "name": "water mill",
         "technology": "wheel",
         "production cost": 80,
         "maintenance": 0,
@@ -202,7 +216,7 @@
           "production": 1
         }
       }
-    }
+    ]
   },
   "aqueduct": {
     "technology": "engineering",
@@ -214,7 +228,7 @@
         "food": 1
       }
     },
-    "buildings": {}
+    "buildings": []
   },
   "neighborhood": {
     "technology": "urbanization",
@@ -229,6 +243,6 @@
         "food": 1
       }
     },
-    "buildings": {}
+    "buildings": []
   }
 }

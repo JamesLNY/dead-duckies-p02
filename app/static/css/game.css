@@ -1,7 +1,7 @@
 #game-container {
   display: flex;
   gap: 10px;
-  height: 100vh;
+  height: 75vh;
 }
 
 #resource-bar {
@@ -11,6 +11,7 @@
   align-items: center;
   padding: 5px 10px;
   margin-bottom: 10px;
+  overflow: clip;
 }
 
 #resources {
@@ -32,7 +33,7 @@
 #side-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 75vh;
   gap: 10px;
 }
 .sidebar {
@@ -57,7 +58,6 @@
 .sidebar-info {
   color: #f0f0f0;
   font-size: 15px;
-  text-align: center;
   padding: 2px;
   overflow-y: scroll;
 }
@@ -114,4 +114,20 @@
 
 .tint-blue {
   filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(180deg);
+}
+
+.tint-red {
+  filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(330deg);
+}
+
+.sidebar-button {
+  background-color: lightseagreen;
+  text-align: left;
+  width: 90%;
+  border-radius: 10px;
+}
+
+.sidebar-button:disabled {
+  opacity: .7;
+  pointer-events: none;
 }

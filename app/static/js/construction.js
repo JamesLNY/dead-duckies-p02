@@ -1,20 +1,34 @@
 import { getAdjacentTiles, consumeResource } from "./utility.js"
 import { IMPROVEMENTS, DISTRICTS, map, TERRAIN_INFO, RESOURCE_YIELDS } from "./init.js"
-import { overlay, getTileDiv } from "./display.js"
+import { overlay, tintTile } from "./display.js"
 import { isResearched } from "./tech.js"
+import { socket } from "./socket.js"
 
 const ownedTiles = []
 
 function gainedTile(x, y) {
-  const tileDiv = getTileDiv(x, y)
   map[y][x].owned = true;
-  tileDiv.firstElementChild.classList.add("tint-blue")
   ownedTiles.push({"x": x, "y": y})
+  console.log(ownedTiles  )
+  socket.emit("buy tile", {
+    "x": x,
+    "y": y
+  })
+  tintTile(x, y, "blue");
+}
+
+function getNextBuilding(tile) {
+  const DISTRICT = DISTRICTS[tile["district"]]
+  if (tile["improvements"].length >= DISTRICT["buildings"].length) return null;
+  const next = DISTRICT["buildings"][tile["improvements"].length]
+  if (next["technology"] && !isResearched(next["technology"])) return null
+  return next;
 }
 
 function getPossibleImprovements(tile) {
   let output = []
-  if (tile["improvement"].length != 0) return output;
+  
+  if (tile["improvements"].length != 0) return output;
   if (tile["resource"]) {
     if (RESOURCE_YIELDS[tile["resource"]]["technology"]) {
       if (!isResearched(RESOURCE_YIELDS[tile["resource"]]["technology"])) return output;
@@ -28,6 +42,7 @@ function getPossibleImprovements(tile) {
       }
     }
   })
+
   return output;
 }
 
@@ -35,16 +50,28 @@ function buildImprovement() {
 
 }
 
-function buildDistrict(name, x, y) {
+function buildDistrict(name, x, y, enemy=false) {
   const TILE = map[y][x]
 
-  TILE["yield"] = {}
-  TILE["resource"] = name
+  for (let [key, value] of Object.entries(TILE["yield"])) {
+    TILE["yield"][key] = 0
+  }
+
+  TILE["district"] = name
   TILE["improvements"] = []
 
-  overlay(x, y, `districts/${name}.png`, 0, "improvement")
+  overlay(x, y, `districts/${name}.png`, 0, "resource")
   const district = DISTRICTS[name]
-  consumeResource("production", district["production cost"])
+  
+  if (!enemy) {
+    consumeResource("production", district["production cost"])
+    socket.emit("build district", {
+      "name": name,
+      "x": x,
+      "y": y,
+    })
+  }
+  
   let adjacent = getAdjacentTiles(x, y)
 
   for (let [key, value] of Object.entries(district["adjacency"])) {
@@ -54,24 +81,37 @@ function buildDistrict(name, x, y) {
       if (tile["resource"] == key) count++
       if (tile["district"] == key) count++
       if (key in tile["improvements"]) count++
-      if (count > 0) {
-        for (let [resource, amount] of Object.entries(value)) {
-          if (!TILE["yield"][resource]) {
-            TILE["yield"][resource] = count * amount;
-          } else {
-            TILE["yield"][resource] += count * amount;
-          }
-        }
+      for (let [resource, amount] of Object.entries(value)) {
+        TILE["yield"][resource] += count * amount;
       }
     })
   }
+  console.log(TILE)
 }
 
-function buildBuilding(name, x, y) {
-  const TILE = map[x][y]
+function buildBuilding(name, x, y, enemy=false) {
+  const TILE = map[y][x]
+  console.log(TILE)
   TILE["improvements"].push(name)
 
+  console.log(TILE["district"])
 
+  const building = DISTRICTS[TILE["district"]]["buildings"].find(e => e["name"] === name)
+
+  if (!enemy) {
+    consumeResource("production", building["production cost"])
+    socket.emit("build building", {
+      "district": TILE["district"],
+      "name": name,
+      "x": x,
+      "y": y,
+    })
+  }
+  
+  for (let [key, value] of Object.entries(building["yield"])) {
+    
+    TILE["yield"][key] += parseInt(value);
+  }
 }
 
-export { buildDistrict, gainedTile, getPossibleImprovements, ownedTiles}
+export { buildDistrict, gainedTile, getPossibleImprovements, ownedTiles, buildBuilding, getNextBuilding }
