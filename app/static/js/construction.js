@@ -9,7 +9,6 @@ const ownedTiles = []
 function gainedTile(x, y) {
   map[y][x].owned = true;
   ownedTiles.push({"x": x, "y": y})
-  console.log(ownedTiles  )
   socket.emit("buy tile", {
     "x": x,
     "y": y
@@ -73,11 +72,13 @@ function buildImprovement(name, x, y, enemy=false) {
 }
 
 function removeImprovement(x, y) {
+  closeSidebar()
   const TILE = map[y][x];
   TILE["improvements"] = [];
 }
 
 function pillage(x, y, enemy = false) {
+  closeSidebar()
   const TILE = map[y][x];
   if (!enemy) {
       removeImprovements(x, y);
@@ -91,6 +92,7 @@ function pillage(x, y, enemy = false) {
 }
 
 function buildDistrict(name, x, y, enemy=false) {
+  closeSidebar()
   const TILE = map[y][x]
 
   for (let [key, value] of Object.entries(TILE["yield"])) {
@@ -133,6 +135,7 @@ function buildDistrict(name, x, y, enemy=false) {
 }
 
 function buildBuilding(name, x, y, enemy=false) {
+  closeSidebar()
   const TILE = map[y][x]
   console.log(TILE)
   TILE["improvements"].push(name)

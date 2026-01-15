@@ -1,5 +1,6 @@
 import { map } from "./init.js";
 import { consumeResource, gainResource } from "./utility.js"
+import { closeSidebar } from "./display.js"
 // var workerButton = document.getElementById("worker-button")
 // workerButton.disabled = true
 
@@ -37,11 +38,13 @@ import { consumeResource, gainResource } from "./utility.js"
 // }
 
 function assignWorker(x, y) {
+    closeSidebar()
     map[y][x]["worked"] = true
     consumeResource("population", 1)
 }
 
 function removeWorker(x, y) {
+    closeSidebar()
     map[y][x]["worked"] = false
     gainResource("population", 1)
 }
