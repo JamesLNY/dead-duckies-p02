@@ -65,4 +65,9 @@ function getTileDiv(x, y) {
   return div
 }
 
-export { overlay, removeOverlay, displayResource, openSidebar, getTileDiv }
+function tintTile(x, y, color) {
+  const tileDiv = getTileDiv(x, y);
+  tileDiv.firstElementChild.classList.add(`tint-${color}`);
+}
+
+export { overlay, removeOverlay, displayResource, openSidebar, getTileDiv, tintTile }

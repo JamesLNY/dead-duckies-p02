@@ -41,14 +41,14 @@ def lobby_get():
 @app.get("/create_lobby")
 def create_lobby_get():
     game = insert_query("games", {"player1": session["username"]})
-    session["game"] = game["id"]
+    session["game"] = str(game["id"])
     return redirect("/game")
 
 @app.get("/join_lobby")
 def join_lobby_get():
     game = request.args["game"]
     general_query("UPDATE games SET player2=? WHERE id=?", (session["username"], game))
-    session["game"] = game
+    session["game"] = str(game)
     return redirect("/game")
 
 # GAME STUFF
@@ -89,11 +89,11 @@ def handle_join(data):
 
 @socketio.on("buy tile")
 def buy_tile(data):
-    general_query("UPDATE tiles SET owner=? WHERE game=? AND x_pos=? AND y_pos=?", (session["username"], data["x"], data["y"]))
-    emit("conquer tile", data, room=session["game"], include_self=False)
+    # general_query("UPDATE tiles SET owner=? WHERE game=? AND x_pos=? AND y_pos=?", (session["username"], str(session["game"]), data["x"], data["y"]))
+    emit("buy tile", data, room=session["game"], include_self=False)
 
 @socketio.on("build improvement")
-def update_tile(data):
+def build_improvement(data):
     general_query("UPDATE tiles SET improvement=? WHERE game=? AND x_pos=? AND y_pos=?", (session["username"], data["x"], data["y"]))
     emit("build improvement", data, room=session["game"], include_self=False)
 
@@ -110,13 +110,13 @@ def build_district(data):
 @socketio.on("build building")
 def build_building(data):
     district = select_query("SELECT * FROM districts WHERE game=? AND name=? AND x_pos=? AND y_pos=?", (
-        session["game"], data["district"], data["x_pos"], data["y_pos"]
+        session["game"], data["district"], data["x"], data["y"]
     ))[0]
-    insert_query("districts", {
-        district["id"],
-        data["name"]
+    insert_query("buildings", {
+        "district": district["id"],
+        "name": data["name"]
     })
-    emit("build district", data, room=session["game"], include_self=False)
+    emit("build building", data, room=session["game"], include_self=False)
 
 @socketio.on("finish tech")
 def finish_tech(data):
@@ -124,19 +124,19 @@ def finish_tech(data):
 
 @socketio.on("end turn")
 def end_turn(data):
-    for key, value in data.items():
-        general_query("UPDATE resources SET amount_stored=? WHERE game=? AND player=? AND name=?", (
-            value,
-            session["game"],
-            session["username"],
-            key
-        ))
-    game = select_query("SELECT * FROM games WHERE id=?", (session["game"]))
-    if not game["player1Turn"]:
-        general_query("UPDATE games SET turn=turn+1 WHERE id=?", (session["game"]))
-    general_query("UPDATE games SET player1Turn=? WHERE id=?", (not game["player1Turn"]))
+    # for key, value in data.items():
+    #     general_query("UPDATE resources SET amount_stored=? WHERE game=? AND player=? AND name=?", (
+    #         value,
+    #         session["game"],
+    #         session["username"],
+    #         key
+    #     ))
+    # game = select_query("SELECT * FROM games WHERE id=?", (session["game"]))
+    # if not game["player1Turn"]:
+    #     general_query("UPDATE games SET turn=turn+1 WHERE id=?", (session["game"]))
+    # general_query("UPDATE games SET player1Turn=? WHERE id=?", (not game["player1Turn"]))
+    print("recieved")
     emit("end turn", data, room=session["game"], include_self=False)
 
 if __name__ == '__main__':
-    app.debug = True
     socketio.run(app)

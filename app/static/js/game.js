@@ -1,12 +1,14 @@
-import { buildDistrict, gainedTile } from "./construction.js"
-import { getAdjacentTiles } from "./utility.js";
+import { buildDistrict, gainedTile, ownedTiles } from "./construction.js"
+import { getAdjacentTiles, gainResource } from "./utility.js";
+import { storedResources, map } from "./init.js";
+import { socket } from "./socket.js";
 
 const CONST_OBJ = {
   IS_TURN: true,
   CURR_TURN: 1
 }
 
-function startGame() {
+async function startGame() {
   let adjacent
   if (CONST_OBJ["IS_TURN"]) {
     buildDistrict("city center", 2, 1)
@@ -17,18 +19,23 @@ function startGame() {
     gainedTile(21, 1)
     adjacent = getAdjacentTiles(21, 1)
   }
-  adjacent.forEach((tile) => {
-    gainedTile(tile["x"], tile["y"])
-  })
+  for (let i in adjacent) {
+    gainedTile(adjacent[i]["x"], adjacent[i]["y"])
+  }
 }
 
 function endTurn() {
   if (!CONST_OBJ["IS_TURN"]) return;
-  map.forEach((row) => {
-    row.forEach((tile) => {
 
-    })
-  })
+  ownedTiles.forEach((element) => {
+    let tile = map[element["y"]][element["x"]]
+    for (let [key, value] of Object.entries(tile["yield"])) {
+      gainResource(key, value)
+    }
+  });
+
+  CONST_OBJ["IS_TURN"] = false;
+  socket.emit("end turn", storedResources)
 }
 
 export { CONST_OBJ, endTurn, startGame }

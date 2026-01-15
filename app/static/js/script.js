@@ -1,16 +1,18 @@
 import { openSidebar } from "./display.js"
-import { map } from "./init.js"
+import { map, storedResources } from "./init.js"
+import { buildBuilding, getNextBuilding } from "./construction.js"
 
 // Handles click events
 
 function clickTile(event) {
   let x = event.currentTarget.getAttribute("x")
   let y = event.currentTarget.getAttribute("y")
-  updateInfoSidebar(map[y][x]);
+  updateInfoSidebar(x, y);
   openSidebar("info");
 }
 
-function updateInfoSidebar(tile) {
+function updateInfoSidebar(x, y) {
+  let tile = map[y][x]
   const tileTerrain = document.getElementById("tile-terrain")
   tileTerrain.innerHTML = tile.terrain
 
@@ -30,20 +32,42 @@ function updateInfoSidebar(tile) {
   }
 
   const improvements = document.getElementById("improvements")
-  const possibleImprovements = document.getElementById("possible-improvements")
+  improvements.innerHTML = "<strong>Improvements: </strong>"
 
-  if (tile.improvements.length == 0) {
-    improvements.style.display = "none"
-    possibleImprovements.style.display = "block"
-    // Append to possible_improvements innerhtml with buttons
-
-  } else {
-    tile.improvements.forEach((improvement) => {
+  if (tile["improvements"].length > 0) {
+    improvements.style.display = "block"
+    tile["improvements"].forEach((improvement) => {
       // Create little box with information about the improvement
-      improvements.innerHTML += `
-
-      `
+      improvements.innerHTML += improvement
     })
+  } else {
+    improvements.style.display = "none"
+  }
+
+  const possibleImprovements = document.getElementById("possible-improvements")
+  possibleImprovements.innerHTML = ''
+
+  if (tile["district"]) {
+    let next = getNextBuilding(tile);
+    if (next) {
+      let ele = document.createElement("button")
+      ele.innerHTML = next["name"]
+      for (let [key, value] of Object.entries(next["yield"])) {
+        ele.innerHTML += `<br>${key}: ${value}`
+      }
+      ele.classList.add("sidebar-button")
+      if (next["production cost"] <= storedResources["production"]) {
+        ele.addEventListener("click", (event) => {
+          buildBuilding(next["name"], x, y)
+        })
+      } else {
+        ele.disabled = true;
+      }
+      possibleImprovements.appendChild(ele)
+    }
+  } else if (tile.improvements.length == 0) {
+    possibleImprovements.style.display = "block"
+    // Append to possible_improvements innerhtml with button
   }
 
   const possibleDistricts = document.getElementById("possible-districts")

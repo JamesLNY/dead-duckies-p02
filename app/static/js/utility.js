@@ -44,4 +44,4 @@ function getAdjacentTiles(x, y) {
   return tiles
 }
 
-export { consumeResource, getAdjacentTiles, sleep };
+export { consumeResource, getAdjacentTiles, sleep, gainResource };
