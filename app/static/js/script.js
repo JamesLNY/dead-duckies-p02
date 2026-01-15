@@ -2,6 +2,7 @@ import { openSidebar } from "./display.js"
 import { DISTRICTS, map, storedResources, TERRAIN_INFO } from "./init.js"
 import { buildBuilding, buildDistrict, getNextBuilding } from "./construction.js"
 import { isResearched } from "./tech.js"
+import { assignWorker, removeWorker } from "./workers.js"
 
 // Handles click events
 
@@ -110,6 +111,22 @@ function updateInfoSidebar(x, y) {
     } else {
       unitProduction.style.display = "none"
     }
+
+    let div = document.getElementById("bad-naming")
+    div.innerHTML = ""
+    let ele = document.createElement("button")
+    if (tile["worked"]) {
+      ele.innerHTML = "Remove Worker"
+      ele.addEventListener("click", (event) => {
+        removeWorker(x, y)
+      })
+    } else {
+      ele.innerHTML = "Assign Worker"
+      ele.addEventListener("click", (event) => {
+        assignWorker(x, y)
+      })
+    }
+    div.appendChild(ele);
   } else {
     possibleImprovements.style.display = "none"
     possibleDistricts.style.display = "none"

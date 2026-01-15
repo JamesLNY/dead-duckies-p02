@@ -99,12 +99,12 @@ def build_improvement(data):
 
 @socketio.on("build district")
 def build_district(data):
-    insert_query("districts", {
-        "game": session["game"],
-        "name": data["name"],
-        "x_pos": data["x"],
-        "y_pos": data["y"]
-    })
+    # insert_query("districts", {
+    #     "game": session["game"],
+    #     "name": data["name"],
+    #     "x_pos": data["x"],
+    #     "y_pos": data["y"]
+    # })
     emit("build district", data, room=session["game"], include_self=False)
 
 @socketio.on("build building")
