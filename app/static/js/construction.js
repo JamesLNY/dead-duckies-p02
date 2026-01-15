@@ -68,13 +68,16 @@ function buildImprovement(name, x, y, enemy=false) {
       TILE["yield"][resource] = 0;
     }
     TILE["yield"][resource] += amount;
+
   }
 }
 
 function removeImprovement(x, y) {
   const TILE = map[y][x];
+
   TILE["improvements"] = [];
 }
+
 
 function pillage(x, y, enemy = false) {
   const TILE = map[y][x];
