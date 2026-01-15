@@ -150,3 +150,9 @@ kiranS -- 2026-01-14 22:00
 - Added basic js for worker button logic
 - Added functions to assign/remove a worker from a tile
 - Made tech button height dynamic
+
+jamesL -- 2026-01-14 22:10
+- Added CSS / Structure to Tile Information
+- Connected building districts, building buildings, and tile ownership between users
+- Implemented end turn feature across multiple users
+- Connected functions to build districts / buildings with menu
