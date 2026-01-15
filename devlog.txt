@@ -170,3 +170,7 @@ jamesL -- 2026-01-15 11:00
 sarahZ -- 2026-01-15 11:00
 - Finished pillage
 - Worked on buy tile
+
+emaanA -- 2026-01-15 13:20 
+- movement consumption works 
+- trying to get restoreMovement on start turn to work

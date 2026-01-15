@@ -15,6 +15,7 @@ function createUnit(type, name, x, y, owner) {
     y,
     health: 100,
     movement: base.movement,
+    maxMovement: base.movement,
     combat: base.combat
   };
 
@@ -41,21 +42,11 @@ function drawUnit(unit) {
 
   img.style.zIndex = 5;
 
-<<<<<<< HEAD
   img.onclick = (e) => {
     e.stopPropagation();
     selectedUnit = unit;
     showUnitSidebar(unit);
   };
-=======
-function clearSidebar() {
-  const infoDiv = document.querySelector("#info-sidebar .sidebar-info");
-  if (!infoDiv) return;
-
-  while (infoDiv.firstChild) {
-    infoDiv.removeChild(infoDiv.firstChild);
-  }
->>>>>>> b7762ff54fd7aebcea6ea85a7034dcf53ca14dba
 }
 
 function moveUnit(unit, targetX, targetY) {
@@ -63,6 +54,7 @@ function moveUnit(unit, targetX, targetY) {
   if (!tile) return;
 
   if (Math.abs(unit.x - targetX) + Math.abs(unit.y - targetY) !== 1) return;
+  if (unit.movement <= 0) return;
 
   map[unit.y][unit.x].unit = null;
 
@@ -71,6 +63,7 @@ function moveUnit(unit, targetX, targetY) {
 
   tile.unit = unit;
   tile.owned = unit.owner;
+  unit.movement -= 1;
 
   redrawUnits();
 }
@@ -113,13 +106,28 @@ function redrawUnits() {
   enemyUnits.forEach(drawUnit);
 }
 
+//doesn't work right now
+function restoreMovement() {
+  if (myUnits && myUnits.length > 0) {
+    myUnits.forEach(unit => {
+      if (unit) unit.movement = unit.maxMovement;
+    });
+  }
+  
+  if (enemyUnits && enemyUnits.length > 0) {
+    enemyUnits.forEach(unit => {
+      if (unit) unit.movement = unit.maxMovement;
+    });
+  }
+}
+
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 createUnit("ranged", "archer", 1, 1, "player");
 
-export {myUnits, enemyUnits, createUnit, drawUnit, redrawUnits};
+export {myUnits, enemyUnits, createUnit, drawUnit, redrawUnits, restoreMovement};
 
 /* comment for reference
 //units table
