@@ -78,4 +78,4 @@ function tintTile(x, y, color) {
   tileDiv.firstElementChild.classList.add(`tint-${color}`);
 }
 
-export { overlay, removeOverlay, displayResource, openSidebar, getTileDiv, tintTile }
+export { overlay, removeOverlay, displayResource, openSidebar, getTileDiv, tintTile, closeSidebar }
