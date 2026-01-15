@@ -145,3 +145,7 @@ sarahZ -- 2026-01-14 21:40
 - Added removeImprovements function
 - Modified possibleImprovements to check for resources
 - Slightly modified UI HTML and CSS 
+
+kiranS -- 2026-01-14 22:00
+- Added basic js for worker button logic
+- Added functions to assign/remove a worker from a tile
