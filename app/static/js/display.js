@@ -39,7 +39,7 @@ function overlay(x, y, link, rotation=0, img_type="base_tile") {
 function removeOverlay(x, y, img_type) {
   const div = document.querySelector(`div[x="${x}"][y="${y}"]`);
   if (div) {
-    const img = div.querySelector(`img[src*="${img_type}s/"]`);
+    const img = div.querySelector(`img[src*="${img_type}/"]`);
     if (img) {img.remove();}
   }
 }
