@@ -60,6 +60,14 @@ function openSidebar(name) {
   toOpen.classList.add("open")
 }
 
+function closeSidebar() {
+  const sidebars = document.querySelectorAll(".sidebar");
+  sidebars.forEach((ele) => {
+    ele.classList.remove("open")
+    ele.classList.add("closed")
+  })
+}
+
 function getTileDiv(x, y) {
   const div = document.querySelector(`div[x="${x}"][y="${y}"]`);
   return div
