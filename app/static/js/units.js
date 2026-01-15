@@ -42,25 +42,6 @@ function drawUnit(unit) {
     img.style.zIndex = 5;
 }
 
-function showUnitSidebar(unit) {
-  openSidebar("unit");
-
-  const sidebar = document.querySelector("#unit-sidebar .sidebar-info");
-  sidebar.innerHTML = "";
-
-  const title = document.createElement("h2");
-  title.textContent = unit.name;
-  unitSidebar.appendChild(title);
-
-  for (const key in unit) {
-    if (["name", "x", "y", "type"].includes(key)) continue;
-
-    const p = document.createElement("p");
-    p.innerHTML = `<strong style="text-decoration: underline;">${capitalize(key)}:</strong> ${unit[key]}`;
-    unitSidebar.appendChild(p);
-  }
-}
-
 function clearSidebar() {
   const infoDiv = document.querySelector("#info-sidebar .sidebar-info");
   if (!infoDiv) return;
