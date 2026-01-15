@@ -74,6 +74,10 @@
   display: none;
 }
 
+#tile-yield {
+  text-align: left;
+}
+
 .technology {
   background-color: cornflowerblue;
   border-radius: 10px;

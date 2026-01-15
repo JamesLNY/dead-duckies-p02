@@ -15,10 +15,10 @@ function updateInfoSidebar(tile) {
   tileTerrain.innerHTML = tile.terrain
 
   const tileResource = document.getElementById("tile-resource")
-  tileResource.innerHTML = tile.resource
+  tileResource.innerHTML = tile.resource || "none"
 
   const tileDistrict = document.getElementById("tile-district")
-  tileDistrict.innerHTML = tile.district
+  tileDistrict.innerHTML = tile.district || "none"
 
   const tileYield = document.getElementById("tile-yield")
   tileYield.innerHTML = ""
