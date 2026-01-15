@@ -94,6 +94,7 @@ function initMap() {
         improvements: [],
         unit: null,
         owned: null,
+        worked: false,
         yield: tileYields(STARTING_MAP[y][x].terrain_type, STARTING_MAP[y][x].resource)
       };
     }
