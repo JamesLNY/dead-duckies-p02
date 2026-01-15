@@ -100,6 +100,15 @@ function showUnitSidebar(unit) {
   }
 }
 
+function clearSidebar() {
+  const infoDiv = document.querySelector("#info-sidebar .sidebar-info");
+  if (!infoDiv) return;
+
+  while (infoDiv.firstChild) {
+    infoDiv.removeChild(infoDiv.firstChild);
+  }
+}
+
 function redrawUnits() {
   document.querySelectorAll('img[src*="units/"]').forEach(img => img.remove());
   myUnits.forEach(drawUnit);
