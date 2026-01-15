@@ -156,3 +156,7 @@ jamesL -- 2026-01-14 22:10
 - Connected building districts, building buildings, and tile ownership between users
 - Implemented end turn feature across multiple users
 - Connected functions to build districts / buildings with menu
+
+kiranS -- 2026-01-15 10:45
+- Added check in end of turn yield update for if tile is worked
+- Made assign and remove workers change population

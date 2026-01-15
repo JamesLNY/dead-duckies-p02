@@ -1,8 +1,7 @@
-import { storedResources, TECHNOLOGIES, DISTRICTS, IMPROVEMENTS, map } from "./init.js";
-
+import { map } from "./init.js";
+import { consumeResource, gainResource } from "./utility.js"
 // var workerButton = document.getElementById("worker-button")
 // workerButton.disabled = true
-let workers = 0
 
 // workerButton.onclick = () => {
 //     let x = workerButton.getAttribute("x")
@@ -39,12 +38,12 @@ let workers = 0
 
 function assignWorker(x, y) {
     map[y][x]["worked"] = true
-    workers++
+    consumeResource("population", 1)
 }
 
 function removeWorker(x, y) {
     map[y][x]["worked"] = false
-    workers--
+    gainResource("population", 1)
 }
 
 export {assignWorker, removeWorker};

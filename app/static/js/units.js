@@ -41,11 +41,21 @@ function drawUnit(unit) {
 
   img.style.zIndex = 5;
 
+<<<<<<< HEAD
   img.onclick = (e) => {
     e.stopPropagation();
     selectedUnit = unit;
     showUnitSidebar(unit);
   };
+=======
+function clearSidebar() {
+  const infoDiv = document.querySelector("#info-sidebar .sidebar-info");
+  if (!infoDiv) return;
+
+  while (infoDiv.firstChild) {
+    infoDiv.removeChild(infoDiv.firstChild);
+  }
+>>>>>>> b7762ff54fd7aebcea6ea85a7034dcf53ca14dba
 }
 
 function moveUnit(unit, targetX, targetY) {

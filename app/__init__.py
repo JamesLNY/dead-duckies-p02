@@ -13,7 +13,7 @@ app.secret_key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
 socketio = SocketIO(app)
 
 import auth
-app.register_blueprint(auth.bp) 
+app.register_blueprint(auth.bp)
 
 #restricting app to logged in users only
 @app.before_request
@@ -57,7 +57,7 @@ def join_lobby_get():
 def game_get():
     game = select_query("SELECT * FROM games WHERE id=?", [session["game"]])[0]
 
-    if game["player2"] is None: 
+    if game["player2"] is None:
         map = json.load(open("./static/json/map.json"))
         for y in range(len(map)):
             for x in range(len(map[y])):
@@ -94,7 +94,7 @@ def buy_tile(data):
 
 @socketio.on("build improvement")
 def build_improvement(data):
-    general_query("UPDATE tiles SET improvement=? WHERE game=? AND x_pos=? AND y_pos=?", (session["username"], data["x"], data["y"]))
+    # general_query("UPDATE tiles SET improvement=? WHERE game=? AND x_pos=? AND y_pos=?", (session["username"], data["x"], data["y"]))
     emit("build improvement", data, room=session["game"], include_self=False)
 
 @socketio.on("build district")
@@ -135,8 +135,12 @@ def end_turn(data):
     # if not game["player1Turn"]:
     #     general_query("UPDATE games SET turn=turn+1 WHERE id=?", (session["game"]))
     # general_query("UPDATE games SET player1Turn=? WHERE id=?", (not game["player1Turn"]))
-    print("recieved")
     emit("end turn", data, room=session["game"], include_self=False)
+
+@socketio.on("win game")
+def win_game(data):
+    general_query("UPDATE games SET winner=? WHERE id=?", (session["username"], session["game"]))
+    emit("win game", data, room=session["game"], include_self=False)
 
 if __name__ == '__main__':
     app.debug = True
