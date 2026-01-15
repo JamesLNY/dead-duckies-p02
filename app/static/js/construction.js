@@ -1,5 +1,5 @@
 import { getAdjacentTiles, consumeResource } from "./utility.js"
-import { IMPROVEMENTS, DISTRICTS, map, TERRAIN_INFO, RESOURCE_YIELDS } from "./init.js"
+import { IMPROVEMENTS, DISTRICTS, map, TERRAIN_INFO, RESOURCE_YIELDS, storedResources } from "./init.js"
 import { overlay, tintTile } from "./display.js"
 import { isResearched } from "./tech.js"
 import { socket } from "./socket.js"
@@ -32,12 +32,14 @@ function getPossibleImprovements(tile) {
   if (tile["resource"]) {
     if (RESOURCE_YIELDS[tile["resource"]]["technology"]) {
       if (!isResearched(RESOURCE_YIELDS[tile["resource"]]["technology"])) return output;
-      output.push(RESOURCE_YIELDS[tile["resource"]]["improvement"])
+      if (storedResources["production"] >= IMPROVEMENTS[RESOURCE_YIELDS[tile["resource"]["improvement"]]]["production cost"]) {
+        output.push(RESOURCE_YIELDS[tile["resource"]]["improvement"]);
+      }
     }
   }
   TERRAIN_INFO[tile["terrain"]]["possible_improvements"].forEach((improvement) => {
     if (isResearched(IMPROVEMENTS[improvement]["technology"])) {
-      if (!(improvement in output)) {
+      if (!output.includes(improvement)) {
         output.push(improvement);
       }
     }
@@ -46,8 +48,34 @@ function getPossibleImprovements(tile) {
   return output;
 }
 
-function buildImprovement() {
+function buildImprovement(name, x, y, enemy=false) {
+  const TILE = map[y][x];
+  TILE["improvements"] = [name];
 
+  const improvement = IMPROVEMENTS[name];
+
+  if (!enemy) {
+    consumeResource("production", improvement["production cost"]);
+    socket.emit("build improvement", {
+      "name": name,
+      "x": x,
+      "y": y
+    });
+  }
+
+  for (let [resource, amount] of Object.entries(improvement["bonuses"])) {
+    if (!TILE["yield"][resource]) {
+      TILE["yield"][resource] = 0;
+    }
+    TILE["yield"][resource] += amount;
+
+  }
+}
+
+function removeImprovement(x, y) {
+  const TILE = map[y][x];
+
+  TILE["improvements"] = [];
 }
 
 function buildDistrict(name, x, y, enemy=false) {
@@ -82,6 +110,9 @@ function buildDistrict(name, x, y, enemy=false) {
       if (tile["district"] == key) count++
       if (key in tile["improvements"]) count++
       for (let [resource, amount] of Object.entries(value)) {
+        if (!TILE["yield"][resource]) {
+          TILE["yield"][resource] = 0;
+        }
         TILE["yield"][resource] += count * amount;
       }
     })
