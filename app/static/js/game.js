@@ -30,7 +30,7 @@ function endTurn() {
   ownedTiles.forEach((element) => {
     let tile = map[element["y"]][element["x"]]
     for (let [key, value] of Object.entries(tile["yield"])) {
-      gainResource(key, value)
+      if (tile["worked"]) gainResource(key, value)
     }
   });
 
