@@ -134,3 +134,11 @@ kiranS -- 2026-01-14 20:30
 - Added updateYields method in tech.js which updates yield constants and tile yields with buffs from tech
 - completeTech calls updateYields for each bonus the tech has
 - Fixed small issues with tech.js tech tree and naming
+
+sarahZ -- 2026-01-14 21:40
+- Fixed overlay function offsets 
+- Added removeOverlay function
+- Added buildImprovements function
+- Added removeImprovements function
+- Modified possibleImprovements to check for resources
+- Slightly modified UI HTML and CSS 

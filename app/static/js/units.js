@@ -64,7 +64,7 @@ function showUnitSidebar(unit) {
     if (["name", "x", "y", "type"].includes(key)) continue;
 
     const p = document.createElement("p");
-    p.innerHTML = `<strong>${capitalize(key)}:</strong> ${unit[key]}`;
+    p.innerHTML = `<strong style="text-decoration: underline;">${capitalize(key)}:</strong> ${unit[key]}`;
     unitSidebar.appendChild(p);
   }
 }
