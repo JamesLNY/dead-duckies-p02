@@ -106,7 +106,7 @@ sarahZ -- 2026-01-13 19:50
 - Finished rendermap function
 - Finished clickTile function that displays tile information on sidebar
 - Added helper functions for clickTile to build html and sidebar opening/closing
-- Added images for resources and improvements 
+- Added images for resources and improvements
 
 kiranS -- 2026-01-13 20:10
 - Changed tech buttons to button tag and made them disable without sufficient science
@@ -124,8 +124,8 @@ jamesL -- 2026-01-13 21:10
 emaanA -- 2026-01-13 21:40
 - fixed unit.js to update map unit in createUnit
 
-emaanA -- 2026-01-13 11:00 
-- finished moveUnit function in units.js 
+emaanA -- 2026-01-13 11:00
+- finished moveUnit function in units.js
 
 kiranS -- 2026-01-14 18:45
 - Added owned tiles array in construction.js that the gainedTile method pushes to
@@ -135,16 +135,16 @@ kiranS -- 2026-01-14 20:30
 - completeTech calls updateYields for each bonus the tech has
 - Fixed small issues with tech.js tech tree and naming
 
-emaanA -- 2026-01-14 13:00 
+emaanA -- 2026-01-14 13:00
 - working unit movement in units.js
 
 sarahZ -- 2026-01-14 21:40
-- Fixed overlay function offsets 
+- Fixed overlay function offsets
 - Added removeOverlay function
 - Added buildImprovements function
 - Added removeImprovements function
 - Modified possibleImprovements to check for resources
-- Slightly modified UI HTML and CSS 
+- Slightly modified UI HTML and CSS
 
 kiranS -- 2026-01-14 22:00
 - Added basic js for worker button logic
@@ -160,3 +160,13 @@ jamesL -- 2026-01-14 22:10
 kiranS -- 2026-01-15 10:45
 - Added check in end of turn yield update for if tile is worked
 - Made assign and remove workers change population
+
+emaanA -- 2026-01-15 11:00
+- Fixed units again
+
+jamesL -- 2026-01-15 11:00
+- Added closing sidebar
+
+sarahZ -- 2026-01-15 11:00
+- Finished pillage
+- Worked on buy tile
