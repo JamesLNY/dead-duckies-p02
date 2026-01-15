@@ -22,6 +22,7 @@ c.executescript("""
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         player1 TEXT,
         player2 TEXT,
+        winner TEXT,
         turn INTEGER DEFAULT 1,
         player1Turn BOOLEAN DEFAULT TRUE,
         FOREIGN KEY (player1) REFERENCES profiles(username),

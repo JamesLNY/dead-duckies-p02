@@ -87,8 +87,8 @@
         "cost": 200,
         "prerequisites": ["currency"],
         "tech_unlocks": ["education"],
-        "unlocks": ["+1 campus science"],
-        "bonuses": {}
+        "unlocks": ["+1 library science production"],
+        "bonuses": {"library": {"science": 1}}
     },
     "construction": {
         "cost": 200,
@@ -157,7 +157,7 @@
         "cost": 600,
         "prerequisites": ["education", "stirrups"],
         "tech_unlocks": ["scientific theory"],
-        "unlocks": ["+2 quarry gold production", "bank"],
+        "unlocks": ["bank", "+2 quarry gold production"],
         "bonuses": {"quarry": {"gold": 2}}
     },
     "gunpowder": {
@@ -183,7 +183,7 @@
     },
     "industrialization": {
         "cost": 930,
-        "prerequisites": ["education"],
+        "prerequisites": ["education", "metal casting"],
         "tech_unlocks": ["steam power"],
         "unlocks": ["factory", "coal power plant", "coal", "neighborhood", "+1 mine production"],
         "bonuses": {"mine": {"production": 1}}
@@ -192,8 +192,8 @@
         "cost": 930,
         "prerequisites": ["banking"],
         "tech_unlocks": ["economics", "sanitation"],
-        "unlocks": ["+1 farm food production", "+2 campus science production"],
-        "bonuses": {"farm": {"food": 1}, "campus": {"science": 2}}
+        "unlocks": ["+1 farm food production", "+2 university science production"],
+        "bonuses": {"farm": {"food": 1}, "university": {"science": 2}}
     },
     "ballistics": {
         "cost": 930,

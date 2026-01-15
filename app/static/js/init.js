@@ -40,14 +40,14 @@ let map = []
 
 function tileYields(terrain, resource, improvements=[]) {
   const tileYield = {
-    food: 0,
-    production: 0,
-    gold: 0,
-    science: 0,
-    iron: 0,
-    horses: 0,
-    niter: 0,
-    coal: 0
+    "food": 0,
+    "production": 0,
+    "gold": 0,
+    "science": 0,
+    "iron": 0,
+    "horses": 0,
+    "niter": 0,
+    "coal": 0
   };
 
   // Terrain
