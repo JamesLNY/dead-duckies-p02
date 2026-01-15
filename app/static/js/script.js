@@ -131,6 +131,9 @@ function updateInfoSidebar(x, y) {
     possibleImprovements.style.display = "none"
     possibleDistricts.style.display = "none"
     unitProduction.style.display = "none"
+    //buy tile check adjacent tiles and if its owned
+    const buyTile = document.getElementById("buy-tile");
+
   }
 }
 
