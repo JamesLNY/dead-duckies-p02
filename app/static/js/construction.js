@@ -1,6 +1,6 @@
 import { getAdjacentTiles, consumeResource } from "./utility.js"
 import { IMPROVEMENTS, DISTRICTS, map, TERRAIN_INFO, RESOURCE_YIELDS, storedResources } from "./init.js"
-import { overlay, tintTile } from "./display.js"
+import { overlay, tintTile, closeSidebar } from "./display.js"
 import { isResearched } from "./tech.js"
 import { socket } from "./socket.js"
 
@@ -49,6 +49,7 @@ function getPossibleImprovements(tile) {
 }
 
 function buildImprovement(name, x, y, enemy=false) {
+  closeSidebar()
   const TILE = map[y][x];
   TILE["improvements"] = [name];
 

@@ -3,6 +3,7 @@ import { getAdjacentTiles, gainResource } from "./utility.js";
 import { storedResources, map } from "./init.js";
 import { socket } from "./socket.js";
 
+let foodPopConstant = 20
 const CONST_OBJ = {
   IS_TURN: true,
   CURR_TURN: 1
@@ -30,10 +31,12 @@ function endTurn() {
   ownedTiles.forEach((element) => {
     let tile = map[element["y"]][element["x"]]
     for (let [key, value] of Object.entries(tile["yield"])) {
-      gainResource(key, value)
+      if (tile["worked"]) gainResource(key, value)
     }
   });
-
+  
+  gainResource("population", Math.floor(storedResources["food"] / foodPopConstant))
+  consumeResource("food", storedResources["food"] - (storedResources["food"] % foodPopConstant))
   CONST_OBJ["IS_TURN"] = false;
   socket.emit("end turn", storedResources)
 }
