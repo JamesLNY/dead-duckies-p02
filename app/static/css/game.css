@@ -39,7 +39,7 @@
 
 .sidebar {
   width: 300px;
-  min-height: 50px;
+  min-height: 40px;
   background-color: #4a9b44;
   padding: 5px;
   overflow-y: hidden;
@@ -69,6 +69,10 @@
 
 .sidebar.closed {
   flex: 0;
+}
+
+.sidebar.closed .sidebar-info {
+  display: none;
 }
 
 #tile-yield {
