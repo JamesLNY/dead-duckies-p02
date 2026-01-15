@@ -92,7 +92,7 @@ kiranS -- 2026-01-12 11:00
 - Fixed issue in completeTech function that incorrectly checked for tech prereqs
 
 emaanA -- 2026-01-13 19:50
-- fixed units.js 
+- fixed units.js (units are split: owned by enemy or by your player)
 - createUnit, drawUnit, clearing sidebar each time a unit is clicked
 
 kiranS -- 2026-01-12 18:45
@@ -134,3 +134,6 @@ kiranS -- 2026-01-14 20:30
 - Added updateYields method in tech.js which updates yield constants and tile yields with buffs from tech
 - completeTech calls updateYields for each bonus the tech has
 - Fixed small issues with tech.js tech tree and naming
+
+emaanA -- 2026-01-14 13:00 
+- working unit movement in units.js
