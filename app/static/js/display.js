@@ -1,20 +1,27 @@
-function overlay(x, y, link, rotation=0, img_type="terrain") {
+function overlay(x, y, link, rotation=0, img_type="base_tile") {
   const img = document.createElement('img');
 
   const img_offsets = {
-    terrain: [0,0],
-    resource: [4, 4],
-    improvement: [84, 4], //calculated x using tile width - icon size - 4
-    unit: [44, 68] // calculated x using (tile width - icon)/2
+    base_tile: [0,0],
+    overlay_tile: [8,0],
+    resource: [44, 68],
+    unit: [44, 28]
   };
 
-  if (img_type == "terrain") {
+  if (img_type == "base_tile") {
     img.style.width = "128px";
     img.style.height = "112px";
   }
   else {
-    img.style.width = "40px";
-    img.style.height = "40px";
+    if (img_type == "overlay_tile") {
+      img.style.width = "112px";
+      img.style.height = "96px";
+    }
+    else
+    {
+      img.style.width = "40px";
+      img.style.height = "40px";
+    }
   }
 
   img.src = `/static/images/${link}`;
@@ -29,6 +36,13 @@ function overlay(x, y, link, rotation=0, img_type="terrain") {
   div.append(img)
 }
 
+function removeOverlay(x, y, img_type) {
+  const div = document.querySelector(`div[x="${x}"][y="${y}"]`);
+  if (div) {
+    const img = div.querySelector(`img[src*="${img_type}s/"]`);
+    if (img) {img.remove();}
+  }
+}
 // Specifically for resource bar
 function displayResource(name, amount) {
   let resource = document.getElementById(name)
@@ -51,4 +65,4 @@ function getTileDiv(x, y) {
   return div
 }
 
-export { overlay, displayResource, openSidebar, getTileDiv }
+export { overlay, removeOverlay, displayResource, openSidebar, getTileDiv }

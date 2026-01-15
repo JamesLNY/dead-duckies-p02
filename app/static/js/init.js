@@ -1,4 +1,4 @@
-import { overlay, displayResource } from "./display.js"
+import { overlay, removeOverlay, displayResource } from "./display.js"
 import { clickTile } from "./script.js"
 import { endTurn } from "./game.js"
 
@@ -114,8 +114,9 @@ function renderMap() {
       mapDiv.append(div);
 
       for (var i = 0; i < TERRAIN_INFO[map[y][x].terrain].terrain.length; i++) {
+        var base_tile = (i == 0) ? "base_tile" : "overlay_tile";
         var rotation = (i == 0) ? 90 : 0;
-        overlay(x, y, `tiles/${TERRAIN_INFO[map[y][x].terrain].terrain[i]}.png`, rotation);
+        overlay(x, y, `tiles/${TERRAIN_INFO[map[y][x].terrain].terrain[i]}.png`, rotation, base_tile);
       }
 
       if (map[y][x].resource) {
