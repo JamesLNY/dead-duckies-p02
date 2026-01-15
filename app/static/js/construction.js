@@ -27,7 +27,7 @@ function getNextBuilding(tile) {
 
 function getPossibleImprovements(tile) {
   let output = []
-  
+
   if (tile["improvements"].length != 0) return output;
   if (tile["resource"]) {
     if (RESOURCE_YIELDS[tile["resource"]]["technology"]) {
@@ -76,6 +76,19 @@ function removeImprovement(x, y) {
   const TILE = map[y][x];
 
   TILE["improvements"] = [];
+
+
+function pillage(x, y, enemy = false) {
+  const TILE = map[y][x];
+  if (!enemy) {
+      removeImprovements(x, y);
+      if (TILE["improvements"].length != 0) {
+        storedResources[IMPROVEMENTS[TILE["improvements"][0]]["plunder"]] += 100;
+      }
+      if (TILE["district"]) {
+        storedResources[DISTRICT[TILE["district"]]["plunder"]] += 100;
+      }
+  }
 }
 
 function buildDistrict(name, x, y, enemy=false) {
@@ -90,7 +103,7 @@ function buildDistrict(name, x, y, enemy=false) {
 
   overlay(x, y, `districts/${name}.png`, 0, "resource")
   const district = DISTRICTS[name]
-  
+
   if (!enemy) {
     consumeResource("production", district["production cost"])
     socket.emit("build district", {
@@ -99,7 +112,7 @@ function buildDistrict(name, x, y, enemy=false) {
       "y": y,
     })
   }
-  
+
   let adjacent = getAdjacentTiles(x, y)
 
   for (let [key, value] of Object.entries(district["adjacency"])) {
@@ -138,9 +151,9 @@ function buildBuilding(name, x, y, enemy=false) {
       "y": y,
     })
   }
-  
+
   for (let [key, value] of Object.entries(building["yield"])) {
-    
+
     TILE["yield"][key] += parseInt(value);
   }
 }
