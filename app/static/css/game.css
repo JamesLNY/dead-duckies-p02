@@ -36,6 +36,7 @@
   height: 75vh;
   gap: 10px;
 }
+
 .sidebar {
   width: 300px;
   min-height: 50px;
@@ -68,10 +69,6 @@
 
 .sidebar.closed {
   flex: 0;
-}
-
-.sidebar.closed .sidebar-info {
-  display: none;
 }
 
 #tile-yield {
@@ -125,9 +122,35 @@
   text-align: left;
   width: 90%;
   border-radius: 10px;
+  margin-bottom: 1vh;
 }
 
 .sidebar-button:disabled {
   opacity: .7;
   pointer-events: none;
+}
+
+.sidebar-info p {
+  display: inline-block;
+  margin: 0;
+}
+
+.sidebar-info h4 {
+  margin-bottom: 1vh;
+}
+
+.sidebar-info > div {
+  margin-top: 1vh;
+}
+
+#tile-yield {
+  display: inline-block;
+}
+
+#improvements p {
+  display: block;
+}
+
+#tile-yield img {
+  vertical-align: middle
 }
