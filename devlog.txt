@@ -179,3 +179,13 @@ sarahZ -- 2026-01-15 18:30
 - Modified pillage function
 - Added possibleImprovements and possibleDistricts HTML, CSS, and click events to updateSidebarInfo
 - Added pillage and buyTile HTML, CSS, and click event to updateSidebarInfo
+
+kiranS -- 2026-01-15 23:00
+- Updated technology.json
+
+jamesL -- 2026-01-15 23:00
+- Fixed, debugged, made final changes
+- Units movement renders across players
+- Pillage renders across players
+- Win game with gold
+- Buying tiles
