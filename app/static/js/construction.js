@@ -1,3 +1,8 @@
+//  DeadDuckies
+//  Roster: James Lei, Kiran Soemardjo, Sarah Zou, Emaan Asif
+//  SoftDev pd4
+//  2026-01-16f
+
 import { getAdjacentTiles, consumeResource } from "./utility.js"
 import { IMPROVEMENTS, DISTRICTS, map, TERRAIN_INFO, RESOURCE_YIELDS, storedResources } from "./init.js"
 import { overlay, tintTile, closeSidebar } from "./display.js"

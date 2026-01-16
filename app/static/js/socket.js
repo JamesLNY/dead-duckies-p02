@@ -1,3 +1,8 @@
+//  DeadDuckies
+//  Roster: James Lei, Kiran Soemardjo, Sarah Zou, Emaan Asif
+//  SoftDev pd4
+//  2026-01-16f
+
 import { CONST_OBJ, startGame } from "./game.js";
 import { sleep } from "./utility.js"
 import { map } from "./init.js"
