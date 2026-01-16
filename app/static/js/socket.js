@@ -35,8 +35,14 @@ socket.on('build improvement', (data) => {
 
 socket.on('end turn', (data) => {
   CONST_OBJ["CURR_TURN"]++;
-  document.getElementById("turn").innerHTML = CONST_OBJ["turn"]
+  document.getElementById("turn").innerHTML = CONST_OBJ["CURR_TURN"]
   CONST_OBJ["IS_TURN"] = true;
+
+  for (let y = 0; y < map.length; y++) {
+    for (let x = 0; x < map[y].length; x++) {
+      map[y][x].pillaged;
+    }
+  }
 })
 
 socket.on('win game', (data) => {
