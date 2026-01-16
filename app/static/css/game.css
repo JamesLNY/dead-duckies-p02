@@ -157,3 +157,12 @@
 #tile-yield img {
   vertical-align: middle
 }
+
+#turn {
+  display: flex;
+  flex-direction: row;
+}
+
+#turn p {
+  margin: 0;
+}

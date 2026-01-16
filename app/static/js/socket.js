@@ -7,7 +7,8 @@ import { CONST_OBJ, startGame } from "./game.js";
 import { sleep } from "./utility.js"
 import { map } from "./init.js"
 import { tintTile } from "./display.js";
-import { buildDistrict, buildBuilding } from "./construction.js";
+import { buildDistrict, buildBuilding, buildImprovement, removeImprovement } from "./construction.js";
+import { createUnit, teleportUnit } from "./units.js";
 
 const socket = io();
 
@@ -26,6 +27,14 @@ socket.on('buy tile', (data) => {
   tintTile(data["x"], data["y"], "red")
 })
 
+socket.on('spawn unit', (data) => {
+  createUnit(data["type"], data["name"], data["x"], data["y"], "enemy")
+})
+
+socket.on('move unit', (data) => {
+  teleportUnit(data["startX"], data["startY"], data["endX"], data["endY"])
+})
+
 socket.on('build district', (data) => {
   buildDistrict(data["name"], data["x"], data["y"], true);
 })
@@ -38,9 +47,14 @@ socket.on('build improvement', (data) => {
   buildImprovement(data["name"], data["x"], data["y"], true)
 })
 
+socket.on("remove improvement", (data) => {
+  removeImprovement(data["x"], data["y"], true)
+})
+
 socket.on('end turn', (data) => {
   CONST_OBJ["CURR_TURN"]++;
-  document.getElementById("turn").innerHTML = CONST_OBJ["CURR_TURN"]
+  document.getElementById("turn-num").innerHTML = CONST_OBJ["CURR_TURN"]
+  document.getElementById("is-turn").innerHTML = "Your Turn"
   CONST_OBJ["IS_TURN"] = true;
 
   for (let y = 0; y < map.length; y++) {
@@ -52,9 +66,7 @@ socket.on('end turn', (data) => {
 
 socket.on('win game', (data) => {
   CONST_OBJ["IS_TURN"] = false;
-
+  window.location.href = "/win_game?won=0";
 })
-
-
 
 export { socket };

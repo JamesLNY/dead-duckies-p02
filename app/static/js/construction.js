@@ -3,7 +3,7 @@
 //  SoftDev pd4
 //  2026-01-16f
 
-import { getAdjacentTiles, consumeResource } from "./utility.js"
+import { getAdjacentTiles, consumeResource, gainResource } from "./utility.js"
 import { IMPROVEMENTS, DISTRICTS, map, TERRAIN_INFO, RESOURCE_YIELDS, storedResources } from "./init.js"
 import { overlay, tintTile, closeSidebar } from "./display.js"
 import { isResearched } from "./tech.js"
@@ -19,6 +19,7 @@ function gainedTile(x, y) {
     "y": y
   })
   tintTile(x, y, "blue");
+  closeSidebar()
 }
 
 function getNextBuilding(tile) {
@@ -29,16 +30,41 @@ function getNextBuilding(tile) {
   return next;
 }
 
+function removeImprovement(x, y, enemy=false) {
+  closeSidebar()
+  console.log("HERE")
+  let tile = map[y][x]
+  let improvement = IMPROVEMENTS[tile["improvements"].at(-1)]
+  for (let [resource, amount] of Object.entries(improvement["bonuses"])) {
+    tile["yield"][resource] -= amount;
+  }
+  tile["improvements"].pop(0)
+  if (!enemy) {
+    socket.emit(
+      "remove improvement", {
+        "x": x,
+        "y": y
+      }
+    )
+  }
+}
+
 function getPossibleImprovements(tile) {
   let output = []
-
   if (tile["improvements"].length != 0) return output;
-  if (!tile["resource"]) {
-    if (RESOURCE_YIELDS[tile["resource"]]["technology"]) {
-      if (!isResearched(RESOURCE_YIELDS[tile["resource"]]["technology"])) return output;
-      if (storedResources["production"] >= IMPROVEMENTS[RESOURCE_YIELDS[tile["resource"]["improvement"]]]["production cost"]) {
-        output.push(RESOURCE_YIELDS[tile["resource"]]["improvement"]);
-      }
+  if (tile["resource"]) {
+    if (RESOURCE_YIELDS[tile["resource"]]["technology"] 
+      && !isResearched(RESOURCE_YIELDS[tile["resource"]]["technology"])
+    ) {
+      return;
+    } 
+    if (IMPROVEMENTS[RESOURCE_YIELDS[tile["resource"]]["improvement"]]["technology"]
+      && isResearched(IMPROVEMENTS[RESOURCE_YIELDS[tile["resource"]]["improvement"]]["technology"])
+    ) {
+      output.push(RESOURCE_YIELDS[tile["resource"]]["improvement"]);
+    }
+    if (!IMPROVEMENTS[RESOURCE_YIELDS[tile["resource"]]["improvement"]]["technology"]) {
+      output.push(RESOURCE_YIELDS[tile["resource"]]["improvement"]);
     }
   }
   TERRAIN_INFO[tile["terrain"]]["possible_improvements"].forEach((improvement) => {
@@ -69,21 +95,9 @@ function buildImprovement(name, x, y, enemy=false) {
   }
 
   for (let [resource, amount] of Object.entries(improvement["bonuses"])) {
-    if (!TILE["yield"][resource]) {
-      TILE["yield"][resource] = 0;
-    }
     TILE["yield"][resource] += amount;
-
   }
 }
-
-function removeImprovement(x, y) {
-  closeSidebar()
-  const TILE = map[y][x];
-
-  TILE["improvements"] = [];
-}
-
 
 function pillage(x, y) {
   closeSidebar()
@@ -91,11 +105,11 @@ function pillage(x, y) {
 
   if (TILE.owned == false) {
     if (TILE["improvements"].length != 0) {
-      storedResources[IMPROVEMENTS[TILE["improvements"][0]]["plunder"]] += 100;
+      gainResource(IMPROVEMENTS[TILE["improvements"].at(-1)]["plunder"], 100);
       removeImprovement(x, y);
     }
     if (TILE["district"]) {
-      storedResources[DISTRICTS[TILE["district"]]["plunder"]] += 100;
+      gainResource(DISTRICTS[TILE["district"]]["plunder"], 100);
     }
   }
 }
@@ -169,4 +183,4 @@ function buildBuilding(name, x, y, enemy=false) {
   }
 }
 
-export { buildImprovement, buildDistrict, pillage, gainedTile, getPossibleImprovements, ownedTiles, buildBuilding, getNextBuilding }
+export { buildDistrict, pillage, gainedTile, getPossibleImprovements, ownedTiles, buildBuilding, getNextBuilding, buildImprovement, removeImprovement }

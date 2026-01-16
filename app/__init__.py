@@ -18,10 +18,10 @@ app.register_blueprint(auth.bp)
 #restricting app to logged in users only
 @app.before_request
 def check_authentification():
-    allowedEndpoints = ['static', 'home_get', 'auth.logout_get', 'game_get']
-    if 'game' in session and request.endpoint not in allowedEndpoints:
-        flash("You're already in a game; Please do not visit any other pages", 'error')
-        return redirect(url_for('home_get'))
+    allowedEndpoints = ['static', 'home_get', 'auth.logout_get', 'game_get', 'win_game']
+    # if 'game' in session and request.endpoint not in allowedEndpoints:
+    #     flash("You're already in a game; Please do not visit any other pages", 'error')
+    #     return redirect(url_for('home_get'))
     allowedEndpoints = ['static', 'auth.login_get', 'auth.login_post', 'auth.signup_get', 'auth.signup_post']
     if 'username' not in session and request.endpoint not in allowedEndpoints:
         flash("Please log in to view our website", 'info')
@@ -52,6 +52,16 @@ def join_lobby_get():
     return redirect("/game")
 
 # GAME STUFF
+
+@app.get("/win_game")
+def win_game_get():
+    session.pop("game")
+    won = request.args["won"]
+    if won == 1:
+        flash("You won!")
+    else:
+        flash("You lost!")
+    return redirect('/lobby')
 
 @app.get("/game")
 def game_get():
@@ -109,18 +119,31 @@ def build_district(data):
 
 @socketio.on("build building")
 def build_building(data):
-    district = select_query("SELECT * FROM districts WHERE game=? AND name=? AND x_pos=? AND y_pos=?", (
-        session["game"], data["district"], data["x"], data["y"]
-    ))[0]
-    insert_query("buildings", {
-        "district": district["id"],
-        "name": data["name"]
-    })
+    # district = select_query("SELECT * FROM districts WHERE game=? AND name=? AND x_pos=? AND y_pos=?", (
+    #     session["game"], data["district"], data["x"], data["y"]
+    # ))[0]
+    # insert_query("buildings", {
+    #     "district": district["id"],
+    #     "name": data["name"]
+    # })
     emit("build building", data, room=session["game"], include_self=False)
 
 @socketio.on("finish tech")
 def finish_tech(data):
     insert_query("technologies", {"game": session["game"], "player": session["username"], "name": data["technology_name"]})
+
+@socketio.on("spawn unit")
+def spawn_unit(data):
+    emit("spawn unit", data, room=session["game"], include_self=False)
+
+@socketio.on("move unit")
+def move_unit(data):
+    emit("move unit", data, room=session["game"], include_self=False)
+
+@socketio.on("remove improvement")
+def remove_improvement(data):
+    emit("remove improvement", data, room=session["game"], include_self=False)
+
 
 @socketio.on("end turn")
 def end_turn(data):
@@ -139,7 +162,7 @@ def end_turn(data):
 
 @socketio.on("win game")
 def win_game(data):
-    general_query("UPDATE games SET winner=? WHERE id=?", (session["username"], session["game"]))
+    # general_query("UPDATE games SET winner=? WHERE id=?", (session["username"], session["game"]))
     emit("win game", data, room=session["game"], include_self=False)
 
 if __name__ == '__main__':
