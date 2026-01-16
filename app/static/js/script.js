@@ -1,6 +1,6 @@
 import { openSidebar } from "./display.js"
 import { DISTRICTS, map, storedResources, TERRAIN_INFO } from "./init.js"
-import { buildBuilding, buildDistrict, getNextBuilding } from "./construction.js"
+import { pillage, buildImprovement, buildBuilding, getPossibleImprovements, buildDistrict, getNextBuilding } from "./construction.js"
 import { isResearched } from "./tech.js"
 import { assignWorker, removeWorker } from "./workers.js"
 
@@ -13,7 +13,7 @@ function clickTile(event) {
   openSidebar("info");
 }
 
-function yieldElement(name) {
+function imgElement(name) {
   let img = document.createElement("img")
   img.src = `/static/images/icons/${name}.png`
   return img;
@@ -35,7 +35,7 @@ function updateInfoSidebar(x, y) {
 
   for (let [key, value] of Object.entries(tile.yield)) {
     for (let i = 0; i < value; i++) {
-      tileYield.appendChild(yieldElement(key))
+      tileYield.appendChild(imgElement(key))
     }
   }
   if (!tileYield.hasChildNodes()) tileYield.innerHTML="None"
@@ -46,7 +46,7 @@ function updateInfoSidebar(x, y) {
   if (tile["improvements"].length > 0) {
     improvements.style.display = "block"
     tile["improvements"].forEach((improvement) => {
-      let ele = document.createElement("p")
+      let ele = document.createElement("p");
       ele.innerHTML = improvement
       improvements.appendChild(ele);
     })
@@ -81,7 +81,25 @@ function updateInfoSidebar(x, y) {
       }
     } else if (tile.improvements.length == 0) {
       possibleImprovements.style.display = "block"
-      // Append to possible_improvements innerhtml with button
+      //code for possible improvements
+      //styling is likely messed up since i cant
+      //test currently because its not showing up
+      //on sidebar and im not sure why
+      const improvements = getPossibleImprovements(tile);
+      improvements.forEach((improvement) => {
+        let btn = document.createElement("button");
+        btn.classList.add("technology"); //not actually tech im js too lazy to redo styling
+        btn.style.display = "flex";
+        btn.style.flexDirection = "column";
+        btn.innerHTML =  `<span>${improvement}</span>(${IMP_INFO["production cost"]} Production) <img src="/static/images/icons/production.png" style="width: 20px; height: 20px;">`;
+        btn.addEventListener("click", (event) => {
+          buildImprovement(improvement, x, y);
+          updateInfoSidebar(x, y);
+        })
+        // Append to possible_improvements innerhtml with button
+        possibleImprovements.appendChild(btn);
+        possibleImprovements.appendChild(document.createElement("br"));
+      });
     }
 
     possibleDistricts.innerHTML = '<h4>Construct Districts</h4>'
@@ -91,19 +109,23 @@ function updateInfoSidebar(x, y) {
       possibleDistricts.style.display = "block"
       TERRAIN_INFO[tile["terrain"]].possible_districts.forEach((district) => {
         const DISTRICT_INFO = DISTRICTS[district]
-        if (!isResearched(DISTRICT_INFO["technology"])) return;
-        let ele = document.createElement("button")
+        let ele = document.createElement("button");
+        ele.classList.add("technology");
+        ele.style.display = "flex";
+        ele.style.flexDirection = "column";
         ele.innerHTML = district
-        ele.innerHTML += ` (${DISTRICT_INFO["production cost"]} Production)`
-        ele.classList.add("sidebar-button");
+        ele.innerHTML += ` (${DISTRICT_INFO["production cost"]} Production) <img src="/static/images/icons/production.png" style="width: 20px; height: 20px;">`;
+        if (storedResources["production"] < DISTRICT_INFO["production cost"] || !isResearched(DISTRICT_INFO["technology"])) {
+          btn.disabled = true;
+        }
         ele.addEventListener("click", (event) => {
           buildDistrict(district, x, y)
+          updateInfoSidebar(x, y);
         })
-        possibleDistricts.appendChild(ele)
+        // Append to possibleDistricts innerhtml with buttons like for improvements
+        possibleDistricts.appendChild(ele);
+        possibleDistricts.appendChild(document.createElement("br"));
       })
-
-      // Append to possibleDistricts innerhtml with buttons like for improvements
-
     }
 
     if (tile.district == "encampment") {
@@ -128,11 +150,41 @@ function updateInfoSidebar(x, y) {
     }
     div.appendChild(ele);
   } else {
-    possibleImprovements.style.display = "none"
-    possibleDistricts.style.display = "none"
-    unitProduction.style.display = "none"
-    //buy tile check adjacent tiles and if its owned
-    const buyTile = document.getElementById("buy-tile");
+    if (tile["owned"] == false) {
+      //pillage 
+      if (tile["improvements"].length != 0) {
+        const pillageDiv = document.getElementById("pillage");
+        pillageDiv.innerHTML = "";
+        let pillageBtn = document.createElement("button");
+        pillageBtn.innerHTML = "Pillage";
+        pillageBtn.addEventListener("click", (event) => {
+          pillage(x, y);
+        })
+        pillageDiv.appendChild(pillageBtn);
+      }
+    }
+    else {
+      possibleImprovements.style.display = "none"
+      possibleDistricts.style.display = "none"
+      unitProduction.style.display = "none"
+      //buy tile 
+      if (getAdjacentTiles(x, y).some(tile => tile.owned)) {
+        const buyDiv = document.getElementById("buy-tile");
+        buyDiv.innerHTML = "";
+        let buyBtn = document.createElement("button");
+        buyBtn.innerHTML = "Buy Tile";
+        buyBtn.appendChild(imgElement("gold"));
+        buyBtn.innerHTML = "100";
+        if (storedResources["gold"] < 100) {
+          buyBtn.disabled = true;
+        }
+        buyBtn.addEventListener("click", (event) => {
+          gainedTile(x, y);
+          consumeResource("gold", 100);
+        })
+        buyDiv.appendChild(buyBtn);
+      }
+    }
 
   }
 }

@@ -28,7 +28,7 @@ function getPossibleImprovements(tile) {
   let output = []
 
   if (tile["improvements"].length != 0) return output;
-  if (tile["resource"]) {
+  if (!tile["resource"]) {
     if (RESOURCE_YIELDS[tile["resource"]]["technology"]) {
       if (!isResearched(RESOURCE_YIELDS[tile["resource"]]["technology"])) return output;
       if (storedResources["production"] >= IMPROVEMENTS[RESOURCE_YIELDS[tile["resource"]["improvement"]]]["production cost"]) {
@@ -80,17 +80,18 @@ function removeImprovement(x, y) {
 }
 
 
-function pillage(x, y, enemy = false) {
+function pillage(x, y) {
   closeSidebar()
   const TILE = map[y][x];
-  if (!enemy) {
-      removeImprovements(x, y);
-      if (TILE["improvements"].length != 0) {
-        storedResources[IMPROVEMENTS[TILE["improvements"][0]]["plunder"]] += 100;
-      }
-      if (TILE["district"]) {
-        storedResources[DISTRICT[TILE["district"]]["plunder"]] += 100;
-      }
+
+  if (TILE.owned == false) {
+    if (TILE["improvements"].length != 0) {
+      storedResources[IMPROVEMENTS[TILE["improvements"][0]]["plunder"]] += 100;
+      removeImprovement(x, y);
+    }
+    if (TILE["district"]) {
+      storedResources[DISTRICTS[TILE["district"]]["plunder"]] += 100;
+    }
   }
 }
 
@@ -163,4 +164,4 @@ function buildBuilding(name, x, y, enemy=false) {
   }
 }
 
-export { buildDistrict, gainedTile, getPossibleImprovements, ownedTiles, buildBuilding, getNextBuilding }
+export { buildDistrict, pillage, gainedTile, getPossibleImprovements, ownedTiles, buildBuilding, getNextBuilding }
