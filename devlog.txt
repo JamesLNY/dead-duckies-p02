@@ -168,9 +168,14 @@ jamesL -- 2026-01-15 11:00
 - Added closing sidebar
 
 sarahZ -- 2026-01-15 11:00
-- Finished pillage
+- Finished pillage function
 - Worked on buy tile
 
 emaanA -- 2026-01-15 13:20 
 - movement consumption works 
 - trying to get restoreMovement on start turn to work
+
+sarahZ -- 2026-01-15 18:30
+- Modified pillage function
+- Added possibleImprovements and possibleDistricts HTML, CSS, and click events to updateSidebarInfo
+- Added pillage and buyTile HTML, CSS, and click event to updateSidebarInfo
