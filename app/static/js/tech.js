@@ -2,6 +2,7 @@ import { consumeResource } from "./utility.js";
 import { storedResources, TECHNOLOGIES, DISTRICTS, IMPROVEMENTS, map } from "./init.js";
 import { openSidebar } from "./display.js";
 import { socket } from "./socket.js"
+import { CONST_OBJ } from "./game.js";
 
 const researched = []
 const available = ["pottery", "husbandry", "mining", "sailing"]
@@ -10,6 +11,8 @@ var techList = document.getElementById("tech-list");
 var techSidebar = document.getElementById("tech-sidebar");
 
 techSidebar.onclick = () => {
+  console.log(CONST_OBJ["IS_TURN"])
+  if (!CONST_OBJ["IS_TURN"]) return;
   openSidebar("tech")
   updateTech()
 }
@@ -71,21 +74,24 @@ function updateYields(target, bonusInfo) {
   }
   Object.keys(DISTRICTS).forEach(district => {
     let buildings = DISTRICTS[district]["buildings"]
-    if (target in buildings) {
-      Object.keys(bonusInfo).forEach(bonusType => {
-        if (bonusType in buildings[target]["yield"]) {
-          buildings[target]["yield"][bonusType] += bonusInfo[bonusType]
-        }
-        else buildings[target]["yield"][bonusType] = bonusInfo[bonusType]
-        // console.log(buildings[target]["yield"][bonusType])
-      })
-    }
+    buildings.forEach((building) => {
+      if (target == building["name"]) {
+        Object.keys(bonusInfo).forEach(bonusType => {
+          if (bonusType in building["yield"]) {
+            building["yield"][bonusType] += bonusInfo[bonusType]
+          }
+          else building["yield"][bonusType] = bonusInfo[bonusType]
+          // console.log(buildings[target]["yield"][bonusType])
+        })
+      }
+    })
   })
   map.forEach(mapRow => {
     mapRow.forEach(tile => {
-      if (target in tile["improvements"]) {
+      if (tile["improvements"].includes(target)) {
+        console.log("found")
         Object.keys(bonusInfo).forEach(bonusType => {
-          tile["yields"][bonusType] += bonusInfo[bonusType]
+          tile["yield"][bonusType] += bonusInfo[bonusType]
         })
       }
     })
