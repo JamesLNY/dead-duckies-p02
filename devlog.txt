@@ -189,3 +189,10 @@ jamesL -- 2026-01-15 23:00
 - Pillage renders across players
 - Win game with gold
 - Buying tiles
+
+sarahZ -- 2026-01-15 23:11
+DEVLOG UPDATES
+- Removed unimplemented features from description, site map, components, and database (e.g. tiles attacking, focus trees)
+- Updated tasks + assignments
+- Updated site map
+- Updated component map
