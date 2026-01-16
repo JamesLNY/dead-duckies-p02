@@ -46,5 +46,13 @@
     "bonuses": {
       "food": 1
     }
+  },
+  "lumber mill": {
+    "technology": "construction",
+    "production cost": 12,
+    "plunder": "production",
+    "bonuses": {
+      "production": 1
+    }
   }
 }

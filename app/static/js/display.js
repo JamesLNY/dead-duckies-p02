@@ -68,6 +68,10 @@ function closeSidebar() {
   })
 }
 
+function displayTurn(turnNum, isTurn) {
+
+}
+
 function getTileDiv(x, y) {
   const div = document.querySelector(`div[x="${x}"][y="${y}"]`);
   return div

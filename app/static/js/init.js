@@ -17,15 +17,15 @@ const TECHNOLOGIES = await getJson("technology.json")
 const UNIT_DEFS = await getJson("units.json");
 
 let storedResources = {
-  "science": 100000,
-  "gold": 100000,
-  "food": 100000,
-  "production": 100000,
-  "population": 100000,
-  "iron": 100000,
-  "horses": 100000,
-  "niter": 100000,
-  "coal": 100000
+  "science": 1000,
+  "gold": 1000,
+  "food": 1000,
+  "production": 1000,
+  "population": 1000,
+  "iron": 1000,
+  "horses": 1000,
+  "niter": 1000,
+  "coal": 1000
 }
 
 // INITIALIZING RESOURCE UI

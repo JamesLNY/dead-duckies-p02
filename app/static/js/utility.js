@@ -20,7 +20,7 @@ function consumeResource(name, amount) {
   return true;
 }
 
-function addTile(arr, x, y) {
+function addTile(arr, x, y) {     
   if (x < 0 || y < 0 || y >= map.length || x >= map[y].length) return;
   let newObj = structuredClone(map[y][x])
   newObj["x"] = x;

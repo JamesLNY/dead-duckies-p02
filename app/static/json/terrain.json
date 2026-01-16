@@ -20,7 +20,7 @@
     "production": 1,
     "movement": 2,
     "possible_districts": ["campus", "commercial hub", "industrial zone"],
-    "possible_improvements": ["lumberyard"]
+    "possible_improvements": ["lumber mill"]
   },
   "plains hills": {
     "terrain": ["plains", "plains_hills"],
@@ -44,7 +44,7 @@
     "production": 2,
     "movement": 2,
     "possible_districts": ["campus", "commercial hub", "industrial zone"],
-    "possible_improvements": ["farm", "lumberyard"]
+    "possible_improvements": ["farm", "lumber mill"]
   },
   "tundra": {
     "terrain": ["tundra"],
@@ -75,7 +75,7 @@
     "production": 1,
     "movement": 2,
     "possible_districts": ["campus", "commercial hub", "industrial zone"],
-    "possible_improvements": ["lumberyard"]
+    "possible_improvements": ["lumber mill"]
   },
   "ocean": {
     "terrain": ["ocean"],
@@ -90,7 +90,7 @@
     "production": 1,
     "movement": 2,
     "possible_districts": ["campus", "commercial hub", "industrial zone"],
-    "possible_improvements": ["lumberyard", "farm"]
+    "possible_improvements": ["lumber mill", "farm"]
   },
   "grassland": {
     "terrain": ["grassland"],
@@ -105,7 +105,7 @@
     "production": 1,
     "movement": 3,
     "possible_districts": ["encampment", "commercial hub", "industrial zone", "campus"],
-    "possible_improvements": ["farm", "mine", "lumberyard"]
+    "possible_improvements": ["farm", "mine", "lumber mill"]
   },
   "grassland marsh": {
     "terrain": ["grassland", "marsh"],
@@ -162,6 +162,6 @@
     "production": 2,
     "movement": 3,
     "possible_districts": ["encampment", "campus", "commercial hub", "industrial zone"],
-    "possible_improvements": ["mine", "lumberyard"]
+    "possible_improvements": ["mine", "lumber mill"]
   }
 }
