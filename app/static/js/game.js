@@ -59,7 +59,7 @@ function endTurn() {
   CONST_OBJ["IS_TURN"] = false;
   socket.emit("end turn", storedResources)
 
-  if (storedResources["gold"] == 1100) {
+  if (storedResources["gold"] == 2000) {
     socket.emit("win game", {})
     window.location.href = "/win_game?won=1";
   }

@@ -23,7 +23,7 @@ const UNIT_DEFS = await getJson("units.json");
 
 let storedResources = {
   "science": 1000,
-  "gold": 1000,
+  "gold": 1400,
   "food": 1000,
   "production": 1000,
   "population": 1000,
@@ -63,13 +63,11 @@ function tileYields(terrain, resource, improvements=[]) {
     tileYield.science = TERRAIN_INFO[terrain].science || 0;
   }
   // Resources
-  if (resource && RESOURCE_YIELDS[resource]) {
-    if (!RESOURCE_YIELDS[resource] || improvements.indexOf(RESOURCE_YIELDS[resource].improvement) !== -1) {
-      tileYield.food += RESOURCE_YIELDS[resource].food || 0;
-      tileYield.production += RESOURCE_YIELDS[resource].production || 0;
-      tileYield.gold += RESOURCE_YIELDS[resource].gold || 0;
-      tileYield.science += RESOURCE_YIELDS[resource].science || 0;
-    }
+  if (resource) {
+    tileYield.food += RESOURCE_YIELDS[resource]["yields"].food || 0;
+    tileYield.production += RESOURCE_YIELDS[resource]["yields"].production || 0;
+    tileYield.gold += RESOURCE_YIELDS[resource]["yields"].gold || 0;
+    tileYield.science += RESOURCE_YIELDS[resource]["yields"].science || 0;
   }
   return tileYield;
 }
