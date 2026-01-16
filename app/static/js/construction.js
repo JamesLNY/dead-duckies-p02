@@ -164,4 +164,4 @@ function buildBuilding(name, x, y, enemy=false) {
   }
 }
 
-export { buildDistrict, pillage, gainedTile, getPossibleImprovements, ownedTiles, buildBuilding, getNextBuilding }
+export { buildImprovement, buildDistrict, pillage, gainedTile, getPossibleImprovements, ownedTiles, buildBuilding, getNextBuilding }

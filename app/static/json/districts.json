@@ -135,7 +135,7 @@
       },
       {
         "name": "shipyard",
-        "technology": "mass production cost",
+        "technology": "mass production",
         "production cost": 290,
         "maintenance": 2,
         "yield": {

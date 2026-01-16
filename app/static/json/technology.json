@@ -23,7 +23,7 @@
     "sailing": {
         "cost": 50,
         "prerequisites": [],
-        "tech_unlocks": [],
+        "tech_unlocks": ["celestial navigation"],
         "unlocks": ["fishing boat"],
         "bonuses": {}
     },
@@ -37,7 +37,7 @@
     "writing": {
         "cost": 50,
         "prerequisites": ["pottery"],
-        "tech_unlocks": ["currency"],
+        "tech_unlocks": ["currency", "celestial navigation"],
         "unlocks": ["campus", "library"],
         "bonuses": {}
     },
@@ -60,6 +60,13 @@
         "prerequisites": ["mining"],
         "tech_unlocks": ["engineering"],
         "unlocks": ["water mill"],
+        "bonuses": {}
+    },
+    "celestial navigation": {
+        "cost": 120,
+        "prerequisites": ["writing", "sailing"],
+        "tech_unlocks": [],
+        "unlocks": ["harbor", "lighthouse"],
         "bonuses": {}
     },
     "currency": {
@@ -128,7 +135,7 @@
     "education": {
         "cost": 390,
         "prerequisites": ["mathematics", "apprenticeship"],
-        "tech_unlocks": ["industrialization", "banking", "printing", "cartography"],
+        "tech_unlocks": ["mass production", "banking", "printing", "cartography"],
         "unlocks": ["university"],
         "bonuses": {}
     },
@@ -152,6 +159,13 @@
         "tech_unlocks": [],
         "unlocks": ["+2 fishing boat gold production"],
         "bonuses": {"fishing boat": {"gold": 2}}
+    },
+    "mass production": {
+        "cost": 600,
+        "prerequisites": ["education"],
+        "tech_unlocks": ["industrialization"],
+        "unlocks": ["shipyard"],
+        "bonuses": {}
     },
     "banking": {
         "cost": 600,
@@ -183,7 +197,7 @@
     },
     "industrialization": {
         "cost": 930,
-        "prerequisites": ["education", "metal casting"],
+        "prerequisites": ["mass production", "metal casting"],
         "tech_unlocks": ["steam power"],
         "unlocks": ["factory", "coal power plant", "coal", "neighborhood", "+1 mine production"],
         "bonuses": {"mine": {"production": 1}}
