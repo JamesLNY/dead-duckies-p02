@@ -7,7 +7,7 @@
 - dev3: Emaan Asif
 
 ## Description:
-We made a dumbed-down version of Civilization 6 combined with the research and focus systems of Hearts of Iron IV. Games will occur between two players on a pregenerated map. Players can build units, improve their empire, and research technologies with the goal of killing the other player or finishing the technology tree.
+We made a dumbed-down version of Civilization 6 with its city-building and tile-based expansion systems combined with a simplified research and technology progression system inspired by Hearts of Iron IV. Games will occur between two players in a lobby with a pregenerated map and spawn points opposite each other. Players take turns buying tiles, developing research and technology, constructing resource improvements and districts, pillaging each other’s tiles while managing resources.
 
 ## Install Guide
 Prerequisites
